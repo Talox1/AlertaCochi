@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+html,body{
+   color:rgb(77, 21, 21) !important;
+   font-family:'Opens Sans',helvetica;  
+   height:100%;
+   width:100%;
+   margin: 0px;
+ }
