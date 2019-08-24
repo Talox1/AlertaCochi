@@ -8,7 +8,8 @@ import { FormBuilder, FormGroup, Validators, CheckboxRequiredValidator} from '@a
 export class RegisterBussinessComponent implements OnInit {
 
 
-  checkbox1 = new CheckboxRequiredValidator;
+  check1;
+  check2;
   registerBussinessForm: FormGroup;
 
   constructor(public fb: FormBuilder) {
@@ -27,7 +28,6 @@ export class RegisterBussinessComponent implements OnInit {
   test(){
     console.log("hellodah");
     console.log(this.registerBussinessForm.value);
-    console.log(this.checkbox1);
   }
   
 }
