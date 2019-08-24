@@ -7,7 +7,7 @@
                   <figure class="image is-128x128 fijarcentro">
                     <img class="is-rounded" src="../../../assets/img/login/logo2.jpg ">
                   </figure>
-                    <form [formGroup]="loginForm" novalidate (ngSubmit)="test()">
+                    <form [formGroup]="loginForm" novalidate (ngSubmit)="login()">
                   <label class="label iniciar">Inicia Sesión</label>
                   <div class="field ">
                       <label class="label">Correo Electrónico</label>
@@ -35,7 +35,7 @@
                     </div>
                     <div class="field">
                       <p class="control centrao">
-                        <button type="submit" class="button is-black center">
+                        <button type="submit" class="button is-black center" >
                           Iniciar Sesión
                         </button>
                       </p>
