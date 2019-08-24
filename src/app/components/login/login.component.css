@@ -1,0 +1,49 @@
+body {
+    margin: 0;
+    height: 100%;
+    background: linear-gradient(rgba(230, 80, 80, 0.884),rgba(221, 147, 86, 0.9)), url(../../../assets/img/login/fondo.jpg);
+    background-size: 100%;
+}
+
+#contenedor-formulario-flex {
+    justify-content: center !important;
+    max-width: 1580px;
+    width: 60%;
+}
+
+.contenedor-color {
+    background-color: #F7D708;
+    padding: 20px 10px;
+    border-radius: 6px;
+    margin: auto;
+    justify-content: center;
+}
+
+.iniciar {
+    font-size: 20pt;
+    text-align: center;
+}
+
+.centrao {
+    text-align: center;
+}
+
+.fijarcentro {
+    justify-content: center;
+    margin: auto;
+    margin-top: -100px;
+    margin-bottom: 8px;
+}
+
+div .general {
+    margin: 10% 0;
+    justify-content: center;
+    width: 100%;
+}
+
+form {
+    width: 80%;
+    justify-content: center;
+    margin: auto;
+    padding: 0;
+}

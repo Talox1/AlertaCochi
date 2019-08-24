@@ -1,0 +1,52 @@
+<body>
+    <main>
+        <section class="section">
+          <div class="container" id="contenedor-formulario-flex">
+            <div class="general">
+                <div class="contenedor-color">
+                    <figure class="image is-128x128 fijarcentro">
+                      <img class="is-rounded" src="../../../assets/img/login/logo1.jpg ">
+                    </figure>
+                      <form [formGroup]="loginForm" novalidate (ngSubmit)="test()">
+                    <label class="label iniciar">Inicia Sesión</label>
+                    <div class="field ">
+                        <label class="label colour">Username</label>
+                        <p class="control has-icons-left has-icons-right">
+                          <input class="input" type="text" placeholder="Username" formControlName="username">
+                          <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                          </span>
+                        </p>
+                        <div *ngIf="loginForm.get('username').errors && loginForm.get('username').dirty">
+                          <p *ngIf="loginForm.get('username').hasError('required')">Este campo debe ser obligatorio</p>
+                        </div>
+                      </div>
+                      <div class="field">
+                        <label class="label colour">Contraseña</label>
+                        <p class="control has-icons-left">
+                          <input class="input" type="password" placeholder="Contraseña" formControlName="password">
+                          <span class="icon is-small is-left">
+                            <i class="fas fa-lock"></i>
+                          </span>
+                        </p>
+                        <div *ngIf="loginForm.get('password').errors && loginForm.get('password').dirty">
+                          <p *ngIf="loginForm.get('password').hasError('required')">Este campo debe ser obligatorio</p>
+                        </div>
+                      </div>
+                      <div class="field">
+                        <p class="control centrao">
+                          <button type="submit" class="button is-white center">
+                            Iniciar Sesión
+                          </button>
+                        </p>
+                      </div>
+                    </form> 
+                  </div>
+            </div>
+          </div>
+        </section>
+      </main>
+  </body>
+  
+  
+  
