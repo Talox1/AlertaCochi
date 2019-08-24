@@ -9,13 +9,14 @@ import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { LoginAdminComponent } from './components/login-admin/login-admin.component';
 import { RegisterBussinessComponent } from './components/register-bussiness/register-bussiness.component';
-
+import { ViewAdminComponent } from './components/view-admin/view-admin.component';
 
 import { environment } from 'src/environments/environment';
 import { from } from 'rxjs';
 import {HttpClient, HTTP_INTERCEPTORS} from '@angular/common/http';
 // import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     LoginAdminComponent,
     RegisterBussinessComponent,
+    ViewAdminComponent,
   ],
   imports: [
     BrowserModule,
