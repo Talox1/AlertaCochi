@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, CheckboxRequiredValidator} from '@angular/forms';
+
 @Component({
   selector: 'app-register-bussiness',
   templateUrl: './register-bussiness.component.html',
@@ -8,23 +9,24 @@ import { FormBuilder, FormGroup, Validators, CheckboxRequiredValidator} from '@a
 export class RegisterBussinessComponent implements OnInit {
 
   registerBussinessForm: FormGroup;
-
+  activo = true;
   constructor(public fb: FormBuilder) {
     this.registerBussinessForm = this.fb.group({
-      name: ['a', [Validators.required]],
-      phone: ['b', [Validators.required]],
-      category: ['v', [Validators.required]],
-      houseservice: ['a', [Validators.required, Validators.email] ],
-      address: ['a', [Validators.required, Validators.email] ],
+      name: ['', [Validators.required]],
+      phone: ['', [Validators.required]],
+      category: ['', [Validators.required]],
+      houseservice: ['', [Validators.required, Validators.email] ],
+      address: ['', [Validators.required] ],
     });
    }
 
   ngOnInit() {
+    
   }
 
   test(){
     console.log("hellodah");
     console.log(this.registerBussinessForm.value);
   }
-  
+
 }

@@ -1,28 +1,18 @@
 <div class="columns is-mobile is-centered">
     
-<<<<<<< HEAD
-    <div id="formlogin" class="column is-two-fifths ">
-      <form [formGroup] ="registerForm" (ngSubmit)="register()" novalidate>
-        <div class="field">
-          <label class="label">Nombre </label>
-          <div class="control">
-            <input class="input" type="text" placeholder="Introduzca su nombre" formControlName="name">
-          </div>
-          <div *ngIf="registerForm.get('name').errors && registerForm.get('name').dirty">
-            <p *ngIf="registerForm.get('name').hasError('required')">Este campo debe ser obligatorio</p>
-          </div>
-=======
   <div id="formlogin" class="column is-two-fifths ">
-    <form [formGroup] ="registerForm" (ngSubmit)="test()" novalidate>
+    <form [formGroup]="registerForm" (ngSubmit)="register()" novalidate>
       <div class="field">
         <label class="label">Nombre </label>
+
         <div class="control">
-          <input class="input" type="text" placeholder="Introduzca su nombre" formControlName="name">
->>>>>>> 8ffd662c15b87e8d5e7182d96b3ac265f170cb5b
+          <input class="input" type="text" placeholder="Introduzca su nombre" formControlName="name"> 
         </div>
+
         <div *ngIf="registerForm.get('name').errors && registerForm.get('name').dirty">
           <p *ngIf="registerForm.get('name').hasError('required')">Este campo debe ser obligatorio</p>
         </div>
+
       </div>
         
       <div class="field">
@@ -32,6 +22,7 @@
           <span class="icon is-small is-left">
             <i class="fas fa-user"></i>
           </span>
+
           <div *ngIf="registerForm.get('username').errors && registerForm.get('username').dirty">
               <p *ngIf="registerForm.get('username').hasError('required')">Este campo debe ser obligatorio</p>
             </div>
@@ -69,6 +60,7 @@
           </span>
           <div *ngIf="registerForm.get('password').errors && registerForm.get('password').dirty">
               <p *ngIf="registerForm.get('password').hasError('required')">Este campo debe ser obligatorio</p>
+              <p *ngIf="registerForm.get('password').hasError('minlength')">Ingrese una contraseña valida, minimo 8 caracteres</p>
             </div>
           <!-- <span class="icon is-small is-right">
             <i class="fas fa-exclamation-triangle"></i>
@@ -88,7 +80,14 @@
 
       <div class="field is-grouped">
         <div class="control">
-          <button type="submit" class="button is-success  is-rounded">
+            <div #modalcito class="modal ">
+                <div class="modal-background"></div>
+                <div class="modal-content">
+                  Cuenta creada correctamente, presione ESC para continuar
+                </div>
+                <button (click)="cerrarmodal($event)" class="modal-close is-large modal-fx-slideTop" aria-label="close"></button>
+              </div>
+          <button type="submit" [disabled]="registerForm.invalid" class="button is-success  is-rounded" >
             <span class="icon is-small">
               <i class="fas fa-check"></i>
             </span>
@@ -96,12 +95,12 @@
           </button>
         </div>
         <div class="control">
-          <a class="button is-danger  is-rounded">
+          <button class="button is-danger is-rounded" routerLink="/home">
               <span class="icon is-small">
                 <i class="fas fa-times"></i>
               </span>
               <span>Cancelar</span>
-            </a>
+            </button>
         </div>
       </div>
     </form>

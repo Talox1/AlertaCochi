@@ -12,7 +12,7 @@
                     <div class="field-body">
                       <div class="field">
                         <p class="control is-expanded has-icons-left">
-                          <input class="input" type="text" placeholder="Nombre del negocio"  formControlName="name">
+                          <input class="input" type="text" placeholder="Nombre del negocio"  formControlName="name" ng-required="requeridoNombre">
                           <span class="icon is-small is-left">
                             <i class="fas fa-user"></i>
                           </span>
@@ -68,7 +68,7 @@
                       <div class="field is-narrow">
                           <div class="control">
                               <label class="radio">
-                                <input type="radio" name="answer" ng-model="vm.activo" ng-change="vm.avisar()">
+                                <input type="radio" name="answer" onclick="avisar()">
                                 Si
                               </label>
                               <label class="radio">
