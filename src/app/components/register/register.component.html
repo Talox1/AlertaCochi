@@ -1,108 +1,104 @@
-<div class="columns is-mobile is-centered">
-    
-  <div id="formlogin" class="column is-two-fifths ">
-    <form [formGroup]="registerForm" (ngSubmit)="register()" novalidate>
-      <div class="field">
-        <label class="label">Nombre </label>
+<div class="divbody">
+  <div class="columns is-mobile is-centered">
+  
+    <div id="formlogin" class="column is-two-fifths ">
 
-        <div class="control">
-          <input class="input" type="text" placeholder="Introduzca su nombre" formControlName="name"> 
+      <form [formGroup]="registerForm" (ngSubmit)="register()" novalidate>
+
+        <div class="field">
+          <label class="label">Nombre </label>
+  
+          <div class="control">
+            <input class="input" type="text" placeholder="Introduzca su nombre" formControlName="name"> 
+          </div>
+  
+          <div *ngIf="registerForm.get('name').errors && registerForm.get('name').dirty">
+            <p *ngIf="registerForm.get('name').hasError('required')">Este campo debe ser obligatorio</p>
+          </div>
+  
         </div>
-
-        <div *ngIf="registerForm.get('name').errors && registerForm.get('name').dirty">
-          <p *ngIf="registerForm.get('name').hasError('required')">Este campo debe ser obligatorio</p>
+          
+        <div class="field">
+          <label class="label">Username</label>
+          <div class="control has-icons-left has-icons-right">
+            <input id="username" class="input" type="text" placeholder="Introduzca un nombre de usuario" formControlName="username">
+            <span class="icon is-small is-left">
+              <i class="fas fa-user"></i>
+            </span>
+  
+            <div *ngIf="registerForm.get('username').errors && registerForm.get('username').dirty">
+                <p *ngIf="registerForm.get('username').hasError('required')">Este campo debe ser obligatorio</p>
+              </div>
+            <!-- <span class="icon is-small is-right">
+              <i class="fas fa-check"></i>
+            </span> -->
+          </div>
+          <!-- <p class="help is-success">This username is available</p> -->
         </div>
-
-      </div>
         
-      <div class="field">
-        <label class="label">Username</label>
-        <div class="control has-icons-left has-icons-right">
-          <input id="username" class="input" type="text" placeholder="Introduzca un nombre de usuario" formControlName="username">
-          <span class="icon is-small is-left">
-            <i class="fas fa-user"></i>
-          </span>
-
-          <div *ngIf="registerForm.get('username').errors && registerForm.get('username').dirty">
-              <p *ngIf="registerForm.get('username').hasError('required')">Este campo debe ser obligatorio</p>
-            </div>
-          <!-- <span class="icon is-small is-right">
-            <i class="fas fa-check"></i>
-          </span> -->
+        <div class="field">
+          <label class="label">Email</label>
+          <div class="control has-icons-left has-icons-right">
+            <input class="input " type="email" placeholder="Introduzca su correo"  formControlName="email">
+            <span class="icon is-small is-left">
+              <i class="fas fa-envelope"></i>
+            </span>
+            <div *ngIf="registerForm.get('email').errors && registerForm.get('email').dirty">
+                <p *ngIf="registerForm.get('email').hasError('required')">Este campo debe ser obligatorio</p>
+                
+              </div>
+            <!-- <span class="icon is-small is-right">
+              <i class="fas fa-exclamation-triangle"></i>
+            </span> -->
+          </div>
+          <!-- <p class="help is-danger">This email is invalid</p> -->
         </div>
-        <!-- <p class="help is-success">This username is available</p> -->
-      </div>
-      
-      <div class="field">
-        <label class="label">Email</label>
-        <div class="control has-icons-left has-icons-right">
-          <input class="input " type="email" placeholder="Introduzca su correo"  formControlName="email">
-          <span class="icon is-small is-left">
-            <i class="fas fa-envelope"></i>
-          </span>
-          <div *ngIf="registerForm.get('email').errors && registerForm.get('email').dirty">
-              <p *ngIf="registerForm.get('email').hasError('required')">Este campo debe ser obligatorio</p>
-              
-            </div>
-          <!-- <span class="icon is-small is-right">
-            <i class="fas fa-exclamation-triangle"></i>
-          </span> -->
-        </div>
-        <!-- <p class="help is-danger">This email is invalid</p> -->
-      </div>
-      
-      <div class="field">
-        <label class="label">Password</label>
-        <div class="control has-icons-left has-icons-right">
-          <input class="input " type="password" placeholder="Introduzca su contraseña" name="password"  formControlName="password">
-          <span class="icon is-small is-left">
-            <i class="fas fa-envelope"></i>
-          </span>
-          <div *ngIf="registerForm.get('password').errors && registerForm.get('password').dirty">
+        
+        <div class="field">
+          <label class="label">Password</label>
+          <div class="control has-icons-left has-icons-right">
+            <input class="input " type="password" placeholder="Introduzca su contraseña" name="password"  formControlName="password">
+            <span class="icon is-small is-left">
+              <i class="fas fa-envelope"></i>
+            </span>
+            <div *ngIf="registerForm.get('password').errors && registerForm.get('password').dirty">
               <p *ngIf="registerForm.get('password').hasError('required')">Este campo debe ser obligatorio</p>
               <p *ngIf="registerForm.get('password').hasError('minlength')">Ingrese una contraseña valida, minimo 8 caracteres</p>
             </div>
-          <!-- <span class="icon is-small is-right">
-            <i class="fas fa-exclamation-triangle"></i>
-          </span> -->
+          </div>
+  
         </div>
-        <!-- <p class="help is-danger">This email is invalid</p> -->
-      </div>
-      
-      <!-- <div class="field">
-        <div class="control">
-          <label class="checkbox">
-            <input type="checkbox">
-            Al crear la cuenta acepto los <a href="#">terminos y condiciones</a>
-          </label>
-        </div>
-      </div> -->
-
-      <div class="field is-grouped">
-        <div class="control">
-            <div #modalcito class="modal ">
-                <div class="modal-background"></div>
-                <div class="modal-content">
-                  Cuenta creada correctamente, presione ESC para continuar
+  
+  
+        <div class="field is-grouped">
+          <div class="control">
+              <div #modalcito class="modal ">
+                  <div class="modal-background"></div>
+                  <div class="modal-content">
+                    Cuenta creada correctamente, presione ESC para continuar
+                  </div>
+                  <button onclick="cerrarmodal()" class="modal-close is-large modal-fx-slideTop" aria-label="close"></button>
                 </div>
-                <button (click)="cerrarmodal($event)" class="modal-close is-large modal-fx-slideTop" aria-label="close"></button>
-              </div>
-          <button type="submit" [disabled]="registerForm.invalid" class="button is-success  is-rounded" >
-            <span class="icon is-small">
-              <i class="fas fa-check"></i>
-            </span>
-            <span>Crear cuenta</span>
-          </button>
-        </div>
-        <div class="control">
-          <button class="button is-danger is-rounded" routerLink="/home">
+            <button type="submit" [disabled]="registerForm.invalid" class="button is-success  is-rounded" >
               <span class="icon is-small">
-                <i class="fas fa-times"></i>
+                <i class="fas fa-check"></i>
               </span>
-              <span>Cancelar</span>
+              <span>Crear cuenta</span>
             </button>
+          </div>
+          <div class="control">
+            <button class="button is-danger is-rounded" routerLink="/home">
+                <span class="icon is-small">
+                  <i class="fas fa-times"></i>
+                </span>
+                <span>Cancelar</span>
+              </button>
+          </div>
         </div>
-      </div>
-    </form>
+        
+      </form>
+
+    </div>
+
   </div>
 </div>

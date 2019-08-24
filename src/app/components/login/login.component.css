@@ -1,8 +1,8 @@
 body {
     margin: 0;
     height: 100%;
-    background: linear-gradient(rgba(230, 80, 80, 0.884),rgba(221, 147, 86, 0.9)), url(../../../assets/img/login/fondo.jpg);
-    background-size: 100%;
+    background: linear-gradient(rgba(230, 80, 80, 0.884),rgba(221, 147, 86, 0.9)), url(../../../assets/img/login/f2.jpg);
+    background-size: cover;
 }
 
 #contenedor-formulario-flex {
