@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { RegisterService } from 'src/app/services/register.service';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -9,7 +11,7 @@ export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
 
-  constructor(public fb: FormBuilder) {
+  constructor(public fb: FormBuilder,   public registerService: RegisterService) {
     this.registerForm = this.fb.group({
       name: ['', [Validators.required]],
       username: ['', [Validators.required]],
@@ -19,9 +21,15 @@ export class RegisterComponent implements OnInit {
    }
 
   ngOnInit() {
+
   }
-  
-  test(){
-    console.log(this.registerForm.value);
+  register(){
+    this.registerService.register(this.registerForm.value).subscribe(
+      // tslint:disable-next-line: no-unused-expression
+      response => {
+        console.log(response);
+        localStorage.setItem('token', response.token);
+      }
+    );
   }
 }
