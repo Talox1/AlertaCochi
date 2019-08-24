@@ -1,7 +1,33 @@
 body{
-   background-color: rgb(185, 177, 177);
+   /*background-color: rgb(185, 177, 177);*/
+   background: linear-gradient(rgba(136, 33, 33, 0.719),rgba(253, 152, 70, 0.712)), url(../../../assets/img/login/f2.jpg);
+   background-size: cover;
 }
+
+#contenedor-formulario-flex {
+   justify-content: center;
+   max-width: 1580px;
+   width: 60%;
+}
+
 #formlogin{
-   margin-top: 100px;
+   justify-content: center;
    background-color: #F7D708;
+   border-radius: 6px;
+   padding: 15px;
+   margin: auto;
+   top: 120px;
+}
+
+div .general {
+   width: 80%;
+   justify-content: center;
+   margin: auto;
+}
+
+#formR form {
+   display: flex;
+   width: 80%;
+   justify-content: center;
+   margin: auto;  
 }

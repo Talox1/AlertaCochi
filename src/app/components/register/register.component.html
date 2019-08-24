@@ -1,109 +1,92 @@
-<div class="columns is-mobile is-centered">
-    
-<<<<<<< HEAD
-    <div id="formlogin" class="column is-two-fifths ">
-      <form [formGroup] ="registerForm" (ngSubmit)="register()" novalidate>
-        <div class="field">
-          <label class="label">Nombre </label>
-          <div class="control">
-            <input class="input" type="text" placeholder="Introduzca su nombre" formControlName="name">
-          </div>
-          <div *ngIf="registerForm.get('name').errors && registerForm.get('name').dirty">
-            <p *ngIf="registerForm.get('name').hasError('required')">Este campo debe ser obligatorio</p>
-          </div>
-=======
-  <div id="formlogin" class="column is-two-fifths ">
-    <form [formGroup] ="registerForm" (ngSubmit)="test()" novalidate>
-      <div class="field">
-        <label class="label">Nombre </label>
-        <div class="control">
-          <input class="input" type="text" placeholder="Introduzca su nombre" formControlName="name">
->>>>>>> 8ffd662c15b87e8d5e7182d96b3ac265f170cb5b
-        </div>
-        <div *ngIf="registerForm.get('name').errors && registerForm.get('name').dirty">
-          <p *ngIf="registerForm.get('name').hasError('required')">Este campo debe ser obligatorio</p>
-        </div>
-      </div>
-        
-      <div class="field">
-        <label class="label">Username</label>
-        <div class="control has-icons-left has-icons-right">
-          <input id="username" class="input" type="text" placeholder="Introduzca un nombre de usuario" formControlName="username">
-          <span class="icon is-small is-left">
-            <i class="fas fa-user"></i>
-          </span>
-          <div *ngIf="registerForm.get('username').errors && registerForm.get('username').dirty">
-              <p *ngIf="registerForm.get('username').hasError('required')">Este campo debe ser obligatorio</p>
-            </div>
-          <!-- <span class="icon is-small is-right">
-            <i class="fas fa-check"></i>
-          </span> -->
-        </div>
-        <!-- <p class="help is-success">This username is available</p> -->
-      </div>
-      
-      <div class="field">
-        <label class="label">Email</label>
-        <div class="control has-icons-left has-icons-right">
-          <input class="input " type="email" placeholder="Introduzca su correo"  formControlName="email">
-          <span class="icon is-small is-left">
-            <i class="fas fa-envelope"></i>
-          </span>
-          <div *ngIf="registerForm.get('email').errors && registerForm.get('email').dirty">
-              <p *ngIf="registerForm.get('email').hasError('required')">Este campo debe ser obligatorio</p>
-              
-            </div>
-          <!-- <span class="icon is-small is-right">
-            <i class="fas fa-exclamation-triangle"></i>
-          </span> -->
-        </div>
-        <!-- <p class="help is-danger">This email is invalid</p> -->
-      </div>
-      
-      <div class="field">
-        <label class="label">Password</label>
-        <div class="control has-icons-left has-icons-right">
-          <input class="input " type="password" placeholder="Introduzca su contraseña" name="password"  formControlName="password">
-          <span class="icon is-small is-left">
-            <i class="fas fa-envelope"></i>
-          </span>
-          <div *ngIf="registerForm.get('password').errors && registerForm.get('password').dirty">
-              <p *ngIf="registerForm.get('password').hasError('required')">Este campo debe ser obligatorio</p>
-            </div>
-          <!-- <span class="icon is-small is-right">
-            <i class="fas fa-exclamation-triangle"></i>
-          </span> -->
-        </div>
-        <!-- <p class="help is-danger">This email is invalid</p> -->
-      </div>
-      
-      <!-- <div class="field">
-        <div class="control">
-          <label class="checkbox">
-            <input type="checkbox">
-            Al crear la cuenta acepto los <a href="#">terminos y condiciones</a>
-          </label>
-        </div>
-      </div> -->
-
-      <div class="field is-grouped">
-        <div class="control">
-          <button type="submit" class="button is-success  is-rounded">
-            <span class="icon is-small">
-              <i class="fas fa-check"></i>
-            </span>
-            <span>Crear cuenta</span>
-          </button>
-        </div>
-        <div class="control">
-          <a class="button is-danger  is-rounded">
-              <span class="icon is-small">
-                <i class="fas fa-times"></i>
+<body>
+  <div class="container" id="contenedor-formulario-flex">
+    <div class="general">
+      <div id="formlogin" class="container ">
+        <form id="formR" [formGroup]="registerForm" (ngSubmit)="register()" novalidate>
+          <div class="field">
+            <label class="label">Nombre </label>
+            <div class="control has-icons-left has-icons-right">
+              <input class="input" type="text" placeholder="Introduzca su nombre" formControlName="name">
+              <span class="icon is-small is-left">
+                <i class="fas fa-user"></i>
               </span>
-              <span>Cancelar</span>
-            </a>
-        </div>
+            </div>
+            <div *ngIf="registerForm.get('name').errors && registerForm.get('name').dirty">
+              <p *ngIf="registerForm.get('name').hasError('required')">Este campo debe ser obligatorio</p>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Username</label>
+            <div class="control has-icons-left has-icons-right">
+              <input id="username" class="input" type="text" placeholder="Introduzca un nombre de usuario"
+                formControlName="username">
+              <span class="icon is-small is-left">
+                <i class="fas fa-user"></i>
+              </span>
+              <div *ngIf="registerForm.get('username').errors && registerForm.get('username').dirty">
+                <p *ngIf="registerForm.get('username').hasError('required')">Este campo debe ser obligatorio</p>
+              </div>
+              <!-- <span class="icon is-small is-right">
+                                    <i class="fas fa-check"></i>
+                                  </span> -->
+            </div>
+            <!-- <p class="help is-success">This username is available</p> -->
+          </div>
+          <div class="field">
+            <label class="label">Email</label>
+            <div class="control has-icons-left has-icons-right">
+              <input class="input " type="email" placeholder="Introduzca su correo" formControlName="email">
+              <span class="icon is-small is-left">
+                <i class="fas fa-envelope"></i>
+              </span>
+              <div *ngIf="registerForm.get('email').errors && registerForm.get('email').dirty">
+                <p *ngIf="registerForm.get('email').hasError('required')">Este campo debe ser obligatorio</p>
+
+              </div>
+              <!-- <span class="icon is-small is-right">
+                                      <i class="fas fa-exclamation-triangle"></i>
+                                    </span> -->
+            </div>
+            <!-- <p class="help is-danger">This email is invalid</p> -->
+          </div>
+
+          <div class="field">
+            <label class="label">Password</label>
+            <div class="control has-icons-left has-icons-right">
+              <input class="input " type="password" placeholder="Introduzca su contraseña" name="password"
+                formControlName="password">
+              <span class="icon is-small is-left">
+                <i class="fas fa-envelope"></i>
+              </span>
+              <div *ngIf="registerForm.get('password').errors && registerForm.get('password').dirty">
+                <p *ngIf="registerForm.get('password').hasError('required')">Este campo debe ser obligatorio</p>
+              </div>
+              <!-- <span class="icon is-small is-right">
+                                      <i class="fas fa-exclamation-triangle"></i>
+                                    </span> -->
+            </div>
+            <!-- <p class="help is-danger">This email is invalid</p> -->
+          </div>
+          <div class="field is-grouped">
+            <div class="control">
+              <button type="submit" class="button is-success  is-rounded">
+                <span class="icon is-small">
+                  <i class="fas fa-check"></i>
+                </span>
+                <span>Crear cuenta</span>
+              </button>
+            </div>
+            <div class="control container">
+              <a class="button is-danger  is-rounded">
+                <span class="icon is-small">
+                  <i class="fas fa-times"></i>
+                </span>
+                <span>Cancelar</span>
+              </a>
+            </div>
+          </div>
+        </form>
       </div>
-    </form>
+    </div>
   </div>
-</div>
+</body>
