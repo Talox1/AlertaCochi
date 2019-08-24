@@ -7,9 +7,6 @@ import { FormBuilder, FormGroup, Validators, CheckboxRequiredValidator} from '@a
 })
 export class RegisterBussinessComponent implements OnInit {
 
-
-  check1;
-  check2;
   registerBussinessForm: FormGroup;
 
   constructor(public fb: FormBuilder) {

@@ -8,7 +8,7 @@ import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { LoginAdminComponent } from './components/login-admin/login-admin.component';
-
+import { RegisterBussinessComponent } from './components/register-bussiness/register-bussiness.component';
 
 
 import { environment } from 'src/environments/environment';
@@ -22,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     RegisterComponent,
     LoginComponent,
-    LoginAdminComponent
+    LoginAdminComponent,
+    RegisterBussinessComponent,
   ],
   imports: [
     BrowserModule,

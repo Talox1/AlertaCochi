@@ -66,16 +66,16 @@
                     </div>
                     <div class="field-body">
                       <div class="field is-narrow">
-                        <div class="control">
-                          <label class="radio">
-                            <input type="radio" name="check1" >
-                            Si
-                          </label>
-                          <label class="radio">
-                            <input type="radio" name="check2" >
-                            No
-                          </label>
-                        </div>
+                          <div class="control">
+                              <label class="radio">
+                                <input type="radio" name="answer" ng-model="vm.activo" ng-change="vm.avisar()">
+                                Si
+                              </label>
+                              <label class="radio">
+                                <input type="radio" name="answer">
+                                No
+                              </label>
+                            </div>
                       </div>
                     </div>
                   </div>
