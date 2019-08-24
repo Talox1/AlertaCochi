@@ -1,7 +1,10 @@
 <div class="columns is-mobile is-centered">
     <div id="col1" class="column is-half is-four-fifths">
+      
         <div class="columns">
             <div id="col2" class="column is-four-fifths ">
+              <form [formGroup] ="registerBussinessForm" (ngSubmit)="test()" novalidate>
+                  
                 <div class="field is-horizontal">
                     <div class="field-label is-normal">
                       <label class="label">Nombre del negocio</label>
@@ -9,7 +12,7 @@
                     <div class="field-body">
                       <div class="field">
                         <p class="control is-expanded has-icons-left">
-                          <input class="input" type="text" placeholder="Nombre del negocio">
+                          <input class="input" type="text" placeholder="Nombre del negocio"  formControlName="name">
                           <span class="icon is-small is-left">
                             <i class="fas fa-user"></i>
                           </span>
@@ -30,7 +33,7 @@
                             </a>
                           </p>
                           <p class="control is-expanded">
-                            <input class="input" type="tel" placeholder="Numero telefonico">
+                            <input class="input" type="tel" placeholder="Numero telefonico"  formControlName="phone">
                           </p>
                         </div>
                         <p class="help">Do not enter the first zero</p>
@@ -65,19 +68,17 @@
                       <div class="field is-narrow">
                         <div class="control">
                           <label class="radio">
-                            <input type="radio" name="member">
+                            <input type="radio" name="member" ng-model="checkbox1">
                             Si
                           </label>
                           <label class="radio">
-                            <input type="radio" name="member">
+                            <input type="radio" name="member" ng-model="checkbox2">
                             No
                           </label>
                         </div>
                       </div>
                     </div>
                   </div>
-                  
-                  
                   
                   <div class="field is-horizontal">
                     <div class="field-label is-normal">
@@ -86,20 +87,18 @@
                     <div class="field-body">
                       <div class="field">
                         <div class="control">
-                            <input class="input" type="text" placeholder="Direccion">
+                            <input class="input" type="text" placeholder="Direccion"  formControlName="address">
                         </div>
                       </div>
                     </div>
                   </div>
                   
                   <div class="field is-horizontal">
-                    <div class="field-label">
-                      <!-- Left empty for spacing -->
-                    </div>
+
                     <div class="field-body">
                       <div class="field">
                         <div class="control">
-                          <button class="button is-primary">
+                          <button type="submit" class="button is-primary">
                             <span class="icon is-small">
                               <i class="fas fa-check"></i>
                             </span>
@@ -108,7 +107,10 @@
                         </div>
                       </div>
                     </div>
+
                   </div>
+                
+                </form>
             </div>
             <div id="col2" class="column">
                 
