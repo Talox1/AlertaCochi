@@ -5,6 +5,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { RegisterBussinessComponent } from './components/register-bussiness/register-bussiness.component';
 import { LoginComponent } from './components/login/login.component';
 import { LoginAdminComponent } from './components/login-admin/login-admin.component';
+import { ViewAdminComponent } from './components/view-admin/view-admin.component';
+import { AssignmentBRComponent } from './components/assignment-br/assignment-br.component';
 
 const routes: Routes = [
   {
@@ -28,8 +30,16 @@ const routes: Routes = [
     component:LoginComponent
   },
   {
-  path: 'loginAdmin',
-  component: LoginAdminComponent
+    path: 'loginAdmin',
+    component: LoginAdminComponent
+  },
+  {
+    path: 'homeAdmin',
+    component: ViewAdminComponent
+  },
+  {
+    path: 'assignmentBussinessRestaurant',
+    component: AssignmentBRComponent
   }
 ];
 
