@@ -11,7 +11,9 @@ import { ViewChild, ElementRef } from '@angular/core'
 export class RegisterComponent implements OnInit {
   @ViewChild("modalcito") modal: ElementRef;
 
+
   registerForm: FormGroup;
+ 
 
   constructor(
     public fb: FormBuilder, 
@@ -24,6 +26,8 @@ export class RegisterComponent implements OnInit {
       email: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(8)]],
     });
+
+    
    }
 
   ngOnInit() {

@@ -72,13 +72,26 @@
   
         <div class="field is-grouped">
           <div class="control">
-              <div #modalcito class="modal ">
-                  <div class="modal-background"></div>
-                  <div class="modal-content">
-                    Cuenta creada correctamente, presione ESC para continuar
-                  </div>
-                  <button onclick="cerrarmodal()" class="modal-close is-large modal-fx-slideTop" aria-label="close"></button>
+              <div #modalcito class="modal " class="modal">
+                <div class="modal-background"></div>
+                <div class="modal-card">
+                  <header class="modal-card-head">
+                    <p class="modal-card-title">Terminos y condiciones</p>
+                    <button class="delete" aria-label="close"></button>
+                  </header>
+                  <section class="modal-card-body">
+                    <h1>Condiciones de privacidad</h1>
+                    <h3>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur autem, placeat fugiat iste ipsa cumque nulla! Eum voluptate, recusandae ea dicta quia voluptas voluptatem minima sequi, nihil ducimus consequuntur quo.</h3>
+                    <h2>Uso de informacion</h2>
+                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores distinctio iusto odio earum nam, delectus quo in consectetur dolorem asperiores placeat suscipit. Quasi nemo facere atque vel exercitationem accusantium quos.</h3>
+                  </section>
+                  <footer class="modal-card-foot">
+                    <button class="button is-success">Aceptar terminos y condiciones</button>
+                    <button class="button">Cancelar</button>
+                  </footer>
                 </div>
+              </div>
+
             <button type="submit" [disabled]="registerForm.invalid" class="button is-success  is-rounded" >
               <span class="icon is-small">
                 <i class="fas fa-check"></i>
@@ -88,14 +101,14 @@
           </div>
           <div class="control">
             <button class="button is-danger is-rounded" routerLink="/home">
-                <span class="icon is-small">
-                  <i class="fas fa-times"></i>
-                </span>
-                <span>Cancelar</span>
-              </button>
+              <span class="icon is-small">
+                <i class="fas fa-times"></i>
+              </span>
+              <span>Cancelar</span>
+            </button>
           </div>
         </div>
-        
+
       </form>
 
     </div>

@@ -3,7 +3,7 @@
       
         <div class="columns">
             <div id="col2" class="column is-four-fifths ">
-              <form [formGroup] ="registerBussinessForm" (ngSubmit)="test()" novalidate>
+              <form [formGroup] ="registerForm" (ngSubmit)="test()" novalidate>
                   
                 <div class="field is-horizontal">
                     <div class="field-label is-normal">
@@ -12,13 +12,15 @@
                     <div class="field-body">
                       <div class="field">
                         <p class="control is-expanded has-icons-left">
-                          <input class="input" type="text" placeholder="Nombre del negocio"  formControlName="name" ng-required="requeridoNombre">
+                          <input class="input" type="text" placeholder="Nombre del negocio"  formControlName="name">
                           <span class="icon is-small is-left">
                             <i class="fas fa-user"></i>
                           </span>
                         </p>
                       </div>
-                      
+                      <div *ngIf="registerForm.get('name').errors && registerForm.get('name').dirty">
+                          <p *ngIf="registerForm.get('name').hasError('required')">Este campo debe ser obligatorio</p>
+                        </div>
                     </div>
                   </div>
                   
@@ -33,27 +35,38 @@
                             </a>
                           </p>
                           <p class="control is-expanded">
-                            <input class="input" type="tel" placeholder="Numero telefonico"  formControlName="phone">
+                            <input class="input" type="number" placeholder="Numero telefonico"  formControlName="phone">
                           </p>
                         </div>
                         <p class="help">Do not enter the first zero</p>
+                        <div *ngIf="registerForm.get('phone').errors && registerForm.get('phone').dirty">
+                            <p *ngIf="registerForm.get('phone').hasError('required')">Este campo debe ser obligatorio</p>
+                            <p *ngIf="registerForm.get('phone').hasError('minlength')">Ingrese un numero valido, minimo 6 numeros</p>
+                          </div>
                       </div>
                     </div>
                   </div>
                   
                   <div class="field is-horizontal">
                     <div class="field-label is-normal">
-                      <label class="label">Categoria</label>
+                      <label class="label">Estado</label>
                     </div>
                     <div class="field-body">
                       <div class="field is-narrow">
                         <div class="control">
                           <div class="select is-fullwidth">
-                            <select>
+                            <!-- <select>
                               <option>Comida rapida</option>
                               <option>Comida china</option>
                               <option>Comida gourmet</option>
+                            </select> -->
+                            <select formControlName="estado" >
+                                <option value="0" >Selecciona una opción</option>
+                                <option *ngFor="let estado of estados" >
+                                  {{estado}}
+                                </option>
                             </select>
+                            <!-- <p [hidden]="selectState == '0'">Haz seleccionado la opción # {{ state }}</p> -->
                           </div>
                         </div>
                       </div>
@@ -61,21 +74,36 @@
                   </div>
                   
                   <div class="field is-horizontal">
+                      <div class="field-label is-normal">
+                        <label class="label">Ciudad</label>
+                      </div>
+                      <div class="field-body">
+                        <div class="field is-narrow">
+                          <div class="control">
+                            <div class="select is-fullwidth">
+                              <select formControlName="ciudad">
+                                  <option value="0">Selecciona una opción</option>
+                                  <option *ngFor="let ciudad of ciudades">
+                                    {{ciudad}}
+                                  </option>
+                              </select>
+                              <!-- <p [hidden]="selectCity == '0'">Haz seleccionado la opción # {{ city }}</p> -->
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  <div class="field is-horizontal">
                     <div class="field-label">
                       <label class="label">Servicio a domicilio</label>
                     </div>
                     <div class="field-body">
                       <div class="field is-narrow">
-                          <div class="control">
-                              <label class="radio">
-                                <input type="radio" name="answer" onclick="avisar()">
-                                Si
-                              </label>
-                              <label class="radio">
-                                <input type="radio" name="answer">
-                                No
-                              </label>
-                            </div>
+                          <label class="switch">
+                            <input type="checkbox" name="houseservice" formControlName="houseservice" (click)="setservice()">
+                            <div class="slider round"></div>
+                          </label>
                       </div>
                     </div>
                   </div>
@@ -98,30 +126,69 @@
                     <div class="field-body">
                       <div class="field">
                         <div class="control">
-                          <button type="submit" class="button is-primary" routerLink="/registerRestaurant" >
+                          <button type="submit" [disabled]="registerForm.invalid" class="button is-primary" routerLink="/registerRestaurant" >
                             <span class="icon is-small">
                               <i class="fas fa-check"></i>
                             </span>
-                            <span>Crear cuenta</span>
+                            <span>Crear negocio</span>
                           </button>
                         </div>
                       </div>
-                    </div>
+                    </div>  
 
                   </div>
                 
                 </form>
             </div>
-            <div id="col2" class="column">
-                
-                <div class="round-button">
-                  <div class="round-button-circle">
-                    <a href="http://example.com" class="round-button">Button!!</a>
-                  </div>
+
+           
+        </div>
+        <div  class="columns is-mobile">
+            <div id="xddd" class="column is-one-quarter-mobile is-one-fifth-tablet is-one-fifth-desktop is-one-fifth-widescreen is-one-third-fullhd">
+              <div class="round-button">
+                <div class="round-button-circle">
+                  <a href="http://example.com" class="round-button">Button!!</a>
                 </div>
-                
+              </div>
             </div>
             
-        </div>
+            <div class="column">
+                <div class="field is-horizontal">
+                  <div class="field-label is-normal">
+                    <label class="label">Restricciones</label>
+                  </div>
+                  <div class="field-body">
+                    <div class="field">
+                      <div class="control">
+                        <textarea class="textarea" placeholder="Explain how we can help you"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+        
     </div>
   </div>
+  <!-- <div class="column is-one-fifth-mobile is-one-fifth-tablet is-one-fifth-desktop is-one-fifth-widescreen is-one-fifth-fullhd">
+      <div class="round-button">
+        <div class="round-button-circle">
+          <a href="http://example.com" class="round-button">Button!!</a>
+        </div>
+      </div>
+  </div>
+
+  <div class="column is-two-thirdsmobile is-two-thirdstablet is-two-thirdsdesktop is-two-thirdswidescreen is-two-thirdsfullhd">
+      <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Question</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <textarea class="textarea" placeholder="Explain how we can help you"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+  </div> -->
