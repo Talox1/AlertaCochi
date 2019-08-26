@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { LoginService } from 'src/app/services/login.service';
-import { Subscription } from 'rxjs';
+import { Subscription, from } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -40,5 +41,4 @@ export class LoginComponent implements OnInit {
   test(){
     console.log(this.loginForm.value);
   }
-
 }

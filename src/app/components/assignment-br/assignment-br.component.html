@@ -1,125 +1,123 @@
-<main>
-  <section class="section">
-    <div class="container">
-      <div class="columns">
-        <div class="column borde">
-          <h3> LISTA DE NEGOCIOS </h3>
-          <br>
-          <div class="card" *ngFor="let item of negocios">
-            <div class="card-content">
-              <div class="media">
-                <div class="media-left">
-                  <figure class="image is-64x64">
-                    <img class="is-rounded" src="https://bulma.io/images/placeholders/64x64.png" alt="Image">
-                  </figure>
-                </div>
-                <div class="media-content">
-                  <label class="subtitle is-6">Nombre: {{item.nombre}} </label>
-                  <br>
-                  <label class="subtitle is-6">Ubicación: {{item.direccion}}</label>
-                  <br>
-                  <label class="subtitle is-6">Servicio a Domicilio: {{item.servicioDomicilio}} </label>
-                  <br>
-                  <a class="button is-link">
-                    <span class="icon is-small">
-                      <i class="fas fa-check"></i>
-                    </span>
-                    <span> Seleccionar</span>
-                  </a>
-                </div>
+<div class="backg">
+  <div class="container">
+    <div class="columns">
+      <div class="column borde">
+        <h3> LISTA DE NEGOCIOS </h3>
+        <br>
+        <div class="card" *ngFor="let item of negocios">
+          <div class="card-content">
+            <div class="media">
+              <div class="media-left">
+                <figure class="image is-64x64">
+                  <img class="is-rounded" src="https://bulma.io/images/placeholders/64x64.png" alt="Image">
+                </figure>
+              </div>
+              <div class="media-content">
+                <label class="subtitle is-6">Nombre: {{item.nombre}} </label>
+                <br>
+                <label class="subtitle is-6">Ubicación: {{item.direccion}}</label>
+                <br>
+                <label class="subtitle is-6">Servicio a Domicilio: {{item.servicioDomicilio}} </label>
+                <br>
+                <a class="button is-link">
+                  <span class="icon is-small">
+                    <i class="fas fa-check"></i>
+                  </span>
+                  <span> Seleccionar</span>
+                </a>
               </div>
             </div>
           </div>
-        </div>
-
-        <div class="column borde">
-          <h3> LISTA DE RESTAURANTEROS </h3>
-          <br>
-          <div class="card" *ngFor="let item of restaurantes">
-            <div class="card-content">
-              <div class="media">
-                <div class="media-left">
-                  <figure class="image is-64x64">
-                    <img class="is-rounded" src="https://bulma.io/images/placeholders/64x64.png" alt="Image">
-                  </figure>
-                </div>
-                <div class="media-content">
-                  <label class="subtitle is-6">Nombre: {{item.nombre}} </label>
-                  <br>
-                  <label class="subtitle is-6">Apellido: {{item.direccion}}</label>
-                  <br>
-                  <label class="subtitle is-6">Telefono: {{item.servicioDomicilio}} </label>
-                  <br>
-                  <a class="button is-info">
-                    <span class="icon is-small">
-                      <i class="fas fa-check"></i>
-                    </span>
-                    <span> Seleccionar</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="column borde">
-          <h3> ASIGNACION </h3>
-          <br>
-          <div class="card">
-            <div class="card-content">
-              <div class="media">
-                <div class="media-left">
-                  <figure class="image is-64x64">
-                    <img class="is-rounded" src="https://bulma.io/images/placeholders/64x64.png" alt="Image">
-                  </figure>
-                </div>
-                <div class="media-content">
-                  <label class="title is-4 titleLabel">Negocio </label>
-                  <br>
-                  <label class="subtitle is-6">Nombre: </label>
-                  <br>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <br>
-
-          <div class="card">
-            <div class="card-content">
-              <div class="media">
-                <div class="media-left">
-                  <figure class="image is-64x64">
-                    <img class="is-rounded" src="https://bulma.io/images/placeholders/64x64.png" alt="Image">
-                  </figure>
-                </div>
-                <div class="media-content">
-                  <label class="title is-4 titleLabel">Restaurantero </label>
-                  <br>
-                  <label class="subtitle is-6">Nombre: </label>
-                  <br>
-                </div>
-              </div>
-            </div>
-          </div>
-          <br>
-          <p class="centrar">
-            <a class="button is-primary centrar">
-              <span class="icon is-small">
-                <i class="fas fa-check"></i>
-              </span>
-              <span>Asignar</span>
-            </a>
-            &nbsp;
-            <a class="button is-danger centrar">
-                <span class="icon is-small">
-                  <i class="fas fa-times"></i>
-                </span>
-                <span>Cancelar</span>
-              </a>
-          </p>              
         </div>
       </div>
+
+      <div class="column borde">
+        <h3> LISTA DE RESTAURANTEROS </h3>
+        <br>
+        <div class="card" *ngFor="let item of restaurantes">
+          <div class="card-content">
+            <div class="media">
+              <div class="media-left">
+                <figure class="image is-64x64">
+                  <img class="is-rounded" src="https://bulma.io/images/placeholders/64x64.png" alt="Image">
+                </figure>
+              </div>
+              <div class="media-content">
+                <label class="subtitle is-6">Nombre: {{item.nombre}} </label>
+                <br>
+                <label class="subtitle is-6">Apellido: {{item.direccion}}</label>
+                <br>
+                <label class="subtitle is-6">Telefono: {{item.servicioDomicilio}} </label>
+                <br>
+                <a class="button is-info">
+                  <span class="icon is-small">
+                    <i class="fas fa-check"></i>
+                  </span>
+                  <span> Seleccionar</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="column borde">
+        <h3> ASIGNACION </h3>
+        <br>
+        <div class="card">
+          <div class="card-content">
+            <div class="media">
+              <div class="media-left">
+                <figure class="image is-64x64">
+                  <img class="is-rounded" src="https://bulma.io/images/placeholders/64x64.png" alt="Image">
+                </figure>
+              </div>
+              <div class="media-content">
+                <label class="title is-4 titleLabel">Negocio </label>
+                <br>
+                <label class="subtitle is-6">Nombre: </label>
+                <br>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <br>
+
+        <div class="card">
+          <div class="card-content">
+            <div class="media">
+              <div class="media-left">
+                <figure class="image is-64x64">
+                  <img class="is-rounded" src="https://bulma.io/images/placeholders/64x64.png" alt="Image">
+                </figure>
+              </div>
+              <div class="media-content">
+                <label class="title is-4 titleLabel">Restaurantero </label>
+                <br>
+                <label class="subtitle is-6">Nombre: </label>
+                <br>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <p class="centrar">
+          <a class="button is-primary centrar">
+            <span class="icon is-small">
+              <i class="fas fa-check"></i>
+            </span>
+            <span>Asignar</span>
+          </a>
+          &nbsp;
+          <a class="button is-danger centrar">
+            <span class="icon is-small">
+              <i class="fas fa-times"></i>
+            </span>
+            <span>Cancelar</span>
+          </a>
+        </p>
+      </div>
     </div>
-  </section>
-</main>
+  </div>
+</div>

@@ -21,6 +21,8 @@ import {HttpClient, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './components/navbar/navbar.component';
 
+import { AppPasswordDirective } from './app-password.directive';
+
 
 @NgModule({
   declarations: [
@@ -33,6 +35,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     ViewAdminComponent,
     AssignmentBRComponent,
     NavbarComponent,
+    AppPasswordDirective,
   ],
   imports: [
     BrowserModule,

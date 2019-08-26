@@ -1,117 +1,135 @@
 <div class="divbody">
-  <div class="columns is-mobile is-centered">
-  
-    <div id="formlogin" class="column is-two-fifths ">
+  <div class="container">
+
+    <div class="container">
+      <h3>REGISTRO RESTAURANTERO</h3>
+    </div>
+
+    <div id="formlogin" class="container">
 
       <form [formGroup]="registerForm" (ngSubmit)="register()" novalidate>
 
         <div class="field">
           <label class="label">Nombre </label>
-  
-          <div class="control">
-            <input class="input" type="text" placeholder="Introduzca su nombre" formControlName="name"> 
-          </div>
-  
-          <div *ngIf="registerForm.get('name').errors && registerForm.get('name').dirty">
-            <p *ngIf="registerForm.get('name').hasError('required')">Este campo debe ser obligatorio</p>
-          </div>
-  
-        </div>
-          
-        <div class="field">
-          <label class="label">Username</label>
+
           <div class="control has-icons-left has-icons-right">
-            <input id="username" class="input" type="text" placeholder="Introduzca un nombre de usuario" formControlName="username">
+            <input class="input" type="text" placeholder="Introduzca su nombre" formControlName="name">
             <span class="icon is-small is-left">
               <i class="fas fa-user"></i>
             </span>
-  
+          </div>
+
+          <div *ngIf="registerForm.get('name').errors && registerForm.get('name').dirty">
+            <p *ngIf="registerForm.get('name').hasError('required')">Este campo debe ser obligatorio</p>
+          </div>
+
+        </div>
+
+        <div class="field">
+          <label class="label">Username</label>
+          <div class="control has-icons-left has-icons-right">
+            <input id="username" class="input" type="text" placeholder="Introduzca un nombre de usuario"
+              formControlName="username">
+            <span class="icon is-small is-left">
+              <i class="fas fa-user"></i>
+            </span>
+
             <div *ngIf="registerForm.get('username').errors && registerForm.get('username').dirty">
-                <p *ngIf="registerForm.get('username').hasError('required')">Este campo debe ser obligatorio</p>
-              </div>
+              <p *ngIf="registerForm.get('username').hasError('required')">Este campo debe ser obligatorio</p>
+            </div>
             <!-- <span class="icon is-small is-right">
               <i class="fas fa-check"></i>
             </span> -->
           </div>
           <!-- <p class="help is-success">This username is available</p> -->
         </div>
-        
+
         <div class="field">
           <label class="label">Email</label>
           <div class="control has-icons-left has-icons-right">
-            <input class="input " type="email" placeholder="Introduzca su correo"  formControlName="email">
+            <input class="input " type="email" placeholder="Introduzca su correo" formControlName="email">
             <span class="icon is-small is-left">
               <i class="fas fa-envelope"></i>
             </span>
             <div *ngIf="registerForm.get('email').errors && registerForm.get('email').dirty">
-                <p *ngIf="registerForm.get('email').hasError('required')">Este campo debe ser obligatorio</p>
-                
-              </div>
+              <p *ngIf="registerForm.get('email').hasError('required')">Este campo debe ser obligatorio</p>
+
+            </div>
             <!-- <span class="icon is-small is-right">
               <i class="fas fa-exclamation-triangle"></i>
             </span> -->
           </div>
           <!-- <p class="help is-danger">This email is invalid</p> -->
         </div>
-        
+
         <div class="field">
           <label class="label">Password</label>
           <div class="control has-icons-left has-icons-right">
-            <input class="input " type="password" placeholder="Introduzca su contraseña" name="password"  formControlName="password">
+            <input class="input " type="password" placeholder="Introduzca su contraseña" name="password"
+              formControlName="password" appAppPassword>
             <span class="icon is-small is-left">
               <i class="fas fa-envelope"></i>
             </span>
             <div *ngIf="registerForm.get('password').errors && registerForm.get('password').dirty">
               <p *ngIf="registerForm.get('password').hasError('required')">Este campo debe ser obligatorio</p>
-              <p *ngIf="registerForm.get('password').hasError('minlength')">Ingrese una contraseña valida, minimo 8 caracteres</p>
+              <p *ngIf="registerForm.get('password').hasError('minlength')">Ingrese una contraseña valida, minimo 8
+                caracteres</p>
             </div>
           </div>
-  
+
         </div>
-  
-  
+
+
         <div class="field is-grouped">
           <div class="control">
-              <div #modalcito class="modal " class="modal">
-                <div class="modal-background"></div>
-                <div class="modal-card">
-                  <header class="modal-card-head">
-                    <p class="modal-card-title">Terminos y condiciones</p>
-                    <button class="delete" aria-label="close"></button>
-                  </header>
-                  <section class="modal-card-body">
-                    <h1>Condiciones de privacidad</h1>
-                    <h3>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur autem, placeat fugiat iste ipsa cumque nulla! Eum voluptate, recusandae ea dicta quia voluptas voluptatem minima sequi, nihil ducimus consequuntur quo.</h3>
-                    <h2>Uso de informacion</h2>
-                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores distinctio iusto odio earum nam, delectus quo in consectetur dolorem asperiores placeat suscipit. Quasi nemo facere atque vel exercitationem accusantium quos.</h3>
-                  </section>
-                  <footer class="modal-card-foot">
-                    <button class="button is-success">Aceptar terminos y condiciones</button>
-                    <button class="button">Cancelar</button>
-                  </footer>
-                </div>
+            <div #modalcito class="modal " class="modal">
+              <div class="modal-background"></div>
+              <div class="modal-card">
+                <header class="modal-card-head">
+                  <p class="modal-card-title">Terminos y condiciones</p>
+                  <button class="delete" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body">
+                  <h1>Condiciones de privacidad</h1>
+                  <h3>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur autem, placeat fugiat iste
+                    ipsa cumque nulla! Eum voluptate, recusandae ea dicta quia voluptas voluptatem minima sequi, nihil
+                    ducimus consequuntur quo.</h3>
+                  <h2>Uso de informacion</h2>
+                  <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores distinctio iusto odio earum nam,
+                    delectus quo in consectetur dolorem asperiores placeat suscipit. Quasi nemo facere atque vel
+                    exercitationem accusantium quos.</h3>
+                </section>
+                <footer class="modal-card-foot">
+                  <button class="button is-success">Aceptar terminos y condiciones</button>
+                  <button class="button">Cancelar</button>
+                </footer>
               </div>
-
-            <button type="submit" [disabled]="registerForm.invalid" class="button is-success  is-rounded" >
+            </div>
+          </div>
+        </div>
+        <div class="control">
+          <p class="centrado">
+            <button type="submit" [disabled]="registerForm.invalid" class="button is-success  is-rounded">
               <span class="icon is-small">
                 <i class="fas fa-check"></i>
               </span>
               <span>Crear cuenta</span>
             </button>
-          </div>
-          <div class="control">
+          </p>
+        </div>
+        <br>
+        <div class="control">
+          <p class="centrado">
             <button class="button is-danger is-rounded" routerLink="/home">
               <span class="icon is-small">
                 <i class="fas fa-times"></i>
               </span>
               <span>Cancelar</span>
             </button>
-          </div>
+          </p>
+
         </div>
-
       </form>
-
     </div>
-
   </div>
 </div>

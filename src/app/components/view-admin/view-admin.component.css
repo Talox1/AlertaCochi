@@ -13,29 +13,16 @@ h3 {
     margin: 1%;
 }
 
-.general {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-}
-
-#contenedor-flex {
-    justify-content: center;
-    max-width: 1580px;
-    width: 100%;
-}
-
-.opcionesDiv {
-    width: 26%;
-    padding: 2px;
-    border-radius: 10px;
-    position: relative;
-    text-align: center;
-}
-
 img {
     margin-left: auto;
     margin-right: auto;
-    display: block;
     border-radius: 6px;
+}
+
+a {
+    padding: 0;
+}
+
+.opcionesDiv {
+    margin: 15%;
 }
