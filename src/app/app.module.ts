@@ -19,6 +19,7 @@ import { from } from 'rxjs';
 import {HttpClient, HTTP_INTERCEPTORS} from '@angular/common/http';
 // import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { HttpClientModule } from '@angular/common/http';
     RegisterBussinessComponent,
     ViewAdminComponent,
     AssignmentBRComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
