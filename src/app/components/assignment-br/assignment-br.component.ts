@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-assignment-br',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AssignmentBRComponent implements OnInit {
 
-  constructor() { }
+  negocios : any = [];
+
+  restaurantes : any = [];
+
+  constructor() {
+
+   }
 
   ngOnInit() {
   }
+
+  
 
 }
