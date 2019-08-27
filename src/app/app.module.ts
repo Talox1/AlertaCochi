@@ -22,7 +22,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './components/navbar/navbar.component';
 
 import { AppPasswordDirective } from './app-password.directive';
+import { RegisterPromoComponent } from './components/register-promo/register-promo.component';
 
+//image library
+import { ImageUploadModule } from 'angular2-image-upload';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -36,6 +41,7 @@ import { AppPasswordDirective } from './app-password.directive';
     AssignmentBRComponent,
     NavbarComponent,
     AppPasswordDirective,
+    RegisterPromoComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,8 +49,12 @@ import { AppPasswordDirective } from './app-password.directive';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    ImageUploadModule.forRoot(),
+    
+    BrowserAnimationsModule
     // NgbModule
   ],
+  exports: [],
   providers: [],
   bootstrap: [AppComponent]
 })
