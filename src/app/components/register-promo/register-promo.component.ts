@@ -10,7 +10,7 @@ import { FormBuilder, FormGroup, Validators, } from '@angular/forms';
 export class RegisterPromoComponent implements OnInit {
   estados;
   ciudades;
-
+  days;
 
   registerForm: FormGroup;
   houseservice = true;
@@ -24,17 +24,22 @@ export class RegisterPromoComponent implements OnInit {
       estado: ['', [Validators.required] ],
       ciudad: ['', [Validators.required] ],
       day: ['', [Validators.required] ],
+      restriccion: ['', [Validators.required] ],
     });
 
     this.estados=['CHIAPAS', 'DURANGO', 'CDMX', 'TABASCO', 'OAXACA', 'TAMAULIPAS', 'MONTERREY', 'PUEBLA', 'GUADALAJARA', 'MORELIA'];
-    this.ciudades=["Tuxtla", "DF", "VILLA HERMOSA", "OAXACA", "SALTILLO", "PUEBLA", "MICHOACAN"]
+    this.ciudades=["Tuxtla", "DF", "VILLA HERMOSA", "OAXACA", "SALTILLO", "PUEBLA", "MICHOACAN"];
+    this.days =["Lunes","Martes","Miercoles","Juevez","Viernes","Sabado","Domingo"];
    }
 
   ngOnInit() {
   }
-  onUploadFinish(event) {
-    console.log(event.path);
+    onUploadFinish(event) {
+    console.log(event);
    }
+  setservice(){
+  console.log(this.registerForm.value)
+  }
    handleClick(data:string){
     console.log(data);
   }  
