@@ -11,28 +11,30 @@ export class AppPasswordDirective {
     this.setup();
    }
 
-   toggle(i: HTMLElement) {
+   toggle(a: HTMLElement) {
     this._shown = !this._shown;
     if (this._shown) {
       this.el.nativeElement.setAttribute('type', 'text');
-      i.innerHTML = ' Ocultar Contraseña';
+      a.innerHTML = ' Ocultar Contraseña';
       
       
     } else {
       this.el.nativeElement.setAttribute('type', 'password');
-      i.innerHTML = 'Mostrar Contraseña';
+      a.innerHTML = 'Mostrar Contraseña';
       
       
     }
   }
 setup() {
     const parent = this.el.nativeElement.parentNode;
-    const i = document.createElement('i');
-    i.innerHTML = `Mostrar Contraseña`; 
+    const a = document.createElement('a');
+    a.innerHTML = `Mostrar Contraseña`; 
+    a.style.color = 'black';
     
-    i.addEventListener('click', (event) => {
-      this.toggle(i);
+    
+    a.addEventListener('click', (event) => {
+      this.toggle(a);
     });
-    parent.appendChild(i);
+    parent.appendChild(a);
   }
 }

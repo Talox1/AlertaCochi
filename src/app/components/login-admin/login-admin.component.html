@@ -11,15 +11,16 @@
             <p>Mensaje de error</p>
           </div> -->
           <div class="field ">
-            <label class="label colour">Username</label>
+            <label class="label colour">Correo Electrónico</label>
             <p class="control has-icons-left has-icons-right">
-              <input class="input" type="text" placeholder="Username" formControlName="username">
+              <input class="input" type="email" placeholder="Inrese su correo electrónico" formControlName="email">
               <span class="icon is-small is-left">
-                <i class="fas fa-user"></i>
+                <i class="fas fa-envelope"></i>
               </span>
             </p>
-            <div *ngIf="loginForm.get('username').errors && loginForm.get('username').dirty">
-              <p *ngIf="loginForm.get('username').hasError('required')">Este campo debe ser obligatorio</p>
+            <div *ngIf="loginForm.get('email').errors && loginForm.get('email').dirty">
+              <p *ngIf="loginForm.get('email').hasError('required')">Este campo debe ser obligatorio</p>
+              <p *ngIf="loginForm.get('email').hasError('email')"> Ingrese formato de correo válido</p>
             </div>
           </div>
           <div class="field">

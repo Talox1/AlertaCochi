@@ -38,7 +38,4 @@ export class LoginComponent implements OnInit {
       }
     );
   }
-  test(){
-    console.log(this.loginForm.value);
-  }
 }

@@ -7,9 +7,10 @@
         </figure>
         <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
           <label class="label iniciar">Inicia Sesión</label>
-          <!-- <div>
-                <p>Aqui debe de ir el mensaje de error</p>
-              </div> -->
+          <!-- <div *ngIf="loginForm.get('email').errors && loginForm.get('password').errors">
+            <p *ngIf="loginForm.get('email').hasError('invalid') && loginForm.get('password').hasError('invalid')">
+              Correo o contraseña invalidos</p>
+          </div> -->
           <div class="field ">
             <label class="label">Correo Electrónico</label>
             <p class="control has-icons-left has-icons-right">
@@ -20,6 +21,7 @@
             </p>
             <div *ngIf="loginForm.get('email').errors && loginForm.get('email').dirty">
               <p *ngIf="loginForm.get('email').hasError('required')">Este campo debe ser obligatorio</p>
+              <p *ngIf="loginForm.get('email').hasError('email')">Ingrese formato de correo válido</p>
             </div>
           </div>
           <div class="field">
