@@ -132,18 +132,26 @@
             </div>
             
             <!-- ESPECIFIC PROMO DAY -->
-            <div class="columns is-mobile daypicker">
-              <div value="Lunes" (click)="lunes()"  class="column is-one-fifth-mobile is-one-fifth-fullhd button is-rounded is-link" formControlName="day"><i class="fas fa-calendar"></i>Lunes</div>
-              <div value="Martes" ng-click="martes()"  class="column is-one-fifth-mobile is-one-fifth-fullhd button is-rounded is-link" formControlName="day"><i class="fas fa-calendar"></i>Martes</div>
-              <div value="Miercoles" ng-click="miercoles()"  class="column is-one-fifth-mobile is-one-fifth-fullhd button is-rounded is-link" formControlName="day"><i class="fas fa-calendar"></i>Miercoles</div>
-              <div value="Jueves" ng-click="jueves()"  class="column is-one-fifth-mobile is-one-fifth-fullhd button is-rounded is-link" formControlName="day"><i class="fas fa-calendar"></i>Jueves</div>
-              <div value="Viernes" ng-click="viernes()"  class="column is-one-fifth-mobile is-one-fifth-fullhd button is-rounded is-link" formControlName="day"><i class="fas fa-calendar"></i>Viernes</div>
-              
-            </div>
-            <div class="columns is-mobile daypicker">
-              <div value="Sabado" ng-click="sabado()"  class="column is-one-fifth-mobile is-one-fifth-fullhd button is-rounded is-link"><i class="fas fa-calendar"></i>Sabado</div>
-              <div value="Domingo" ng-click="domingo()"  class="column is-one-fifth-mobile is-one-fifth-fullhd button is-rounded is-link"><i class="fas fa-calendar"></i>Domingo</div>  
-            </div>
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                  <label class="label">Promocion valida para el dia</label>
+                </div>
+                <div class="field-body">
+                  <div class="field is-narrow">
+                    <div class="control">
+                      <div class="select is-fullwidth">
+                        <select formControlName="day" >
+                            <option value="0" >Selecciona una opción</option>
+                            <option *ngFor="let day of days" >
+                              {{day}}
+                            </option>
+                        </select>
+                        <!-- <p [hidden]="selectState == '0'">Haz seleccionado la opción # {{ state }}</p> -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             
           </form>
         </div>
@@ -162,18 +170,21 @@
         
         <!-- Restriccions column -->
         <div class="column is-four-fifths- is-four-fifths- is-four-fifths- is-one-fifth- is-one-third-">
-            <div class="field is-horizontal">
-              <div class="field-label is-normal">
-                <label class="label">Restricciones</label>
-              </div>
-              <div class="field-body">
-                <div class="field">
-                  <div class="control">
-                    <textarea class="textarea" placeholder="Menciona algunas restricciones para el consumidor"></textarea>
+            <form [formGroup] ="registerForm" (ngSubmit)="test()" novalidate>
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                      <label class="label">Restricciones</label>
+                    </div>
+                    <div class="field-body">
+                      <div class="field">
+                        <div class="control">
+                          <textarea class="textarea" placeholder="Menciona algunas restricciones para el consumidor" formControlName="restriccion"></textarea>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </div>
+            </form>
+            
         </div>
     </div>
 

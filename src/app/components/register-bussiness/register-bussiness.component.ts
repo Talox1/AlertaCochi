@@ -24,7 +24,7 @@ export class RegisterBussinessComponent implements OnInit {
     this.registerForm = this.fb.group({
       name: ['', [Validators.required]],
       phone: ['', [Validators.required, Validators.minLength(6)]],
-      houseservice: [Boolean , [Validators.required] ],
+      houseservice: [false , [Validators.required] ],
       address: ['', [Validators.required] ],
       estado: ['', [Validators.required] ],
       ciudad: ['', [Validators.required] ],
