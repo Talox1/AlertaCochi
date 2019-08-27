@@ -1,4 +1,4 @@
-<nav class="navbar" role="navigation" aria-label="main navigation">
+<nav class="navbar static " role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" routerLink="/home">
       <img src="/assets/img/navbar/navlogo.jpg" width="112" height="28">
@@ -13,47 +13,121 @@
 
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
-      <a class="navbar-item">
+      <a class="navbar-item" routerLink="/home">
         Home
       </a>
 
       <a class="navbar-item">
-        Documentation
+        Acerca de
       </a>
 
-      <div class="navbar-item has-dropdown is-hoverable">
+      <!-- Mostrar si el usuario es un restaurant -->
+      <div *ngIf="wichUser=='restaurant'" class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
-          More
+          Mi cuenta
         </a>
 
         <div class="navbar-dropdown">
           <a class="navbar-item">
-            About
+            Mis promociones
           </a>
+          
           <a class="navbar-item">
-            Jobs
-          </a>
-          <a class="navbar-item">
-            Contact
+            Mis datos
           </a>
           <hr class="navbar-divider">
           <a class="navbar-item">
-            Report an issue
+            Reporta un error
           </a>
         </div>
       </div>
+
+      <!-- Mostrar si el usuario es un admin -->
+      <div *ngIf="wichUser=='admin'" class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          Admin, Feel de Power !!!!
+        </a>
+
+        <div class="navbar-dropdown">
+          <a class="navbar-item">
+            Lista de Negocios
+          </a>
+          
+          <a class="navbar-item">
+            Lista de Restaurants
+          </a>
+          <a class="navbar-item">
+            Asignaciones
+          </a>
+        </div>
+      </div>
+
+      <!-- Mostrar si el usuario es un admin -->
+      <div *ngIf="wichUser=='user'" class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          Mi cuenta
+        </a>
+
+        <div class="navbar-dropdown">
+          <a class="navbar-item">
+            Lista de Favoritos
+          </a>
+        </div>
+      </div>
+      
+      <!-- Mostrar si el usuario es un invitado (default)-->
+      <div *ngIf="wichUser=='invited'" class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          Mas
+        </a>
+
+        <div class="navbar-dropdown">
+          <a class="navbar-item">
+            Nosotros
+          </a>
+          
+          <a class="navbar-item">
+            Contacto
+          </a>
+          <hr class="navbar-divider">
+          <a class="navbar-item">
+            Reporta un error
+          </a>
+        </div>
+      </div>
+
+
     </div>
 
     <div class="navbar-end">
       <div class="navbar-item">
-        <div class="buttons">
-          <a id="registerbtn" class="button is-primary">
-            <strong>Sign up</strong>
+
+        <div class="buttons" *ngIf="isloged; else logout">
+          <a id="loginbtn" class="button is-primary ">
+            <strong>Registrate</strong>
           </a>
-          <a id="loginbtn" class="button is-light">
-            Log in
-          </a>
+          
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a id="registerbtn" class="navbar-link button is-primary">
+              Inicia Sesion
+            </a>
+            <div class="navbar-dropdown">
+              <a class="navbar-item button log">
+                Como Restaurant
+              </a>
+              <a class="navbar-item button log">
+                Como consumidor
+              </a>
+            </div>
+          </div>
         </div>
+        <ng-template #logout>
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a id="loginbtn" class=" button">
+                  Cerrar Sesion
+                </a>
+              </div>
+        </ng-template>
       </div>
     </div>
   </div>

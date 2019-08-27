@@ -79,7 +79,7 @@
 
         </div>
 
-
+        <!-- Modal -->
         <div class="field is-grouped">
           <div class="control">
             <div #modalcito class="modal " class="modal">
@@ -100,13 +100,14 @@
                     exercitationem accusantium quos.</h3>
                 </section>
                 <footer class="modal-card-foot">
-                  <button class="button is-success">Aceptar terminos y condiciones</button>
+                  <button routerLink="/registerBussiness" class="button is-success">Aceptar terminos y condiciones</button>
                   <button class="button">Cancelar</button>
                 </footer>
               </div>
             </div>
           </div>
         </div>
+
         <div class="control">
           <p class="centrado">
             <button type="submit" [disabled]="registerForm.invalid" class="button is-success  is-rounded">

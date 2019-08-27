@@ -1,7 +1,14 @@
 #registerbtn{
-   background-color: coral
+   background-color: #FFC31A;
+   width: 200px;
 }
 
 #loginbtn{
-   background-color: crimson
+   background-color: #CE0000;
+   width: 200px;
+}
+.log{
+   width: 190px;
+   text-align: center;
+   margin-left: 10px;
 }
