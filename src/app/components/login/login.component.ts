@@ -34,11 +34,12 @@ export class LoginComponent implements OnInit {
       response => {
         console.log(response);
         localStorage.setItem('token', response.token);
-        
-        
         // localStorage.setItem('is_consumer',response.is_consumer);
         // localStorage.setItem('is_casero',response.is_casero);
         //this.router.navigate(['/home']);
+      },
+      error => {
+        console.log('status:' + error.status);
       }
     );
     localStorage.setItem('currentUser','restaurant');
