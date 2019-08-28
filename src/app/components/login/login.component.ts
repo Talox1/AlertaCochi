@@ -38,16 +38,21 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', response.token);
         // localStorage.setItem('is_consumer',response.is_consumer);
         // localStorage.setItem('is_casero',response.is_casero);
-        //this.router.navigate(['/home']);
+        this.router.navigate(['/homeRestaurant']);
       },
       error => {
         console.log('status:' + error.status);
+        if (error.status == 401){
+          //alert("Correo o contraseña inválidos");
+          document.getElementById('error').innerHTML = 'Correo o contraseña inválidos';
+          document.getElementById('error').className = 'notification is-danger';
+        }
       }
     );
     localStorage.setItem('currentUser','restaurant');
     localStorage.setItem('isLoged','true');
     // location.reload();
-    this.router.navigate(['/homeRestaurant']);
+    //this.router.navigate(['/homeRestaurant']);
       
   }
 }
