@@ -21,39 +21,39 @@ export class AdminService {
   constructor(private http: HttpClient) { }
 
   getUsers(): Observable<any> {
-    return this.http.get(`${this.api}users/show`, httpOptions);
+    return this.http.get(`${this.api}admin/users/show`, httpOptions);
   }
 
   usersSearch(name: string): Observable<any> {
-    return this.http.get(`${this.api}users/search/${name}`, httpOptions);
+    return this.http.get(`${this.api}admin/users/search/${name}`, httpOptions);
   }
 
   usersRegister(params: any): Observable<any> {
-    return this.http.post(`${this.api}user/register`, params, httpOptions);
+    return this.http.post(`${this.api}admin/user/register`, params, httpOptions);
   }
 
   getRestaurants(): Observable <any> {
-    return this.http.get(`${this.api}restaurants/show`, httpOptions);
+    return this.http.get(`${this.api}admin/restaurants/show`, httpOptions);
   }
 
   getRestaurantsId(id: any): Observable <any> {
-    return this.http.get(`${this.api}restaurants/show/${id}`, httpOptions);
+    return this.http.get(`${this.api}admin/restaurants/show/${id}`, httpOptions);
   }
 
   restaurantsSearch(name: string): Observable <any> {
-    return this.http.get(`${this.api}restaurants/search/${name}`, httpOptions);
+    return this.http.get(`${this.api}admin/restaurants/search/${name}`, httpOptions);
   }
 
   restaurantRegister(params: any): Observable <any> {
-    return this.http.post(`${this.api}restaurants/register`, params, httpOptions);
+    return this.http.post(`${this.api}admin/restaurants/register`, params, httpOptions);
   }
 
   restaurantUpdate(id: any): Observable <any> {
-    return this.http.put(`${this.api}restaurants/update/${id}`, httpOptions);
+    return this.http.put(`${this.api}admin/restaurants/update/${id}`, httpOptions);
   }
 
   restaurantDelete(id: any): Observable <any> {
-    return this.http.delete(`${this.api}restaurants/delete/${id}`, httpOptions);
+    return this.http.delete(`${this.api}admin/restaurants/delete/${id}`, httpOptions);
   }
 
 
