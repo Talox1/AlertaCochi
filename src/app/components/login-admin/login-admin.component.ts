@@ -26,6 +26,7 @@ export class LoginAdminComponent implements OnInit {
   }
 
   login(){
+   
     console.log(this.loginForm.value);
     localStorage.setItem('currentUser','admin');
     // console.log(localStorage.getItem('currentUser'));
@@ -33,5 +34,14 @@ export class LoginAdminComponent implements OnInit {
     
     // location.reload();
     this.router.navigate(['/homeAdmin']);
+
+
+    // error => {
+    //   console.log('status:' + error.status);
+    //   if (error.status == 401){
+    //     //alert("Correo o contraseña inválidos");
+    //     document.getElementById('error').innerHTML = 'Correo o contraseña inválidos';
+    //     document.getElementById('error').className = 'notification is-danger';
+    //   }
   }
 }

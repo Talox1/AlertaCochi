@@ -7,9 +7,8 @@
         </figure>
         <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
           <label class="label iniciar">Inicia Sesión</label>
-          <!-- <div>
-            <p>Mensaje de error</p>
-          </div> -->
+          <div id="error">
+            </div>
           <div class="field ">
             <label class="label colour">Correo Electrónico</label>
             <p class="control has-icons-left has-icons-right">
