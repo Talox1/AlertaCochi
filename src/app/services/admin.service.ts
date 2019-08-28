@@ -20,7 +20,7 @@ export class AdminService {
   api: string = API;
   constructor(private http: HttpClient) { }
 
-  getUsers(): Observable<any> {
+  getUsers(): Observable<any> {//obtiene todo los restaurants
     return this.http.get(`${this.api}admin/users/show`, httpOptions);
   }
 
@@ -32,11 +32,11 @@ export class AdminService {
     return this.http.post(`${this.api}admin/user/register`, params, httpOptions);
   }
 
-  getRestaurants(): Observable <any> {
+  getRestaurants(): Observable <any> {//obtiene todo los negocios
     return this.http.get(`${this.api}admin/restaurants/show`, httpOptions);
   }
 
-  getRestaurantsId(id: any): Observable <any> {
+  getRestaurantsId(id: any): Observable <any> { 
     return this.http.get(`${this.api}admin/restaurants/show/${id}`, httpOptions);
   }
 
