@@ -17,6 +17,8 @@ export class RegisterBussinessComponent implements OnInit {
 
   registerForm: FormGroup;
   houseservice = true;
+
+  currentUser;
   constructor(
     public fb: FormBuilder
     ) {
@@ -36,14 +38,19 @@ export class RegisterBussinessComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.registerForm.value)
+    this.currentUser = localStorage.getItem('currentUser');
+    console.log(this.currentUser);
   }
 
-  test(){
+  login(){
     console.log("hellodah");
     console.log(this.registerForm.value);
   }
 
   setservice(){
     console.log(this.registerForm.value)
+  }
+  logeando(){
+    console.log("Logeando");
   }
 }

@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
 
   email:string;
   password:string;
-
+  
   loginForm: FormGroup;
 
   constructor(public fb: FormBuilder,  public loginService: LoginService,private router: Router) {
@@ -34,8 +34,14 @@ export class LoginComponent implements OnInit {
       response => {
         console.log(response);
         localStorage.setItem('token', response.token);
+        
+        
+        // localStorage.setItem('is_consumer',response.is_consumer);
+        // localStorage.setItem('is_casero',response.is_casero);
         //this.router.navigate(['/home']);
       }
     );
+    localStorage.setItem('currentUser','restaurant');
+        localStorage.setItem('isLoged','true');
   }
 }

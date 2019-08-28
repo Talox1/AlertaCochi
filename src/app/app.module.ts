@@ -28,6 +28,7 @@ import { RegisterPromoComponent } from './components/register-promo/register-pro
 import { ImageUploadModule } from 'angular2-image-upload';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ViewRestaurantComponent } from './components/view-restaurant/view-restaurant.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NavbarComponent,
     AppPasswordDirective,
     RegisterPromoComponent,
+    ViewRestaurantComponent,
   ],
   imports: [
     BrowserModule,

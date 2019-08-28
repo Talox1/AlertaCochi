@@ -8,6 +8,7 @@ import { LoginAdminComponent } from './components/login-admin/login-admin.compon
 import { ViewAdminComponent } from './components/view-admin/view-admin.component';
 import { AssignmentBRComponent } from './components/assignment-br/assignment-br.component';
 import { RegisterPromoComponent } from './components/register-promo/register-promo.component';
+import { ViewRestaurantComponent } from './components/view-restaurant/view-restaurant.component';
 
 const routes: Routes = [
   {
@@ -37,6 +38,10 @@ const routes: Routes = [
   {
     path: 'homeAdmin',
     component: ViewAdminComponent
+  },
+  {
+    path:'homeRestaurant',
+    component:ViewRestaurantComponent
   },
   {
     path: 'assignmentBussinessRestaurant',

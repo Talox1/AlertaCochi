@@ -24,5 +24,9 @@ export class LoginAdminComponent implements OnInit {
 
   test(){
     console.log(this.loginForm.value);
+    localStorage.setItem('currentUser','admin');
+    // console.log(localStorage.getItem('currentUser'));
+    localStorage.setItem('isLoged', 'true')
+    // location.reload();
   }
 }
