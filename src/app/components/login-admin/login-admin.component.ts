@@ -22,7 +22,7 @@ export class LoginAdminComponent implements OnInit {
    });
   }
 
-  test(){
+  login(){
     console.log(this.loginForm.value);
     localStorage.setItem('currentUser','admin');
     // console.log(localStorage.getItem('currentUser'));
