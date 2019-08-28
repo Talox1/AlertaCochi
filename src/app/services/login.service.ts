@@ -28,7 +28,7 @@ export class LoginService {
       headers : new HttpHeaders({
         'Content-Type': 'application/json',
         // tslint:disable-next-line: object-literal-key-quotes
-        'Autorizathion': 'Bearer ' + localStorage.getItem('token'),
+        'Authorization': 'Bearer ' + localStorage.getItem('token'),
       })
     };
     return this.http.post(`${this.api}users/login/`, httpOptions);
