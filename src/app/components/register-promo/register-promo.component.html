@@ -193,13 +193,20 @@
       <div class="field-body">
         <div class="field">
           <div class="control">
-            <button type="submit" [disabled]="registerForm.invalid" class="button is-primary" routerLink="/registerRestaurant" >
+            <button type="submit" [disabled]="registerForm.invalid" class="button is-primary btn" routerLink="/registerRestaurant" >
               <span class="icon is-small">
                 <i class="fas fa-check"></i>
               </span>
               <span>Crear promo</span>
             </button>
+            <button class="button is-danger btn" routerLink="/homeRestaurant" >
+              <span class="icon is-small">
+                <i class="fas fa-ban"></i>
+              </span>
+              <span>Cancelar</span>
+            </button>
           </div>
+          
         </div>
       </div>  
     </div>

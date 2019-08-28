@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    console.log("Logeando0");
     console.log(this.loginForm.value);
     this.loginService.login(this.loginForm.value).subscribe(
       // tslint:disable-next-line: no-unused-expression
@@ -43,6 +44,6 @@ export class LoginComponent implements OnInit {
       }
     );
     localStorage.setItem('currentUser','restaurant');
-        localStorage.setItem('isLoged','true');
+    localStorage.setItem('isLoged','true');
   }
 }

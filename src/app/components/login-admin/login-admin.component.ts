@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 })
 export class LoginAdminComponent implements OnInit {
 
-  username:string;
+  email:string;
   password:string;
 
   loginForm: FormGroup;
@@ -17,12 +17,12 @@ export class LoginAdminComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.fb.group({
-      username: ['', [Validators.required]],
+      email: ['', [Validators.required]],
       password: ['', [Validators.required] ],
    });
   }
 
-  test(){
+  login(){
     console.log(this.loginForm.value);
     localStorage.setItem('currentUser','admin');
     // console.log(localStorage.getItem('currentUser'));

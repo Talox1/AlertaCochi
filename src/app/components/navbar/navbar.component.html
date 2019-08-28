@@ -31,7 +31,9 @@
           <a class="navbar-item">
             Mis promociones
           </a>
-          
+          <a class="navbar-item" routerLink="/registerPromo">
+              Crear nueva promocion
+            </a>
           <a class="navbar-item">
             Mis datos
           </a>
@@ -62,7 +64,7 @@
         </div>
       </div>
 
-      <!-- Mostrar si el usuario es un admin -->
+      <!-- Mostrar si el usuario es un consumidor -->
       <div *ngIf="wichUser=='user'" class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
           Mi cuenta
