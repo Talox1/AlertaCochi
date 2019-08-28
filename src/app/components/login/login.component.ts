@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { LoginService } from 'src/app/services/login.service';
 import { Subscription, from } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
+import { renderComponent } from '@angular/core/src/render3';
 
 @Component({
   selector: 'app-login',
@@ -45,5 +46,8 @@ export class LoginComponent implements OnInit {
     );
     localStorage.setItem('currentUser','restaurant');
     localStorage.setItem('isLoged','true');
+    // location.reload();
+    this.router.navigate(['/homeRestaurant']);
+      
   }
 }
