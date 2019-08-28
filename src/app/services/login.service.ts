@@ -23,4 +23,14 @@ export class LoginService {
     // tslint:disable-next-line: no-shadowed-variable
     return this.http.post(`${this.api}users/login/` , params , httpOptions);
   }
+  logout(): Observable<any> {
+    const httpOptions2 = {
+      headers : new HttpHeaders({
+        'Content-Type': 'application/json',
+        // tslint:disable-next-line: object-literal-key-quotes
+        'Autorizathion': 'Bearer ' + localStorage.getItem('token'),
+      })
+    };
+    return this.http.post(`${this.api}users/login/`, httpOptions);
+  }
 }
