@@ -16,14 +16,13 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
 
-    
-
-
     this.wichUser = localStorage.getItem('currentUser');
     
     console.log(this.wichUser);
-    if(localStorage.getItem('isLoged') == 'true'){
+    if(localStorage.getItem('isLoged') == 'true' && this.wichUser == 'admin'){
       this.isloged = true;
+    }else{
+      this.router.navigate(['/home']);
     }
   }
 

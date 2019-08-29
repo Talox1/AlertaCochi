@@ -49,8 +49,8 @@ export class AdminService {
     return this.http.post(`${this.api}admin/restaurants/register`, params, httpOptions);
   }
 
-  restaurantUpdate(id: any): Observable <any> {
-    return this.http.put(`${this.api}admin/restaurants/update/${id}`, httpOptions);
+  restaurantUpdate(id: any,params: any): Observable <any> {
+    return this.http.put(`${this.api}admin/restaurants/update/${id}`,params, httpOptions);
   }
 
   restaurantDelete(id: any): Observable <any> {

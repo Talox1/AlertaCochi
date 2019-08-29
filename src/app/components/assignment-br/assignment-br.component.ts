@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2, ViewChild, ElementRef} from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { AdminService } from 'src/app/services/admin.service';
-import { CaseroService } from 'src/app/services/casero.service';
+import { FormBuilder, FormGroup, Validators, } from '@angular/forms';
+
 @Component({
   selector: 'app-assignment-br',
   templateUrl: './assignment-br.component.html',
   styleUrls: ['./assignment-br.component.css']
 })
 export class AssignmentBRComponent implements OnInit {
-
+  @ViewChild("modalcito") modal: ElementRef;
   negocios : any = [];
   restaurantes : any = [];
 
@@ -27,8 +28,12 @@ export class AssignmentBRComponent implements OnInit {
   bussinessId:number;
   bussinessSelect=false;
 
+  registerForm: FormGroup;
+
   constructor(
     public adminservice:AdminService,
+    public fb: FormBuilder,
+    private renderer: Renderer2
   ) {
     
    }
@@ -61,7 +66,6 @@ export class AssignmentBRComponent implements OnInit {
             indice++;
           }
         }
-
       }
     )
   }
@@ -76,6 +80,20 @@ export class AssignmentBRComponent implements OnInit {
         this.restaurantHomeService = response[0].homeService;
         this.restaurantId = response[0].id;
         this.restaurantSelect = true;
+
+        //precarga los datos->
+        this.registerForm = this.fb.group({
+          name: [response[0].name, [Validators.required]],
+          email: [response[0].email, [Validators.required, Validators.minLength(6)]],
+          homeService: [response[0].homeService , [Validators.required] ],
+          restrictions: [response[0].restrictions, [Validators.required] ],
+          state: [response[0].state, [Validators.required] ],
+          city: [response[0].city, [Validators.required] ],
+          whatsapp: [response[0].whatsapp, [Validators.required] ],
+          facebook: [response[0].facebook, [Validators.required] ],
+          instagram: [response[0].instagram, [Validators.required] ],
+          user_id:[this.bussinessId],
+        });
       }
     )
     // console.log(name);
@@ -103,8 +121,15 @@ export class AssignmentBRComponent implements OnInit {
     console.log("quitando bussiness");
     this.bussinessSelect = false;
   }
-  handleClick($event){
-    console.log("asdas");
+  asignar(){
+    this.adminservice.restaurantUpdate(this.restaurantId, JSON.stringify(this.registerForm.value)).subscribe(
+      response=>{
+        console.log(response);
+        this.renderer.addClass(this.modal.nativeElement, "is-active");
+      }
+    )
   }
+
+
 
 }

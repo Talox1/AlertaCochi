@@ -131,20 +131,43 @@
         
         <br>
         <p class="centrar">
-          <a class="button is-primary centrar">
+          <a class="button is-primary centrar" style="margin-bottom: 10px;" (click)="asignar()">
             <span class="icon is-small">
               <i class="fas fa-check"></i>
             </span>
             <span>Asignar</span>
           </a>
           &nbsp;
-          <a class="button is-danger centrar">
+          <a class="button is-danger centrar" style="margin-bottom: 10px;">
             <span class="icon is-small">
               <i class="fas fa-times"></i>
             </span>
             <span>Cancelar</span>
           </a>
         </p>
+
+
+        <div class="field is-grouped">
+            <div class="control">
+              <div #modalcito class="modal " class="modal">
+                <div class="modal-background"></div>
+                <div class="modal-card">
+                  <header class="modal-card-head">
+                    <p class="modal-card-title">Asignacion Finalizada</p>
+                    <button class="delete" aria-label="close"></button>
+                  </header>
+                  <section class="modal-card-body">
+                    <h1>Ya puedes empezar a usar tu cuenta!</h1>
+                  </section>
+                  <footer class="modal-card-foot" >
+                    <button type="submit" routerLink="/homeAdmin" class="button is-success">Continuar</button>
+                    
+                  </footer>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
       </div>
     </div>
   </div>
