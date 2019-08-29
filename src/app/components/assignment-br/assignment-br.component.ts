@@ -36,6 +36,7 @@ export class AssignmentBRComponent implements OnInit {
   }
   
   getAllRestaurants(){
+    let indice = 0;
     console.log("all restaurants");
     this.adminservice.getUsers().subscribe(
       response=>{
@@ -43,7 +44,8 @@ export class AssignmentBRComponent implements OnInit {
         for(let i = 0; i<response.length; i++){
           if(response[i].is_casero == true){
             console.log(response[i]);
-            this.restaurantes[i] =  response[i];
+            this.restaurantes[indice] =  response[i];
+            indice++;
           }
         }
 
