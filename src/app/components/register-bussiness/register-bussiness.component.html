@@ -5,7 +5,6 @@
       <div id="col2" class="column is-four-fifths ">
         <!-- //metodo para logearse -->
         <form [formGroup]="registerForm" (ngSubmit)="registrar()" novalidate>
-
           <div class="field is-horizontal">
             <div class="field-label is-normal">
               <label class="label">Nombre del negocio</label>
@@ -25,7 +24,6 @@
             </div>
           </div>
 
-
           <!-- email -->
           <div class="field is-horizontal">
             <div class="field-label is-normal">
@@ -34,14 +32,15 @@
             <div class="field-body">
               <div class="field">
                 <p class="control is-expanded has-icons-left">
-                  <input class="input" type="text" placeholder="email" formControlName="email">
+                  <input class="input" type="text" placeholder="Email" formControlName="email">
                   <span class="icon is-small is-left">
-                      <i class="fas fa-envelope"></i>
+                    <i class="fas fa-envelope"></i>
                   </span>
                 </p>
               </div>
-              <div *ngIf="registerForm.get('name').errors && registerForm.get('name').dirty">
-                <p *ngIf="registerForm.get('name').hasError('required')">Este campo debe ser obligatorio</p>
+              <div *ngIf="registerForm.get('email').errors && registerForm.get('email').dirty">
+                <p *ngIf="registerForm.get('email').hasError('required')">Este campo debe ser obligatorio</p>
+                <p *ngIf="registerForm.get('email').hasError('email')">Ingrese formato de correo válido</p>
               </div>
             </div>
           </div>
@@ -53,19 +52,19 @@
             <div class="field-body">
               <div class="field">
                 <p class="control is-expanded has-icons-left">
-                  <input class="input" type="text" placeholder="facebook" formControlName="facebook">
+                  <input class="input" type="text" placeholder="Facebook" formControlName="facebook">
                   <span class="icon is-small is-left">
-                      <i class="fab fa-facebook-square"></i>
+                    <i class="fab fa-facebook-square"></i>
                   </span>
                 </p>
               </div>
-              <div *ngIf="registerForm.get('name').errors && registerForm.get('name').dirty">
-                <p *ngIf="registerForm.get('name').hasError('required')">Este campo debe ser obligatorio</p>
+              <div *ngIf="registerForm.get('facebook').errors && registerForm.get('facebook').dirty">
+                <p *ngIf="registerForm.get('facebook').hasError('required')">Este campo debe ser obligatorio</p>
               </div>
             </div>
           </div>
 
-            <!-- instagram -->
+          <!-- instagram -->
           <div class="field is-horizontal">
             <div class="field-label is-normal">
               <label class="label">Instagram</label>
@@ -73,37 +72,37 @@
             <div class="field-body">
               <div class="field">
                 <p class="control is-expanded has-icons-left">
-                  <input class="input" type="text" placeholder="instagram" formControlName="instagram">
+                  <input class="input" type="text" placeholder="Instagram" formControlName="instagram">
                   <span class="icon is-small is-left">
-                      <i class="fab fa-instagram"></i>
+                    <i class="fab fa-instagram"></i>
                   </span>
                 </p>
               </div>
-              <div *ngIf="registerForm.get('name').errors && registerForm.get('name').dirty">
-                <p *ngIf="registerForm.get('name').hasError('required')">Este campo debe ser obligatorio</p>
+              <div *ngIf="registerForm.get('instagram').errors && registerForm.get('instagram').dirty">
+                <p *ngIf="registerForm.get('instagram').hasError('required')">Este campo debe ser obligatorio</p>
               </div>
             </div>
           </div>
 
           <!-- WhatsApp -->
           <div class="field is-horizontal">
-              <div class="field-label is-normal">
-                <label class="label">WhatsApp</label>
+            <div class="field-label is-normal">
+              <label class="label">WhatsApp</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <p class="control is-expanded has-icons-left">
+                  <input class="input" type="text" placeholder="Whatsapp" formControlName="whatsapp">
+                  <span class="icon is-small is-left">
+                    <i class="fab fa-whatsapp"></i>
+                  </span>
+                </p>
               </div>
-              <div class="field-body">
-                <div class="field">
-                  <p class="control is-expanded has-icons-left">
-                    <input class="input" type="text" placeholder="whatsapp" formControlName="whatsapp">
-                    <span class="icon is-small is-left">
-                        <i class="fab fa-whatsapp"></i>
-                    </span>
-                  </p>
-                </div>
-                <div *ngIf="registerForm.get('name').errors && registerForm.get('name').dirty">
-                  <p *ngIf="registerForm.get('name').hasError('required')">Este campo debe ser obligatorio</p>
-                </div>
+              <div *ngIf="registerForm.get('whatsapp').errors && registerForm.get('whatsapp').dirty">
+                <p *ngIf="registerForm.get('whatsapp').hasError('required')">Este campo debe ser obligatorio</p>
               </div>
             </div>
+          </div>
           <!-- Numero telefonico -->
           <!-- <div class="field is-horizontal">
             <div class="field-label"></div>
@@ -200,7 +199,8 @@
             <div class="field-body">
               <div class="field">
                 <div class="control">
-                  <textarea class="textarea" placeholder="Explain how we can help you" formControlName="restrictions"></textarea>
+                  <textarea class="textarea" placeholder="Escriba aquí sus restricciones"
+                    formControlName="restrictions"></textarea>
                 </div>
               </div>
             </div>
@@ -253,26 +253,25 @@
             </ng-template>
           </div>
           <div class="field is-grouped">
-              <div class="control">
-                <div #modalcito class="modal " class="modal">
-                  <div class="modal-background"></div>
-                  <div class="modal-card">
-                    <header class="modal-card-head">
-                      <p class="modal-card-title">Cuenta Restaurante Creada Con Exito</p>
-                      <button class="delete" aria-label="close"></button>
-                    </header>
-                    <section class="modal-card-body">
-                      <h1>Ya puedes empezar a usar tu cuenta!</h1>
-                    </section>
-                    <footer class="modal-card-foot" >
-                      <button type="submit" routerLink="/homeAdmin" class="button is-success">Continuar</button>
-                      
-                    </footer>
-                    
-                  </div>
+            <div class="control">
+              <div #modalcito class="modal " class="modal">
+                <div class="modal-background"></div>
+                <div class="modal-card">
+                  <header class="modal-card-head">
+                    <p class="modal-card-title">Cuenta Restaurante Creada Con Exito</p>
+                    <button class="delete" aria-label="close"></button>
+                  </header>
+                  <section class="modal-card-body">
+                    <h1>Ya puedes empezar a usar tu cuenta!</h1>
+                  </section>
+                  <footer class="modal-card-foot">
+                    <button type="submit" routerLink="/homeAdmin" class="button is-success">Continuar</button>
+                  </footer>
+
                 </div>
               </div>
             </div>
+          </div>
         </form>
       </div>
 
