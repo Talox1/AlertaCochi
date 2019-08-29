@@ -28,10 +28,10 @@ export class LoginAdminComponent implements OnInit {
 
   login(){
    
-    console.log(this.loginForm.value);
-    localStorage.setItem('currentUser','admin');
+    // console.log(this.loginForm.value);
+    //localStorage.setItem('currentUser','admin');
     // console.log(localStorage.getItem('currentUser'));
-    localStorage.setItem('isLoged', 'true')
+    //localStorage.setItem('isLoged', 'true')
     
     this.loginService.login(this.loginForm.value).subscribe(
       // tslint:disable-next-line: no-unused-expression
@@ -55,15 +55,5 @@ export class LoginAdminComponent implements OnInit {
       }
     );
     // location.reload();
-
-
-
-    // error => {
-    //   console.log('status:' + error.status);
-    //   if (error.status == 401){
-    //     //alert("Correo o contraseña inválidos");
-    //     document.getElementById('error').innerHTML = 'Correo o contraseña inválidos';
-    //     document.getElementById('error').className = 'notification is-danger';
-    //   }
   }
 }

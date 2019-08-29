@@ -39,6 +39,8 @@ export class LoginComponent implements OnInit {
         // localStorage.setItem('is_consumer',response.is_consumer);
         // localStorage.setItem('is_casero',response.is_casero);
         this.router.navigate(['/homeRestaurant']);
+        localStorage.setItem('currentUser','restaurant');
+        localStorage.setItem('isLoged','true');
       },
       error => {
         console.log('status:' + error.status);
@@ -49,8 +51,7 @@ export class LoginComponent implements OnInit {
         }
       }
     );
-    localStorage.setItem('currentUser','restaurant');
-    localStorage.setItem('isLoged','true');
+    
     // location.reload();
     //this.router.navigate(['/homeRestaurant']);
       
