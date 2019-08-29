@@ -19,6 +19,7 @@ export class RegisterPromoComponent implements OnInit {
     public caseroservice:CaseroService,
   ) {
     this.registerForm = this.fb.group({
+      restaurant_id:[],
       name: ['', [Validators.required]],
       discount: ['', [Validators.required]],
       numberReports: [0],
@@ -49,7 +50,7 @@ export class RegisterPromoComponent implements OnInit {
     this.caseroservice.promotionsRegister(this.registerForm.value).subscribe(
       response =>{
         console.log(response);
-        
+
       }
     )
   }  
