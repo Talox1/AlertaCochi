@@ -89,14 +89,22 @@ export class AssignmentBRComponent implements OnInit {
         this.bussinessUsername = response[0].username;
         this.bussinessId = response[0].id;
         this.bussinessSelect = true;
-        // console.log(this.bussinesCity);
-        // console.log(this.bussinesHomeService);
-        // console.log(this.bussinessName);
-        // console.log(this.bussinesId);
       }
     )
     // console.log(id);
   }
   
+
+  quitarRestaurant(){
+    console.log("quitando restaurante");
+    this.restaurantSelect = false;
+  }
+  quitarBussiness(){
+    console.log("quitando bussiness");
+    this.bussinessSelect = false;
+  }
+  handleClick($event){
+    console.log("asdas");
+  }
 
 }

@@ -87,11 +87,11 @@
                 <br>
                 <label class="subtitle is-6">id: {{restaurantId}} </label>
                 <br>
-                <a class="button is-info">
+                <a class="button is-danger" (click)="quitarRestaurant()">
                   <span class="icon is-small">
-                    <i class="fas fa-check"></i>
+                      <i class="fas fa-trash"></i>
                   </span>
-                  <span> Seleccionar</span>
+                  <span> Quitar</span>
                 </a>
               </div>
             </div>
@@ -116,11 +116,11 @@
                 <br>
                 <label class="subtitle is-6">id: {{bussinessId}} </label>
                 <br>
-                <a class="button is-info">
+                <a class="button is-danger" (click)="quitarBussiness()">
                   <span class="icon is-small">
-                    <i class="fas fa-check"></i>
+                      <i class="fas fa-trash"></i>
                   </span>
-                  <span> Seleccionar</span>
+                  <span> Quitar</span>
                 </a>
               </div>
             </div>
