@@ -21,19 +21,22 @@ export class AssignmentBRComponent implements OnInit {
    }
 
   ngOnInit() {
+    console.log("on init")
     this.getAllBussiness();
     this.getAllRestaurants();
   }
   getAllBussiness(){
+    console.log("all bussiness");
     this.bussinesService.getRestaurants().subscribe(
       response=>{
         console.log(response);
-        
+        this.negocios = response;
       }
     )
   }
   
   getAllRestaurants(){
+    console.log("all restaurants");
     this.adminservice.getUsers().subscribe(
       response=>{
         console.log(response.length)
