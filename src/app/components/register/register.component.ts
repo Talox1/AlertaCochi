@@ -1,6 +1,7 @@
 import { Component, OnInit , Renderer2} from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { RegisterService } from 'src/app/services/register.service';
+// import { RegisterService } from 'src/app/services/register.service';
+import { AdminService } from 'src/app/services/admin.service';
 import { Subscription } from 'rxjs';
 import { ViewChild, ElementRef } from '@angular/core'
 @Component({
@@ -14,10 +15,10 @@ export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
  
-
+  currentUser;
   constructor(
     public fb: FormBuilder, 
-    public registerService: RegisterService,
+    public adminService: AdminService,
     private renderer: Renderer2) {
     
     this.registerForm = this.fb.group({
@@ -31,18 +32,23 @@ export class RegisterComponent implements OnInit {
    }
 
   ngOnInit() {
-
+    this.currentUser = localStorage.getItem('currentUser');
   }
   register(){
-      this.registerService.register(this.registerForm.value).subscribe(
-        // tslint:disable-next-line: no-unused-expression
-        response => {
-          console.log(response);
-          localStorage.setItem('token', response.token);
+    if(this.currentUser == 'admin'){//si es admin ejecuta este servicio
+      this.adminService.usersRegister(this.registerForm.value).subscribe(
+        response =>{
+          console.log(response)
+          this.renderer.addClass(this.modal.nativeElement, "is-active");
         }
-      );
+      )
+
+    }else{//si no se va a este servicio
+      
+    }
+      
 
     // console.log(this.registerForm.value);
-    this.renderer.addClass(this.modal.nativeElement, "is-active");
+    // this.renderer.addClass(this.modal.nativeElement, "is-active");
   }
 }

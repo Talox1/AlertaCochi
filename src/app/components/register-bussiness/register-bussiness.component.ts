@@ -53,12 +53,16 @@ export class RegisterBussinessComponent implements OnInit {
 
   registrar(){
     console.log("hellodah");
-    this.adminservice.restaurantRegister(this.registerForm.value).subscribe(
-      response =>{
-        console.log(response);
-        this.renderer.addClass(this.modal.nativeElement, "is-active");
-      }
-    )
+    if(this.currentUser =='admin'){
+      this.adminservice.restaurantRegister(this.registerForm.value).subscribe(
+        response =>{
+          console.log(response);
+          this.renderer.addClass(this.modal.nativeElement, "is-active");
+        }
+      )
+    }else if(this.currentUser =='restaurant'){
+      
+    }
   }
 
   setservice(){
