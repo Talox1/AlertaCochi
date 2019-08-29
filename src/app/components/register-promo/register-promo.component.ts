@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, } from '@angular/forms';
-
+import { CaseroService } from 'src/app/services/casero.service';
 @Component({
   selector: 'app-register-promo',
   templateUrl: './register-promo.component.html',
@@ -15,16 +15,21 @@ export class RegisterPromoComponent implements OnInit {
   registerForm: FormGroup;
   houseservice = true;
   constructor(
-    public fb: FormBuilder
+    public fb: FormBuilder,
+    public caseroservice:CaseroService,
   ) {
     this.registerForm = this.fb.group({
       name: ['', [Validators.required]],
-      desc: ['', [Validators.required]],
-      houseservice: [Boolean , [Validators.required] ],
-      estado: ['', [Validators.required] ],
-      ciudad: ['', [Validators.required] ],
-      day: ['', [Validators.required] ],
-      restriccion: ['', [Validators.required] ],
+      discount: ['', [Validators.required]],
+      numberReports: [0],
+      likes: [0],
+      // houseservice: [Boolean , [Validators.required] ],
+      // estado: ['', [Validators.required] ],
+      // ciudad: ['', [Validators.required] ],
+      availableDay: ['', [Validators.required] ],
+      restriction: ['', [Validators.required] ],
+      image_url:[File,],
+      image_url_id:[],
     });
 
     this.estados=['CHIAPAS', 'DURANGO', 'CDMX', 'TABASCO', 'OAXACA', 'TAMAULIPAS', 'MONTERREY', 'PUEBLA', 'GUADALAJARA', 'MORELIA'];
@@ -40,7 +45,12 @@ export class RegisterPromoComponent implements OnInit {
   setservice(){
   console.log(this.registerForm.value)
   }
-   handleClick(data:string){
-    console.log(data);
+  registarPromo(){
+    this.caseroservice.promotionsRegister(this.registerForm.value).subscribe(
+      response =>{
+        console.log(response);
+        
+      }
+    )
   }  
 }

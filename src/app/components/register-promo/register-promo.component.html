@@ -4,7 +4,7 @@
     <!-- Form column -->
     <div class="columns">
         <div id="col2" class="column is-four-fifths ">
-          <form [formGroup] ="registerForm" (ngSubmit)="test()" novalidate>
+          <form [formGroup] ="registerForm" (ngSubmit)="registarPromo()" novalidate>
               
             <!-- Name -->
             <div class="field is-horizontal">
@@ -34,7 +34,7 @@
                 <div class="field-body">
                   <div class="field">
                     <p class="control is-expanded has-icons-left">
-                      <input class="input" type="text" placeholder="% desc."  formControlName="desc">
+                      <input class="input" type="text" placeholder="% desc."  formControlName="discount">
                       <span class="icon is-small is-left">
                           <i class="fas fa-dollar-sign"></i>
                       </span>
@@ -47,7 +47,7 @@
               </div>
 
               <!-- Estado -->
-            <div class="field is-horizontal">
+            <!-- <div class="field is-horizontal">
               <div class="field-label is-normal">
                 <label class="label">Estado</label>
               </div>
@@ -61,15 +61,15 @@
                             {{estado}}
                           </option>
                       </select>
-                      <!-- <p [hidden]="selectState == '0'">Haz seleccionado la opción # {{ state }}</p> -->
+                      
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
 
             <!-- Ciudad -->
-            <div class="field is-horizontal">
+            <!-- <div class="field is-horizontal">
               <div class="field-label is-normal">
                 <label class="label">Ciudad</label>
               </div>
@@ -83,15 +83,15 @@
                             {{ciudad}}
                           </option>
                       </select>
-                      <!-- <p [hidden]="selectCity == '0'">Haz seleccionado la opción # {{ city }}</p> -->
+                      
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
 
             <!-- Servicio a domcilio -->
-            <div class="field is-horizontal">
+            <!-- <div class="field is-horizontal">
               <div class="field-label">
                 <label class="label">Servicio a domicilio</label>
               </div>
@@ -103,7 +103,7 @@
                     </label>
                 </div>
               </div>
-            </div>
+            </div> -->
 
             <!-- PROMO DAYS -->
             <div class="field is-horizontal">
@@ -140,24 +140,19 @@
                   <div class="field is-narrow">
                     <div class="control">
                       <div class="select is-fullwidth">
-                        <select formControlName="day" >
+                        <select formControlName="availableDay" >
                             <option value="0" >Selecciona una opción</option>
                             <option *ngFor="let day of days" >
                               {{day}}
                             </option>
                         </select>
-                        <!-- <p [hidden]="selectState == '0'">Haz seleccionado la opción # {{ state }}</p> -->
+                        
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            
-          </form>
-        </div>
-    </div>
-
-    <!-- Image and restriccions column -->
+            <!-- Image and restriccions column -->
     <div  class="columns">
         <div id="xddd" class="column is-two-fifths is-desktop">
           <div class="round-button">
@@ -178,7 +173,7 @@
                     <div class="field-body">
                       <div class="field">
                         <div class="control">
-                          <textarea class="textarea" placeholder="Menciona algunas restricciones para el consumidor" formControlName="restriccion"></textarea>
+                          <textarea class="textarea" placeholder="Menciona algunas restricciones para el consumidor" formControlName="restriction"></textarea>
                         </div>
                       </div>
                     </div>
@@ -193,7 +188,7 @@
       <div class="field-body">
         <div class="field">
           <div class="control">
-            <button type="submit" [disabled]="registerForm.invalid" class="button is-primary btn" routerLink="/homeRestaurant" >
+            <button type="submit" [disabled]="registerForm.invalid" class="button is-primary btn">
               <span class="icon is-small">
                 <i class="fas fa-check"></i>
               </span>
@@ -210,6 +205,11 @@
         </div>
       </div>  
     </div>
+          </form>
+        </div>
+    </div>
+
+    
   </div>
 </div>
   

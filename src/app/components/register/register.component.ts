@@ -44,7 +44,7 @@ export class RegisterComponent implements OnInit {
       )
 
     }else{//si no se va a este servicio
-      
+      console.log("aqui va el servicio para crear negocios como invitado")
     }
       
 

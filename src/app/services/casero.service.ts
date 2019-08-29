@@ -46,7 +46,7 @@ export class CaseroService {
 
   // tslint:disable-next-line: adjacent-overload-signatures
   promotionsRegister(params: any): Observable <any> {
-    return this.http.put(`${this.api}casero/promotions/register`, params , httpOptions);
+    return this.http.post(`${this.api}casero/promotions/register`, params , httpOptions);
   }
 
   promotionsUpdate(id: any): Observable <any> {

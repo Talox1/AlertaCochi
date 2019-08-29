@@ -21,6 +21,8 @@ export class NavbarComponent implements OnInit {
     console.log(this.wichUser);
     if(localStorage.getItem('isLoged') == 'true' && this.wichUser == 'admin'){
       this.isloged = true;
+    }else if(localStorage.getItem('isLoged') == 'true' && this.wichUser == 'restaurant'){
+      this.isloged = true;
     }else{
       this.router.navigate(['/home']);
     }
