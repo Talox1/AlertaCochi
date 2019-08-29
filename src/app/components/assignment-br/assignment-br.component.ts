@@ -16,10 +16,6 @@ export class AssignmentBRComponent implements OnInit {
   constructor(
     public adminservice:AdminService,
     public bussinesService:AdminService,
-
-
-
-    
   ) {
     
    }
