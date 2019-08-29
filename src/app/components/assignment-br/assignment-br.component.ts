@@ -43,7 +43,7 @@ export class AssignmentBRComponent implements OnInit {
         for(let i = 0; i<response.length; i++){
           if(response[i].is_casero == true){
             console.log(response[i]);
-            this.restaurantes += response[i];
+            this.restaurantes[i] =  response[i];
           }
         }
 
