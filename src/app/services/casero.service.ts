@@ -33,7 +33,7 @@ export class CaseroService {
   }
 
   restaurantsRegister(params: any): Observable <any> {
-    return this.http.get(`${this.api}casero/restaurants/register` , httpOptions);
+    return this.http.post(`${this.api}casero/restaurants/register` ,params, httpOptions);
   } 
 
   restaurantsUpdate(id: any): Observable <any> {

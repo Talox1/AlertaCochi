@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, } from '@angular/forms';
 import { ViewChild, ElementRef, Renderer2 } from '@angular/core'
 import { AdminService } from 'src/app/services/admin.service';
+import { CaseroService } from 'src/app/services/casero.service';
+import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-register-bussiness',
   templateUrl: './register-bussiness.component.html',
@@ -24,7 +26,9 @@ export class RegisterBussinessComponent implements OnInit {
   constructor(
     public fb: FormBuilder,
     public adminservice:AdminService,
+    public caseroService:CaseroService,
     private renderer: Renderer2,
+    private router: Router,
     ) {
 
     this.registerForm = this.fb.group({
@@ -39,6 +43,7 @@ export class RegisterBussinessComponent implements OnInit {
       restrictions: [''],
       state: ['', [Validators.required] ],
       city: ['', [Validators.required] ],
+      user_id:[],
     });
 
     this.estados=['CHIAPAS', 'DURANGO', 'CDMX', 'TABASCO', 'OAXACA', 'TAMAULIPAS', 'MONTERREY', 'PUEBLA', 'GUADALAJARA', 'MORELIA'];
@@ -49,6 +54,24 @@ export class RegisterBussinessComponent implements OnInit {
     console.log(this.registerForm.value)
     this.currentUser = localStorage.getItem('currentUser');
     console.log(this.currentUser);
+
+
+    if(localStorage.getItem('firstime') == 'true'){
+      this.registerForm = this.fb.group({
+        name: ['', [Validators.required]],
+        // phone: ['', [Validators.required, Validators.minLength(6)]],
+        email: ['', [Validators.required, Validators.email] ],
+        facebook: [''],
+        instagram:[''],
+        whatsapp:[''],
+        homeService: [false , [Validators.required] ],
+        // address: ['', [Validators.required] ],
+        restrictions: [''],
+        state: ['', [Validators.required] ],
+        city: ['', [Validators.required] ],
+        user_id:[localStorage.getItem('id_casero')],
+      });
+    }
   }
 
   registrar(){
@@ -61,7 +84,14 @@ export class RegisterBussinessComponent implements OnInit {
         }
       )
     }else if(this.currentUser =='restaurant'){
-      
+      this.caseroService.restaurantsRegister(this.registerForm.value).subscribe(
+        response =>{
+          console.log(response);
+          localStorage.setItem('firstime', 'false')
+          localStorage.setItem('id_restaurant', response.id);
+          this.router.navigate(['/homeRestaurant']);
+        }
+      )
     }
   }
 
