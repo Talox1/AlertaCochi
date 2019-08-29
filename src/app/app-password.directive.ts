@@ -29,7 +29,7 @@ setup() {
     const parent = this.el.nativeElement.parentNode;
     const a = document.createElement('a');
     a.innerHTML = `Mostrar Contraseña`; 
-    a.style.color = 'black';
+    a.style.color = 'gray';
     
     
     a.addEventListener('click', (event) => {
