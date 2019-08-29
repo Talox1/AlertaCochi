@@ -10,12 +10,25 @@ import { CaseroService } from 'src/app/services/casero.service';
 export class AssignmentBRComponent implements OnInit {
 
   negocios : any = [];
-
   restaurantes : any = [];
+
+  //especific data Restaurant
+ restaurantName:string;
+ restaurantCity:string;
+ restaurantHomeService:string;
+ restaurantname:string;//
+ restaurantId:number;
+ restaurantSelect= false;
+
+  //specific data Bussiness
+  bussinessName:string;
+  bussinessEmail:string;
+  bussinessUsername:string;
+  bussinessId:number;
+  bussinessSelect=false;
 
   constructor(
     public adminservice:AdminService,
-    public bussinesService:AdminService,
   ) {
     
    }
@@ -27,7 +40,7 @@ export class AssignmentBRComponent implements OnInit {
   }
   getAllBussiness(){
     console.log("all bussiness");
-    this.bussinesService.getRestaurants().subscribe(
+    this.adminservice.getRestaurants().subscribe(
       response=>{
         console.log(response);
         this.negocios = response;
@@ -51,6 +64,38 @@ export class AssignmentBRComponent implements OnInit {
 
       }
     )
+  }
+
+
+  selectRestaurant(name:string){
+    this.adminservice.restaurantsSearch(name).subscribe(
+      response =>{
+        console.log("restaurant ");
+        this.restaurantName = response[0].name;
+        this.restaurantCity = response[0].city;
+        this.restaurantHomeService = response[0].homeService;
+        this.restaurantId = response[0].id;
+        this.restaurantSelect = true;
+      }
+    )
+    // console.log(name);
+  }
+  selectBussiness(nameUser:string){
+    this.adminservice.usersSearch(nameUser).subscribe(
+      response=>{
+        console.log(response[0].name);
+        this.bussinessName = response[0].name;
+        this.bussinessEmail = response[0].email;
+        this.bussinessUsername = response[0].username;
+        this.bussinessId = response[0].id;
+        this.bussinessSelect = true;
+        // console.log(this.bussinesCity);
+        // console.log(this.bussinesHomeService);
+        // console.log(this.bussinessName);
+        // console.log(this.bussinesId);
+      }
+    )
+    // console.log(id);
   }
   
 

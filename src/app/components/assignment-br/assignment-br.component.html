@@ -3,7 +3,7 @@
     <div class="columns">
       
       <div class="column borde">
-        <h3> LISTA DE NEGOCIOS </h3>
+        <h3> LISTA DE RESTAURANTES </h3>
         <br>
         <div class="card" *ngFor="let item of negocios">
           <div class="card-content">
@@ -20,8 +20,10 @@
                 <br>
                 <label class="subtitle is-6">Servicio a Domicilio: {{item.homeService}} </label>
                 <br>
-                <a class="button is-link">
-                  <span class="icon is-small">
+                <label class="subtitle is-6">id: {{item.id}} </label>
+                <br>
+                <a class="button is-link" (click)="selectRestaurant(item.name)">
+                  <span class="icon is-small" >
                     <i class="fas fa-check"></i>
                   </span>
                   <span> Seleccionar</span>
@@ -33,7 +35,7 @@
       </div>
 
       <div class="column borde">
-        <h3> LISTA DE RESTAURANTES </h3>
+        <h3> LISTA DE NEGOCIOS </h3>
         <br>
         <div class="card" *ngFor="let item of restaurantes">
           <div class="card-content">
@@ -50,8 +52,10 @@
                 <br>
                 <label class="subtitle is-6">Username: {{item.username}} </label>
                 <br>
-                <a class="button is-link">
-                  <span class="icon is-small">
+                <label class="subtitle is-6">id: {{item.id}} </label>
+                <br>
+                <a class="button is-link" (click)="selectBussiness(item.name)">
+                  <span class="icon is-small" >
                     <i class="fas fa-check"></i>
                   </span>
                   <span> Seleccionar</span>
@@ -65,7 +69,8 @@
       <div class="column borde">
         <h3> ASIGNACION </h3>
         <br>
-        <div class="card" *ngFor="let item of negocios">
+        <!-- Card para Restaurantes -->
+        <div class="card"  *ngIf="restaurantSelect==true">
           <div class="card-content">
             <div class="media">
               <div class="media-left">
@@ -74,11 +79,13 @@
                 </figure>
               </div>
               <div class="media-content">
-                <label class="subtitle is-6">Nombre: {{item.nombre}} </label>
+                <label class="subtitle is-6">Nombre: {{restaurantName}} </label>
                 <br>
-                <label class="subtitle is-6">Apellido: {{item.direccion}}</label>
+                <label class="subtitle is-6">Ubicacion: {{restaurantCity}}</label>
                 <br>
-                <label class="subtitle is-6">Telefono: {{item.servicioDomicilio}} </label>
+                <label class="subtitle is-6">Servicio a domicilio: {{restaurantHomeService}} </label>
+                <br>
+                <label class="subtitle is-6">id: {{restaurantId}} </label>
                 <br>
                 <a class="button is-info">
                   <span class="icon is-small">
@@ -91,9 +98,8 @@
           </div>
         </div>
 
-        <br>
-
-        <div class="card">
+        <!-- Card para restaurantes -->
+        <div class="card"  *ngIf="bussinessSelect==true">
           <div class="card-content">
             <div class="media">
               <div class="media-left">
@@ -102,14 +108,27 @@
                 </figure>
               </div>
               <div class="media-content">
-                <label class="title is-4 titleLabel">Restaurantero </label>
+                <label class="subtitle is-6">Nombre: {{bussinessName}} </label>
+                <br>  
+                <label class="subtitle is-6">Email: {{bussinessEmail}}</label>
                 <br>
-                <label class="subtitle is-6">Nombre: </label>
+                <label class="subtitle is-6">Username: {{bussinessUsername}} </label>
                 <br>
+                <label class="subtitle is-6">id: {{bussinessId}} </label>
+                <br>
+                <a class="button is-info">
+                  <span class="icon is-small">
+                    <i class="fas fa-check"></i>
+                  </span>
+                  <span> Seleccionar</span>
+                </a>
               </div>
             </div>
           </div>
         </div>
+        <br>
+
+        
         <br>
         <p class="centrar">
           <a class="button is-primary centrar">
