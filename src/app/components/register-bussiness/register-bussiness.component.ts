@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, } from '@angular/forms';
-import { ViewChild, ElementRef } from '@angular/core'
+import { ViewChild, ElementRef, Renderer2 } from '@angular/core'
+import { AdminService } from 'src/app/services/admin.service';
 @Component({
   selector: 'app-register-bussiness',
   templateUrl: './register-bussiness.component.html',
   styleUrls: ['./register-bussiness.component.css']
 })
 export class RegisterBussinessComponent implements OnInit {
+  @ViewChild("modalcito") modal: ElementRef;
   estados;
   ciudades;
   selectState: string  = '0';
@@ -20,16 +22,23 @@ export class RegisterBussinessComponent implements OnInit {
 
   currentUser;
   constructor(
-    public fb: FormBuilder
+    public fb: FormBuilder,
+    public adminservice:AdminService,
+    private renderer: Renderer2,
     ) {
 
     this.registerForm = this.fb.group({
       name: ['', [Validators.required]],
-      phone: ['', [Validators.required, Validators.minLength(6)]],
-      houseservice: [false , [Validators.required] ],
-      address: ['', [Validators.required] ],
-      estado: ['', [Validators.required] ],
-      ciudad: ['', [Validators.required] ],
+      // phone: ['', [Validators.required, Validators.minLength(6)]],
+      email: ['', [Validators.required, Validators.email] ],
+      facebook: [''],
+      instagram:[''],
+      whatsapp:[''],
+      homeService: [false , [Validators.required] ],
+      // address: ['', [Validators.required] ],
+      restrictions: [''],
+      state: ['', [Validators.required] ],
+      city: ['', [Validators.required] ],
     });
 
     this.estados=['CHIAPAS', 'DURANGO', 'CDMX', 'TABASCO', 'OAXACA', 'TAMAULIPAS', 'MONTERREY', 'PUEBLA', 'GUADALAJARA', 'MORELIA'];
@@ -42,9 +51,14 @@ export class RegisterBussinessComponent implements OnInit {
     console.log(this.currentUser);
   }
 
-  login(){
+  registrar(){
     console.log("hellodah");
-    console.log(this.registerForm.value);
+    this.adminservice.restaurantRegister(this.registerForm.value).subscribe(
+      response =>{
+        console.log(response);
+        this.renderer.addClass(this.modal.nativeElement, "is-active");
+      }
+    )
   }
 
   setservice(){

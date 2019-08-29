@@ -4,7 +4,7 @@
     <div class="columns">
       <div id="col2" class="column is-four-fifths ">
         <!-- //metodo para logearse -->
-        <form [formGroup]="registerForm" (ngSubmit)="login()" novalidate>
+        <form [formGroup]="registerForm" (ngSubmit)="registrar()" novalidate>
 
           <div class="field is-horizontal">
             <div class="field-label is-normal">
@@ -25,7 +25,87 @@
             </div>
           </div>
 
+
+          <!-- email -->
           <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Email</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <p class="control is-expanded has-icons-left">
+                  <input class="input" type="text" placeholder="email" formControlName="email">
+                  <span class="icon is-small is-left">
+                      <i class="fas fa-envelope"></i>
+                  </span>
+                </p>
+              </div>
+              <div *ngIf="registerForm.get('name').errors && registerForm.get('name').dirty">
+                <p *ngIf="registerForm.get('name').hasError('required')">Este campo debe ser obligatorio</p>
+              </div>
+            </div>
+          </div>
+          <!-- facebook -->
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Facebook</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <p class="control is-expanded has-icons-left">
+                  <input class="input" type="text" placeholder="facebook" formControlName="facebook">
+                  <span class="icon is-small is-left">
+                      <i class="fab fa-facebook-square"></i>
+                  </span>
+                </p>
+              </div>
+              <div *ngIf="registerForm.get('name').errors && registerForm.get('name').dirty">
+                <p *ngIf="registerForm.get('name').hasError('required')">Este campo debe ser obligatorio</p>
+              </div>
+            </div>
+          </div>
+
+            <!-- instagram -->
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Instagram</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <p class="control is-expanded has-icons-left">
+                  <input class="input" type="text" placeholder="instagram" formControlName="instagram">
+                  <span class="icon is-small is-left">
+                      <i class="fab fa-instagram"></i>
+                  </span>
+                </p>
+              </div>
+              <div *ngIf="registerForm.get('name').errors && registerForm.get('name').dirty">
+                <p *ngIf="registerForm.get('name').hasError('required')">Este campo debe ser obligatorio</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- WhatsApp -->
+          <div class="field is-horizontal">
+              <div class="field-label is-normal">
+                <label class="label">WhatsApp</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <p class="control is-expanded has-icons-left">
+                    <input class="input" type="text" placeholder="whatsapp" formControlName="whatsapp">
+                    <span class="icon is-small is-left">
+                        <i class="fab fa-whatsapp"></i>
+                    </span>
+                  </p>
+                </div>
+                <div *ngIf="registerForm.get('name').errors && registerForm.get('name').dirty">
+                  <p *ngIf="registerForm.get('name').hasError('required')">Este campo debe ser obligatorio</p>
+                </div>
+              </div>
+            </div>
+          <!-- Numero telefonico -->
+          <!-- <div class="field is-horizontal">
             <div class="field-label"></div>
             <div class="field-body">
               <div class="field is-expanded">
@@ -47,8 +127,9 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
 
+          <!-- State -->
           <div class="field is-horizontal">
             <div class="field-label is-normal">
               <label class="label">Estado</label>
@@ -62,10 +143,10 @@
                               <option>Comida china</option>
                               <option>Comida gourmet</option>
                             </select> -->
-                    <select formControlName="estado">
+                    <select formControlName="state">
                       <option value="0">Selecciona una opción</option>
-                      <option *ngFor="let estado of estados">
-                        {{estado}}
+                      <option *ngFor="let state of estados">
+                        {{state}}
                       </option>
                     </select>
                     <!-- <p [hidden]="selectState == '0'">Haz seleccionado la opción # {{ state }}</p> -->
@@ -75,6 +156,7 @@
             </div>
           </div>
 
+          <!-- City -->
           <div class="field is-horizontal">
             <div class="field-label is-normal">
               <label class="label">Ciudad</label>
@@ -83,7 +165,7 @@
               <div class="field is-narrow">
                 <div class="control">
                   <div class="select is-fullwidth">
-                    <select formControlName="ciudad">
+                    <select formControlName="city">
                       <option value="0">Selecciona una opción</option>
                       <option *ngFor="let ciudad of ciudades">
                         {{ciudad}}
@@ -95,7 +177,7 @@
               </div>
             </div>
           </div>
-
+          <!-- homeService -->
           <div class="field is-horizontal">
             <div class="field-label">
               <label class="label">Servicio a domicilio</label>
@@ -103,14 +185,28 @@
             <div class="field-body">
               <div class="field is-narrow">
                 <label class="switch">
-                  <input type="checkbox" name="houseservice" formControlName="houseservice" (click)="setservice()">
+                  <input type="checkbox" name="houseservice" formControlName="homeService" (click)="setservice()">
                   <div class="slider round"></div>
                 </label>
               </div>
             </div>
           </div>
 
+          <!-- Restriccion -->
           <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Restriccion</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <div class="control">
+                  <textarea class="textarea" placeholder="Explain how we can help you" formControlName="restrictions"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Ubicacion -->
+          <!-- <div class="field is-horizontal">
             <div class="field-label is-normal">
               <label class="label">Ubicacion</label>
             </div>
@@ -126,7 +222,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
 
           <div class="field is-horizontal">
 
@@ -146,8 +242,7 @@
             <ng-template #isAdmin>
               <div class="field">
                 <div class="control">
-                  <button type="submit" [disabled]="registerForm.invalid" class="button is-primary"
-                    routerLink="/homeAdmin">
+                  <button type="submit" [disabled]="registerForm.invalid" class="button is-primary">
                     <span class="icon is-small">
                       <i class="fas fa-check"></i>
                     </span>
@@ -157,7 +252,27 @@
               </div>
             </ng-template>
           </div>
-
+          <div class="field is-grouped">
+              <div class="control">
+                <div #modalcito class="modal " class="modal">
+                  <div class="modal-background"></div>
+                  <div class="modal-card">
+                    <header class="modal-card-head">
+                      <p class="modal-card-title">Cuenta Restaurante Creada Con Exito</p>
+                      <button class="delete" aria-label="close"></button>
+                    </header>
+                    <section class="modal-card-body">
+                      <h1>Ya puedes empezar a usar tu cuenta!</h1>
+                    </section>
+                    <footer class="modal-card-foot" >
+                      <button type="submit" routerLink="/homeAdmin" class="button is-success">Continuar</button>
+                      
+                    </footer>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
         </form>
       </div>
 
