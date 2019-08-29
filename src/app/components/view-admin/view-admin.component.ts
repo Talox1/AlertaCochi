@@ -10,7 +10,7 @@ export class ViewAdminComponent implements OnInit {
 
   constructor(
     public adminservice:AdminService,
-    public bussinesService:CaseroService,
+    public bussinesService:AdminService,
   ) { }
 
   ngOnInit() {
@@ -32,9 +32,13 @@ export class ViewAdminComponent implements OnInit {
   getAllRestaurants(){
     this.adminservice.getUsers().subscribe(
       response=>{
-        if(response.is_casero==true){
-          console.log(response);
+        console.log(response.length)
+        for(let i = 0; i<response.length; i++){
+          if(response[i].is_casero == true){
+            console.log(response[i]);
+          }
         }
+
       }
     )
   }

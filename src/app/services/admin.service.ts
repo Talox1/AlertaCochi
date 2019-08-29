@@ -21,6 +21,7 @@ export class AdminService {
   constructor(private http: HttpClient) { }
 
   getUsers(): Observable<any> {//obtiene todo los restaurants
+    console.log(localStorage.getItem('token'))
     return this.http.get(`${this.api}admin/users/show`, httpOptions);
   }
 
