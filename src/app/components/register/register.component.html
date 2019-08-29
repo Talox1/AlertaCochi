@@ -31,7 +31,7 @@
             <input id="username" class="input" type="text" placeholder="Introduzca un nombre de usuario"
               formControlName="username">
             <span class="icon is-small is-left">
-              <i class="fas fa-user"></i>
+              <i class="fas fa-user-circle"></i>
             </span>
 
             <div *ngIf="registerForm.get('username').errors && registerForm.get('username').dirty">
@@ -68,7 +68,7 @@
             <input class="input " type="password" placeholder="Introduzca su contraseña" name="password"
               formControlName="password" appAppPassword>
             <span class="icon is-small is-left">
-              <i class="fas fa-envelope"></i>
+              <i class="fas fa-lock"></i>
             </span>
             <div *ngIf="registerForm.get('password').errors && registerForm.get('password').dirty">
               <p *ngIf="registerForm.get('password').hasError('required')">Este campo debe ser obligatorio</p>

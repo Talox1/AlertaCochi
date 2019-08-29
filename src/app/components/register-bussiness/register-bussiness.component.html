@@ -1,162 +1,167 @@
 <div class="columns is-mobile is-centered">
-    <div id="col1" class="column is-half is-four-fifths">
-      
-        <div class="columns">
-            <div id="col2" class="column is-four-fifths ">
-                <!-- //metodo para logearse -->
-              <form [formGroup] ="registerForm" (ngSubmit)="login()" novalidate>
-                  
-                <div class="field is-horizontal">
-                    <div class="field-label is-normal">
-                      <label class="label">Nombre del negocio</label>
-                    </div>
-                    <div class="field-body">
-                      <div class="field">
-                        <p class="control is-expanded has-icons-left">
-                          <input class="input" type="text" placeholder="Nombre del negocio"  formControlName="name">
-                          <span class="icon is-small is-left">
-                            <i class="fas fa-user"></i>
-                          </span>
-                        </p>
-                      </div>
-                      <div *ngIf="registerForm.get('name').errors && registerForm.get('name').dirty">
-                          <p *ngIf="registerForm.get('name').hasError('required')">Este campo debe ser obligatorio</p>
-                        </div>
-                    </div>
-                  </div>
-                  
-                  <div class="field is-horizontal">
-                    <div class="field-label"></div>
-                    <div class="field-body">
-                      <div class="field is-expanded">
-                        <div class="field has-addons">
-                          <p class="control">
-                            <a class="button is-static">
-                              +52
-                            </a>
-                          </p>
-                          <p class="control is-expanded">
-                            <input class="input" type="number" placeholder="Numero telefonico"  formControlName="phone">
-                          </p>
-                        </div>
-                        <p class="help">Do not enter the first zero</p>
-                        <div *ngIf="registerForm.get('phone').errors && registerForm.get('phone').dirty">
-                            <p *ngIf="registerForm.get('phone').hasError('required')">Este campo debe ser obligatorio</p>
-                            <p *ngIf="registerForm.get('phone').hasError('minlength')">Ingrese un numero valido, minimo 6 numeros</p>
-                          </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div class="field is-horizontal">
-                    <div class="field-label is-normal">
-                      <label class="label">Estado</label>
-                    </div>
-                    <div class="field-body">
-                      <div class="field is-narrow">
-                        <div class="control">
-                          <div class="select is-fullwidth">
-                            <!-- <select>
+  <div id="col1" class="column is-half is-four-fifths">
+
+    <div class="columns">
+      <div id="col2" class="column is-four-fifths ">
+        <!-- //metodo para logearse -->
+        <form [formGroup]="registerForm" (ngSubmit)="login()" novalidate>
+
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Nombre del negocio</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <p class="control is-expanded has-icons-left">
+                  <input class="input" type="text" placeholder="Nombre del negocio" formControlName="name">
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-briefcase"></i>
+                  </span>
+                </p>
+              </div>
+              <div *ngIf="registerForm.get('name').errors && registerForm.get('name').dirty">
+                <p *ngIf="registerForm.get('name').hasError('required')">Este campo debe ser obligatorio</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="field is-horizontal">
+            <div class="field-label"></div>
+            <div class="field-body">
+              <div class="field is-expanded">
+                <div class="field has-addons">
+                  <p class="control">
+                    <a class="button is-static">
+                      +52
+                    </a>
+                  </p>
+                  <p class="control is-expanded">
+                    <input class="input" type="number" placeholder="Numero telefonico" formControlName="phone">
+                  </p>
+                </div>
+                <p class="help">Do not enter the first zero</p>
+                <div *ngIf="registerForm.get('phone').errors && registerForm.get('phone').dirty">
+                  <p *ngIf="registerForm.get('phone').hasError('required')">Este campo debe ser obligatorio</p>
+                  <p *ngIf="registerForm.get('phone').hasError('minlength')">Ingrese un numero valido, minimo 6 numeros
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Estado</label>
+            </div>
+            <div class="field-body">
+              <div class="field is-narrow">
+                <div class="control">
+                  <div class="select is-fullwidth">
+                    <!-- <select>
                               <option>Comida rapida</option>
                               <option>Comida china</option>
                               <option>Comida gourmet</option>
                             </select> -->
-                            <select formControlName="estado" >
-                                <option value="0" >Selecciona una opción</option>
-                                <option *ngFor="let estado of estados" >
-                                  {{estado}}
-                                </option>
-                            </select>
-                            <!-- <p [hidden]="selectState == '0'">Haz seleccionado la opción # {{ state }}</p> -->
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    <select formControlName="estado">
+                      <option value="0">Selecciona una opción</option>
+                      <option *ngFor="let estado of estados">
+                        {{estado}}
+                      </option>
+                    </select>
+                    <!-- <p [hidden]="selectState == '0'">Haz seleccionado la opción # {{ state }}</p> -->
                   </div>
-                  
-                  <div class="field is-horizontal">
-                      <div class="field-label is-normal">
-                        <label class="label">Ciudad</label>
-                      </div>
-                      <div class="field-body">
-                        <div class="field is-narrow">
-                          <div class="control">
-                            <div class="select is-fullwidth">
-                              <select formControlName="ciudad">
-                                  <option value="0">Selecciona una opción</option>
-                                  <option *ngFor="let ciudad of ciudades">
-                                    {{ciudad}}
-                                  </option>
-                              </select>
-                              <!-- <p [hidden]="selectCity == '0'">Haz seleccionado la opción # {{ city }}</p> -->
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                  <div class="field is-horizontal">
-                    <div class="field-label">
-                      <label class="label">Servicio a domicilio</label>
-                    </div>
-                    <div class="field-body">
-                      <div class="field is-narrow">
-                          <label class="switch">
-                            <input type="checkbox" name="houseservice" formControlName="houseservice" (click)="setservice()">
-                            <div class="slider round"></div>
-                          </label>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div class="field is-horizontal">
-                    <div class="field-label is-normal">
-                      <label class="label">Ubicacion</label>
-                    </div>
-                    <div class="field-body">
-                      <div class="field">
-                        <div class="control">
-                            <input class="input" type="text" placeholder="Direccion"  formControlName="address">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div class="field is-horizontal">
-
-                  <div class="field-body" *ngIf="currentUser=='invited'; else isAdmin">
-                    <div class="field">
-                      <div class="control">
-                        <button type="submit" [disabled]="registerForm.invalid" class="button is-primary" routerLink="/loginRestaurant">
-                          <span class="icon is-small">
-                            <i class="fas fa-check"></i>
-                          </span>
-                          <span >Crear negocio para invited</span>
-                        </button>
-                      </div>
-                    </div>
-                  </div>  
-                  <ng-template #isAdmin>
-                    <div class="field">
-                      <div class="control">
-                          <button type="submit" [disabled]="registerForm.invalid" class="button is-primary" routerLink="/homeAdmin">
-                            <span class="icon is-small">
-                              <i class="fas fa-check"></i>
-                            </span>
-                            <span >Crear negocio Boton para admin</span>
-                          </button>
-                        </div>
-                      </div>
-                  </ng-template>
                 </div>
-                
-              </form>
+              </div>
             </div>
+          </div>
 
-           
-        </div>
-        
-        
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Ciudad</label>
+            </div>
+            <div class="field-body">
+              <div class="field is-narrow">
+                <div class="control">
+                  <div class="select is-fullwidth">
+                    <select formControlName="ciudad">
+                      <option value="0">Selecciona una opción</option>
+                      <option *ngFor="let ciudad of ciudades">
+                        {{ciudad}}
+                      </option>
+                    </select>
+                    <!-- <p [hidden]="selectCity == '0'">Haz seleccionado la opción # {{ city }}</p> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="field is-horizontal">
+            <div class="field-label">
+              <label class="label">Servicio a domicilio</label>
+            </div>
+            <div class="field-body">
+              <div class="field is-narrow">
+                <label class="switch">
+                  <input type="checkbox" name="houseservice" formControlName="houseservice" (click)="setservice()">
+                  <div class="slider round"></div>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Ubicacion</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <div class="control">
+                  <p class="control is-expanded has-icons-left">
+                    <input class="input" type="text" placeholder="Direccion" formControlName="address">
+                    <span class="icon is-small is-left">
+                      <i class="fa fa-building"></i>
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="field is-horizontal">
+
+            <div class="field-body" *ngIf="currentUser=='invited'; else isAdmin">
+              <div class="field">
+                <div class="control">
+                  <button type="submit" [disabled]="registerForm.invalid" class="button is-primary"
+                    routerLink="/loginRestaurant">
+                    <span class="icon is-small">
+                      <i class="fas fa-check"></i>
+                    </span>
+                    <span>Crear negocio para invited</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <ng-template #isAdmin>
+              <div class="field">
+                <div class="control">
+                  <button type="submit" [disabled]="registerForm.invalid" class="button is-primary"
+                    routerLink="/homeAdmin">
+                    <span class="icon is-small">
+                      <i class="fas fa-check"></i>
+                    </span>
+                    <span>Crear negocio Boton para admin</span>
+                  </button>
+                </div>
+              </div>
+            </ng-template>
+          </div>
+
+        </form>
+      </div>
+
     </div>
+
   </div>
-  
+</div>
