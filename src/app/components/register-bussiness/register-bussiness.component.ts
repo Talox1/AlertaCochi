@@ -10,7 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./register-bussiness.component.css']
 })
 export class RegisterBussinessComponent implements OnInit {
-  @ViewChild("modalcito") modal: ElementRef;
+  @ViewChild("modalcito", { static: true }) modal: ElementRef;
   estados;
   ciudades;
   selectState: string  = '0';

@@ -13,7 +13,7 @@ import { stringify } from '@angular/compiler/src/util';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  @ViewChild("modalcito") modal: ElementRef;
+  @ViewChild("modalcito", { static: true }) modal: ElementRef;
   registerForm: FormGroup;
   loginForm: FormGroup;
   currentUser;

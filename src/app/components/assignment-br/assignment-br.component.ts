@@ -9,7 +9,7 @@ import { FormBuilder, FormGroup, Validators, } from '@angular/forms';
   styleUrls: ['./assignment-br.component.css']
 })
 export class AssignmentBRComponent implements OnInit {
-  @ViewChild("modalcito") modal: ElementRef;
+  @ViewChild("modalcito", { static: true }) modal: ElementRef;
   negocios : any = [];
   restaurantes : any = [];
 
@@ -39,15 +39,15 @@ export class AssignmentBRComponent implements OnInit {
    }
 
   ngOnInit() {
-    console.log("on init")
+    // console.log("on init")
     this.getAllBussiness();
     this.getAllRestaurants();
   }
   getAllBussiness(){
-    console.log("all bussiness");
+    // console.log("all bussiness");
     this.adminservice.getRestaurants().subscribe(
       response=>{
-        console.log(response);
+        // console.log(response);
         this.negocios = response;
       }
     )
@@ -55,13 +55,13 @@ export class AssignmentBRComponent implements OnInit {
   
   getAllRestaurants(){
     let indice = 0;
-    console.log("all restaurants");
+    // console.log("all restaurants");
     this.adminservice.getUsers().subscribe(
       response=>{
-        console.log(response.length)
+        // console.log(response.length)
         for(let i = 0; i<response.length; i++){
           if(response[i].is_casero == true){
-            console.log(response[i]);
+            // console.log(response[i]);
             this.restaurantes[indice] =  response[i];
             indice++;
           }
@@ -74,13 +74,13 @@ export class AssignmentBRComponent implements OnInit {
   selectRestaurant(name:string){
     this.adminservice.restaurantsSearch(name).subscribe(
       response =>{
-        console.log("restaurant ");
+        console.log("restaurant "); 
         this.restaurantName = response[0].name;
         this.restaurantCity = response[0].city;
         this.restaurantHomeService = response[0].homeService;
         this.restaurantId = response[0].id;
         this.restaurantSelect = true;
-
+        console.log(this.restaurantId);
         //precarga los datos->
         this.registerForm = this.fb.group({
           name: [response[0].name, [Validators.required]],
@@ -94,6 +94,7 @@ export class AssignmentBRComponent implements OnInit {
           instagram: [response[0].instagram, [Validators.required] ],
           user_id:[this.bussinessId],
         });
+        console.log(this.registerForm.value);
       }
     )
     // console.log(name);
@@ -123,7 +124,9 @@ export class AssignmentBRComponent implements OnInit {
   }
   asignar(){
     this.adminservice.restaurantUpdate(this.restaurantId, JSON.stringify(this.registerForm.value)).subscribe(
+      
       response=>{
+        console.log(this.restaurantId);
         console.log(response);
         this.renderer.addClass(this.modal.nativeElement, "is-active");
       }
