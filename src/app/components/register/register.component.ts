@@ -33,7 +33,7 @@ export class RegisterComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(8)]],
       is_admin:[],
       is_consumer:[],
-      is_casero:[]
+      is_owner:[]
     });
 
     
@@ -49,7 +49,7 @@ export class RegisterComponent implements OnInit {
         username: ['', [Validators.required]],
         email: ['', [Validators.required]],
         password: ['', [Validators.required, Validators.minLength(8)]], 
-        is_casero:[true]
+        is_owner:[true]
       });
     }
   }
@@ -68,7 +68,7 @@ export class RegisterComponent implements OnInit {
         this.registerService.register(JSON.stringify(this.registerForm.value)).subscribe(
           response =>{
             console.log(response);
-            localStorage.setItem('id_casero', response.id);
+            localStorage.setItem('id_owner', response.id);
             localStorage.setItem('currentUser','invited');
             localStorage.setItem('firstime','true');
             this.router.navigate(['/loginRestaurant']);

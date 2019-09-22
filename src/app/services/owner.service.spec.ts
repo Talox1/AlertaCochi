@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { CaseroService } from './casero.service';
+import { OwnerService } from './owner.service';
 
-describe('CaseroService', () => {
+describe('OwnerService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: CaseroService = TestBed.get(CaseroService);
+    const service: OwnerService = TestBed.get(OwnerService);
     expect(service).toBeTruthy();
   });
 });
