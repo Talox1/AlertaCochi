@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, } from '@angular/forms';
 import { ViewChild, ElementRef, Renderer2 } from '@angular/core'
 import { AdminService } from 'src/app/services/admin.service';
-import { CaseroService } from 'src/app/services/casero.service';
+import { OwnerService } from 'src/app/services/owner.service';
 import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-register-bussiness',
@@ -26,7 +26,7 @@ export class RegisterBussinessComponent implements OnInit {
   constructor(
     public fb: FormBuilder,
     public adminservice:AdminService,
-    public caseroService:CaseroService,
+    public ownerService:OwnerService,
     private renderer: Renderer2,
     private router: Router,
     ) {
@@ -69,7 +69,7 @@ export class RegisterBussinessComponent implements OnInit {
         restrictions: [''],
         state: ['', [Validators.required] ],
         city: ['', [Validators.required] ],
-        user_id:[localStorage.getItem('id_casero')],
+        user_id:[localStorage.getItem('id_owner')],
       });
     }
   }
@@ -84,7 +84,7 @@ export class RegisterBussinessComponent implements OnInit {
         }
       )
     }else if(this.currentUser =='restaurant'){
-      this.caseroService.restaurantsRegister(this.registerForm.value).subscribe(
+      this.ownerService.restaurantsRegister(this.registerForm.value).subscribe(
         response =>{
           console.log(response);
           localStorage.setItem('firstime', 'false')

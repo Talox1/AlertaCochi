@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from 'src/app/services/admin.service';
-import { CaseroService } from 'src/app/services/casero.service';
+import { OwnerService } from 'src/app/services/owner.service';
 @Component({
   selector: 'app-view-admin',
   templateUrl: './view-admin.component.html',

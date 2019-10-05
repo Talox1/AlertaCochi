@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, } from '@angular/forms';
-import { CaseroService } from 'src/app/services/casero.service';
+import { OwnerService } from 'src/app/services/owner.service';
 @Component({
   selector: 'app-register-promo',
   templateUrl: './register-promo.component.html',
@@ -16,7 +16,7 @@ export class RegisterPromoComponent implements OnInit {
   houseservice = true;
   constructor(
     public fb: FormBuilder,
-    public caseroservice:CaseroService,
+    public ownerservice:OwnerService,
   ) {
     
 
@@ -47,7 +47,7 @@ export class RegisterPromoComponent implements OnInit {
   }
   registarPromo(){
     console.log(this.registerForm.value);
-    this.caseroservice.promotionsRegister(this.registerForm.value).subscribe(
+    this.ownerservice.promotionsRegister(this.registerForm.value).subscribe(
       response =>{
         console.log(response);
 

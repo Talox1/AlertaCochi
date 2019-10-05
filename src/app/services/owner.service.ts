@@ -16,44 +16,44 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class CaseroService {
+export class OwnerService {
   api: string = API;
   constructor(private http: HttpClient) { }
 
   getRestaurants(): Observable <any> {
-    return this.http.get(`${this.api}casero/restaurants/show/`, httpOptions);
+    return this.http.get(`${this.api}owner/restaurants/show/`, httpOptions);
   }
 
   getRestaurantsId(id: any): Observable <any> {
-    return this.http.get(`${this.api}casero/restaurants/show/${id}`, httpOptions);
+    return this.http.get(`${this.api}owner/restaurants/show/${id}`, httpOptions);
   }
 
   getPromotionsId(id: any): Observable <any> {
-    return this.http.get(`${this.api}casero/restaurants/show/promotions/${id}`, httpOptions);
+    return this.http.get(`${this.api}owner/restaurants/show/promotions/${id}`, httpOptions);
   }
 
   restaurantsRegister(params: any): Observable <any> {
-    return this.http.post(`${this.api}casero/restaurants/register` ,params, httpOptions);
+    return this.http.post(`${this.api}owner/restaurants/register` ,params, httpOptions);
   } 
 
   restaurantsUpdate(id: any): Observable <any> {
-    return this.http.put(`${this.api}casero/restaurants/update/${id}`, httpOptions);
+    return this.http.put(`${this.api}owner/restaurants/update/${id}`, httpOptions);
   }
 
   restaurantsDelete(id: any): Observable <any> {
-    return this.http.put(`${this.api}casero/restaurants/delete/${id}`, httpOptions);
+    return this.http.put(`${this.api}owner/restaurants/delete/${id}`, httpOptions);
   }
 
   // tslint:disable-next-line: adjacent-overload-signatures
   promotionsRegister(params: any): Observable <any> {
-    return this.http.post(`${this.api}casero/promotions/register`, params , httpOptions);
+    return this.http.post(`${this.api}owner/promotions/register`, params , httpOptions);
   }
 
   promotionsUpdate(id: any): Observable <any> {
-    return this.http.put(`${this.api}casero/promotions/update/${id}`, httpOptions);
+    return this.http.put(`${this.api}owner/promotions/update/${id}`, httpOptions);
   }
 
   promotionsDelete(id: any): Observable <any> {
-    return this.http.put(`${this.api}casero/promotions/delete/${id}`, httpOptions);
+    return this.http.put(`${this.api}owner/promotions/delete/${id}`, httpOptions);
   }
 }
