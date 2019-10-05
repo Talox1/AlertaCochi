@@ -1,9 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { LoginService } from 'src/app/services/login.service';
 import { Subscription, from } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 // import { renderComponent } from '@angular/core/src/render3';
+
+//service
+import { LoginService } from 'src/app/services/login.service';
+import { NavbarService } from '../../services/navbar.service';
+//navbar component
+import { NavbarComponent } from '../navbar/navbar.component'
 
 @Component({
   selector: 'app-login',
@@ -17,7 +22,11 @@ export class LoginComponent implements OnInit {
   
   loginForm: FormGroup;
 
-  constructor(public fb: FormBuilder,  public loginService: LoginService,private router: Router) {
+  constructor(
+    public fb: FormBuilder,  
+    public loginService: LoginService,
+    private router: Router,
+    public navbarService: NavbarService) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required] ],
@@ -40,6 +49,10 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('id_casero',response.id);
         localStorage.setItem('currentUser','restaurant');
         localStorage.setItem('isLoged','true');
+
+        this.navbarService.isLoged = true;
+        this.navbarService.toggle();
+        this.router.navigate(['/homeRestaurant']);
       },
       error => {
         console.log('status:' + error.status);

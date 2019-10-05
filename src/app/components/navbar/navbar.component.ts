@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
+
+//service 
+import { NavbarService } from '../../services/navbar.service'
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -10,8 +14,11 @@ export class NavbarComponent implements OnInit {
   isloged=false;//variable para cambiar los botones de login a logout
   wichUser='invited'; //variabe para controlar las opciones del navbar
 
+  
+
   constructor(
-    private router: Router
+    private router: Router,
+    private navbarService: NavbarService
   ) { }
 
   ngOnInit() {
@@ -26,14 +33,19 @@ export class NavbarComponent implements OnInit {
     }else{
       this.router.navigate(['/home']);
     }
+    this.navbarService.change.subscribe(isLoged => {
+      this.ngOnInit();
+    });
   }
 
   logOut(){
-    console.log("Haz cerrado sesion con exito!")
+    
     localStorage.setItem('currentUser','invited')
     localStorage.setItem('isLoged','false')
     this.isloged = false;
+    this.ngOnInit();
     this.router.navigate(['/home']);
+    this.navbarService.isLoged = false;
     // location.reload();
   }
 

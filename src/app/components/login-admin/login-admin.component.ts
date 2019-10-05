@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Output, EventEmitter, HostListener, OnInit, Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { CanActivate, Router } from '@angular/router';//can activate para valida token
-import { Injectable } from '@angular/core';
+
+
+//login service
 import { LoginService } from 'src/app/services/login.service';
+import { NavbarService } from '../../services/navbar.service';
+//navbar component
+import { NavbarComponent } from '../navbar/navbar.component'
+
 @Component({
   selector: 'app-login-admin',
   templateUrl: './login-admin.component.html',
   styleUrls: ['./login-admin.component.css']
 })
 export class LoginAdminComponent implements OnInit {
-
   email:string;
   password:string;
 
@@ -17,7 +22,9 @@ export class LoginAdminComponent implements OnInit {
 
   constructor(
     public fb: FormBuilder,
-    private router: Router, public loginService: LoginService) { }
+    private router: Router, 
+    public loginService: LoginService,
+    public navbarService: NavbarService) { }
 
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -25,6 +32,8 @@ export class LoginAdminComponent implements OnInit {
       password: ['', [Validators.required] ],
    });
   }
+
+ 
 
   login(){
    
@@ -44,6 +53,10 @@ export class LoginAdminComponent implements OnInit {
         localStorage.setItem('currentUser','admin');
         // console.log(localStorage.getItem('currentUser'));
         localStorage.setItem('isLoged', 'true')
+        this.navbarService.currentUser = 'admin';
+        this.navbarService.isLoged = true;
+        this.navbarService.toggle();
+        
       },
       error => {
         console.log('status:' + error.status);
