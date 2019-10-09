@@ -17,24 +17,27 @@
         Home
       </a>
 
-      <a class="navbar-item">
+      <a class="navbar-item" routerLink="home">
         Acerca de
       </a>
 
-      <!-- Mostrar si el usuario es un restaurant -->
+      <!-- Mostrar si el usuario es un propietario/restaurant -->
       <div *ngIf="wichUser=='restaurant'" class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
           Mi cuenta
         </a>
 
         <div class="navbar-dropdown">
-          <a class="navbar-item">
-            Mis promociones
+          <!-- Arreglar bug routerLink() -->
+          <a class="navbar-item" redirPromo()>
+            Mis promos
           </a>
-          <a class="navbar-item" routerLink="/registerPromo">
+          <!-- Arreglar bug routerLink() -->
+          <a class="navbar-item" redirNew()>
               Crear nueva promocion
             </a>
-          <a class="navbar-item">
+            <!-- Arreglar bug routerLink() -->
+          <a class="navbar-item" redirProfile>
             Mis datos
           </a>
           <hr class="navbar-divider">
@@ -47,7 +50,7 @@
       <!-- Mostrar si el usuario es un admin -->
       <div *ngIf="wichUser=='admin'" class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
-          Admin, Feel de Power !!!!
+         Admin
         </a>
 
         <div class="navbar-dropdown">
@@ -79,7 +82,7 @@
       
       <!-- Mostrar si el usuario es un invitado (default)-->
       <div *ngIf="wichUser=='invited'" class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
+        <a class="navbar-link" >
           Mas
         </a>
 

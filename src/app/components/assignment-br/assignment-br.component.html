@@ -1,7 +1,42 @@
 <div class="backg">
   <div class="container">
     <div class="columns">
-      
+
+      <div class="column borde">
+        <h3> LISTA DE PROPIETARIOS </h3>
+        <br>
+        <div class="card" *ngFor="let item of propietarios">
+          <div class="card-content">
+            <div class="media">
+              <div class="media-left">
+                <figure class="image is-64x64">
+                  <img class="is-rounded"
+                    src="https://bulma.io/images/placeholders/64x64.png"
+                    alt="Image">
+                </figure>
+              </div>
+              <div class="media-content">
+                <label class="subtitle is-6">Nombre: {{item.name}} </label>
+                <br>
+                <label class="subtitle is-6">Email: {{item.email}}</label>
+                <br>
+                <label class="subtitle is-6">Username: {{item.username}}
+                </label>
+                <br>
+                <label class="subtitle is-6">id: {{item.id}} </label>
+                <br>
+                <a class="button is-link" (click)="selectBussiness(item.name)">
+                  <span class="icon is-small">
+                    <i class="fas fa-check"></i>
+                  </span>
+                  <span> Seleccionar</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="column borde">
         <h3> LISTA DE RESTAURANTES </h3>
         <br>
@@ -10,7 +45,9 @@
             <div class="media">
               <div class="media-left">
                 <figure class="image is-64x64">
-                  <img class="is-rounded" src="https://bulma.io/images/placeholders/64x64.png" alt="Image">
+                  <img class="is-rounded"
+                    src="https://bulma.io/images/placeholders/64x64.png"
+                    alt="Image">
                 </figure>
               </div>
               <div class="media-content">
@@ -18,12 +55,13 @@
                 <br>
                 <label class="subtitle is-6">Ubicación: {{item.city}}</label>
                 <br>
-                <label class="subtitle is-6">Servicio a Domicilio: {{item.homeService}} </label>
+                <label class="subtitle is-6">Servicio a Domicilio:
+                  {{item.homeService}} </label>
                 <br>
                 <label class="subtitle is-6">id: {{item.id}} </label>
                 <br>
                 <a class="button is-link" (click)="selectRestaurant(item.name)">
-                  <span class="icon is-small" >
+                  <span class="icon is-small">
                     <i class="fas fa-check"></i>
                   </span>
                   <span> Seleccionar</span>
@@ -33,49 +71,18 @@
           </div>
         </div>
       </div>
-
-      <div class="column borde">
-        <h3> LISTA DE NEGOCIOS </h3>
-        <br>
-        <div class="card" *ngFor="let item of restaurantes">
-          <div class="card-content">
-            <div class="media">
-              <div class="media-left">
-                <figure class="image is-64x64">
-                  <img class="is-rounded" src="https://bulma.io/images/placeholders/64x64.png" alt="Image">
-                </figure>
-              </div>
-              <div class="media-content">
-                <label class="subtitle is-6">Nombre: {{item.name}} </label>
-                <br>
-                <label class="subtitle is-6">Email: {{item.email}}</label>
-                <br>
-                <label class="subtitle is-6">Username: {{item.username}} </label>
-                <br>
-                <label class="subtitle is-6">id: {{item.id}} </label>
-                <br>
-                <a class="button is-link" (click)="selectBussiness(item.name)">
-                  <span class="icon is-small" >
-                    <i class="fas fa-check"></i>
-                  </span>
-                  <span> Seleccionar</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <div class="column borde">
         <h3> ASIGNACION </h3>
         <br>
         <!-- Card para Restaurantes -->
-        <div class="card"  *ngIf="restaurantSelect==true">
+        <div class="card" *ngIf="restaurantSelect==true">
           <div class="card-content">
             <div class="media">
               <div class="media-left">
                 <figure class="image is-64x64">
-                  <img class="is-rounded" src="https://bulma.io/images/placeholders/64x64.png" alt="Image">
+                  <img class="is-rounded"
+                    src="https://bulma.io/images/placeholders/64x64.png"
+                    alt="Image">
                 </figure>
               </div>
               <div class="media-content">
@@ -83,13 +90,14 @@
                 <br>
                 <label class="subtitle is-6">Ubicacion: {{restaurantCity}}</label>
                 <br>
-                <label class="subtitle is-6">Servicio a domicilio: {{restaurantHomeService}} </label>
+                <label class="subtitle is-6">Servicio a domicilio:
+                  {{restaurantHomeService}} </label>
                 <br>
                 <label class="subtitle is-6">id: {{restaurantId}} </label>
                 <br>
                 <a class="button is-danger" (click)="quitarRestaurant()">
                   <span class="icon is-small">
-                      <i class="fas fa-trash"></i>
+                    <i class="fas fa-trash"></i>
                   </span>
                   <span> Quitar</span>
                 </a>
@@ -99,26 +107,29 @@
         </div>
 
         <!-- Card para restaurantes -->
-        <div class="card"  *ngIf="bussinessSelect==true">
+        <div class="card" *ngIf="bussinessSelect==true">
           <div class="card-content">
             <div class="media">
               <div class="media-left">
                 <figure class="image is-64x64">
-                  <img class="is-rounded" src="https://bulma.io/images/placeholders/64x64.png" alt="Image">
+                  <img class="is-rounded"
+                    src="https://bulma.io/images/placeholders/64x64.png"
+                    alt="Image">
                 </figure>
               </div>
               <div class="media-content">
                 <label class="subtitle is-6">Nombre: {{bussinessName}} </label>
-                <br>  
+                <br>
                 <label class="subtitle is-6">Email: {{bussinessEmail}}</label>
                 <br>
-                <label class="subtitle is-6">Username: {{bussinessUsername}} </label>
+                <label class="subtitle is-6">Username: {{bussinessUsername}}
+                </label>
                 <br>
                 <label class="subtitle is-6">id: {{bussinessId}} </label>
                 <br>
                 <a class="button is-danger" (click)="quitarBussiness()">
                   <span class="icon is-small">
-                      <i class="fas fa-trash"></i>
+                    <i class="fas fa-trash"></i>
                   </span>
                   <span> Quitar</span>
                 </a>
@@ -128,10 +139,11 @@
         </div>
         <br>
 
-        
+
         <br>
         <p class="centrar">
-          <a class="button is-primary centrar" style="margin-bottom: 10px;" (click)="asignar()">
+          <a class="button is-primary centrar" style="margin-bottom: 10px;"
+            (click)="asignar()">
             <span class="icon is-small">
               <i class="fas fa-check"></i>
             </span>
@@ -149,7 +161,7 @@
         <!-- Modal -->
         <div class="field is-grouped">
           <div class="control">
-            <div #modalcito class="modal " class="modal">
+            <div #modalcito class="modal"class="modal">
               <div class="modal-background"></div>
               <div class="modal-card">
                 <header class="modal-card-head">
@@ -159,17 +171,18 @@
                 <section class="modal-card-body">
                   <h1>Ya puedes empezar a usar tu cuenta!</h1>
                 </section>
-                <footer class="modal-card-foot" >
-                  <button type="submit" routerLink="/homeAdmin" class="button is-success">Continuar</button>
-                  
+                <footer class="modal-card-foot">
+                  <button type="submit" routerLink="/homeAdmin" class="button
+                    is-success">Continuar</button>
+
                 </footer>
-                
+
               </div>
             </div>
           </div>
         </div>
 
-        
+
       </div>
     </div>
   </div>

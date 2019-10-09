@@ -29,6 +29,10 @@ import { ImageUploadModule } from 'angular2-image-upload';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ViewRestaurantComponent } from './components/view-restaurant/view-restaurant.component';
+import { ListPromosComponent } from './components/view-restaurant/list-promos/list-promos.component';
+import { NewPromoComponent } from './components/view-restaurant/new-promo/new-promo.component';
+import { ProfileComponent } from './components/view-restaurant/profile/profile.component';
+
 
 @NgModule({
   declarations: [
@@ -44,6 +48,9 @@ import { ViewRestaurantComponent } from './components/view-restaurant/view-resta
     AppPasswordDirective,
     RegisterPromoComponent,
     ViewRestaurantComponent,
+    ListPromosComponent,
+    NewPromoComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

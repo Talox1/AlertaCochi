@@ -44,14 +44,14 @@ export class LoginComponent implements OnInit {
     this.loginService.login(this.loginForm.value).subscribe(
       // tslint:disable-next-line: no-unused-expression
       response => {
-        console.log(response);
+        
         localStorage.setItem('token', response.token);
         localStorage.setItem('id_casero',response.id);
         localStorage.setItem('currentUser','restaurant');
         localStorage.setItem('isLoged','true');
 
         this.navbarService.isLoged = true;
-        this.navbarService.toggle();
+        this.navbarService.toggle();//cambia el valor booleano para que el navbar se renderize
         this.router.navigate(['/homeRestaurant']);
       },
       error => {

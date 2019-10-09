@@ -11,7 +11,7 @@ import { FormBuilder, FormGroup, Validators, } from '@angular/forms';
 export class AssignmentBRComponent implements OnInit {
   @ViewChild("modalcito", { static: true }) modal: ElementRef;
   negocios : any = [];
-  restaurantes : any = [];
+  propietarios : any = [];
 
   //especific data Restaurant
  restaurantName:string;
@@ -41,8 +41,9 @@ export class AssignmentBRComponent implements OnInit {
   ngOnInit() {
     // console.log("on init")
     this.getAllBussiness();
-    this.getAllRestaurants();
+    this.getAllOwners();
   }
+  //obtiene todos los negocios
   getAllBussiness(){
     // console.log("all bussiness");
     this.adminservice.getRestaurants().subscribe(
@@ -52,8 +53,8 @@ export class AssignmentBRComponent implements OnInit {
       }
     )
   }
-  
-  getAllRestaurants(){
+  //obtiene todos los propietarios
+  getAllOwners(){
     let indice = 0;
     // console.log("all restaurants");
     this.adminservice.getUsers().subscribe(
@@ -62,7 +63,7 @@ export class AssignmentBRComponent implements OnInit {
         for(let i = 0; i<response.length; i++){
           if(response[i].is_casero == true){
             // console.log(response[i]);
-            this.restaurantes[indice] =  response[i];
+            this.propietarios[indice] =  response[i];
             indice++;
           }
         }

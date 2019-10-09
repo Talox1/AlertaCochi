@@ -9,6 +9,9 @@ import { ViewAdminComponent } from './components/view-admin/view-admin.component
 import { AssignmentBRComponent } from './components/assignment-br/assignment-br.component';
 import { RegisterPromoComponent } from './components/register-promo/register-promo.component';
 import { ViewRestaurantComponent } from './components/view-restaurant/view-restaurant.component';
+import { ListPromosComponent } from './components/view-restaurant/list-promos/list-promos.component';
+import { NewPromoComponent } from './components/view-restaurant/new-promo/new-promo.component';
+import { ProfileComponent } from './components/view-restaurant/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -40,17 +43,23 @@ const routes: Routes = [
     component: ViewAdminComponent
   },
   {
-    path:'homeRestaurant',
-    component:ViewRestaurantComponent
-  },
-  {
     path: 'assignmentBussinessRestaurant',
     component: AssignmentBRComponent
   },
   {
     path:'registerPromo',
     component:RegisterPromoComponent
-  }
+  },
+  {
+    path:'homeRestaurant',
+    component:ViewRestaurantComponent,
+    children:[
+      {path:'listPromos', component: ListPromosComponent},
+      {path:'newpromo', component: NewPromoComponent},
+      {path:'profile', component: ProfileComponent},
+    ]
+  },
+  // {path:'**',  redirectTo: 'home', pathMatch: 'full'}
 ];
 
 @NgModule({
