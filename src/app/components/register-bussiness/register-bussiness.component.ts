@@ -43,7 +43,7 @@ export class RegisterBussinessComponent implements OnInit {
       restrictions: [''],
       state: ['', [Validators.required] ],
       city: ['', [Validators.required] ],
-      user_id:[],
+      user_id:[localStorage.getItem('id_owner')],
     });
 
     this.estados=['CHIAPAS', 'DURANGO', 'CDMX', 'TABASCO', 'OAXACA', 'TAMAULIPAS', 'MONTERREY', 'PUEBLA', 'GUADALAJARA', 'MORELIA'];

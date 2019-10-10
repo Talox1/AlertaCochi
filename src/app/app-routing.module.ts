@@ -66,9 +66,9 @@ const routes: Routes = [
   },{
     path:'profile',
     component:ProfileComponent
-  }
+  },
   
-  // {path:'**',  redirectTo: 'home', pathMatch: 'full'}
+  {path:'**',  redirectTo: 'home', pathMatch: 'full'}
 ];
 
 @NgModule({

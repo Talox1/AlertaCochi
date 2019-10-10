@@ -31,6 +31,6 @@ export class LoginService {
         'Authorization': 'Bearer ' + localStorage.getItem('token'),
       })
     };
-    return this.http.post(`${this.api}users/login/`, httpOptions);
+    return this.http.post(`${this.api}users/login/`, httpOptions2);
   }
 }

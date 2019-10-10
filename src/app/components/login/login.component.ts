@@ -46,8 +46,8 @@ export class LoginComponent implements OnInit {
       response => {
         
         localStorage.setItem('token', response.token);
-        localStorage.setItem('id_casero',response.id);
-        localStorage.setItem('currentUser','restaurant');
+        localStorage.setItem('id_owner',response.id);
+        localStorage.setItem('currentUser','owner');
         localStorage.setItem('isLoged','true');
 
         this.navbarService.isLoged = true;
