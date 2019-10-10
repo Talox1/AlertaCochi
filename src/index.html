@@ -55,6 +55,21 @@ if ($navbarBurgers.length > 0) {
 });   
 </script>
 
+<script>
+    let bandera = 0;
+    $(document).ready(function(){
+        $(".cerrarMenu").click(function () {
+            if(bandera == 0){
+                $('.navbar-toggle').click();
+                bandera = 1;
+            }else{
+                $('.navbar-toggle').click();
+                bandera = 0;
+            }
+                
+        });
+    });
+</script>
 <!-- <script>
   var geocoder;
   var map;
