@@ -61,7 +61,7 @@ export class AssignmentBRComponent implements OnInit {
       response=>{
         // console.log(response.length)
         for(let i = 0; i<response.length; i++){
-          if(response[i].is_casero == true){
+          if(response[i].is_owner == true){
             // console.log(response[i]);
             this.propietarios[indice] =  response[i];
             indice++;
