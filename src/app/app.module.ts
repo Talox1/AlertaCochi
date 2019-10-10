@@ -50,7 +50,7 @@ import { ProfileComponent } from './components/view-restaurant/profile/profile.c
     ViewRestaurantComponent,
     ListPromosComponent,
     NewPromoComponent,
-    ProfileComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

@@ -51,14 +51,23 @@ const routes: Routes = [
     component:RegisterPromoComponent
   },
   {
-    path:'homeRestaurant',
-    component:ViewRestaurantComponent,
-    children:[
-      {path:'listPromos', component: ListPromosComponent},
-      {path:'newpromo', component: NewPromoComponent},
-      {path:'profile', component: ProfileComponent},
-    ]
-  },
+    path: 'homeRestaurant',
+    component: ViewRestaurantComponent,
+    // children: [{
+    //   path: '',
+    //   loadChildren: './components/view-restaurant/view-restaurant.module#ViewRestaurantModule'
+    // }]
+  },{
+    path:'mypromos',
+    component:ListPromosComponent
+  },{
+    path:'newpromo',
+    component:NewPromoComponent
+  },{
+    path:'profile',
+    component:ProfileComponent
+  }
+  
   // {path:'**',  redirectTo: 'home', pathMatch: 'full'}
 ];
 
