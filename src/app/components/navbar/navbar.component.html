@@ -4,40 +4,40 @@
       <img src="/assets/img/navbar/logonav.jpg" width="120" height="28">
     </a>
 
-    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+    <a #closeBtn role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
     </a>
   </div>
 
-  <div id="navbarBasicExample" class="navbar-menu">
+  <div #navbarCollapse id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
-      <a class="navbar-item" routerLink="/home">
+      <a class="navbar-item" routerLink="/home" (click)="collapseNavbar()">
         Home
       </a>
 
-      <a class="navbar-item" routerLink="home">
+      <a class="navbar-item" routerLink="home" (click)="collapseNavbar()">
         Acerca de
       </a>
 
       <!-- Mostrar si el usuario es un propietario/restaurant -->
       <div *ngIf="wichUser=='restaurant'" class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
+        <a class="navbar-link" (click)="collapseNavbar()">
           Mi cuenta
         </a>
 
         <div class="navbar-dropdown">
           <!-- Arreglar bug routerLink() -->
-          <a class="navbar-item  cerrarMenu "routerLink="mypromos">
+          <a class="navbar-item  cerrarMenu "routerLink="mypromos" (click)="collapseNavbar()">
             Mis promos
           </a>
           <!-- Arreglar bug routerLink() -->
-          <a class="navbar-item cerrarMenu" routerLink="newpromo">
+          <a class="navbar-item cerrarMenu" routerLink="newpromo" (click)="collapseNavbar()">
               Crear nueva promocion
             </a>
             <!-- Arreglar bug routerLink() -->
-          <a class="navbar-item cerrarMenu" routerLink="profile">
+          <a class="navbar-item cerrarMenu" routerLink="profile" (click)="collapseNavbar()">
             Mis datos
           </a>
           <hr class="navbar-divider">
@@ -49,19 +49,19 @@
 
       <!-- Mostrar si el usuario es un admin -->
       <div *ngIf="wichUser=='admin'" class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
+        <a class="navbar-link" (click)="collapseNavbar()">
          Admin
         </a>
 
         <div class="navbar-dropdown">
-          <a class="navbar-item">
+          <a class="navbar-item" (click)="collapseNavbar()">
             Lista de Negocios
           </a>
           
-          <a class="navbar-item">
+          <a class="navbar-item" (click)="collapseNavbar()">
             Lista de Restaurants
           </a>
-          <a class="navbar-item">
+          <a class="navbar-item" (click)="collapseNavbar()">
             Asignaciones
           </a>
         </div>
@@ -69,11 +69,11 @@
 
       <!-- Mostrar si el usuario es un consumidor -->
       <div *ngIf="wichUser=='user'" class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
+        <a class="navbar-link" (click)="collapseNavbar()">
           Mi cuenta
         </a>
 
-        <div class="navbar-dropdown">
+        <div class="navbar-dropdown" (click)="collapseNavbar()">
           <a class="navbar-item">
             Lista de Favoritos
           </a>
@@ -82,20 +82,20 @@
       
       <!-- Mostrar si el usuario es un invitado (default)-->
       <div *ngIf="wichUser=='invited'" class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link" >
+        <a class="navbar-link" (click)="collapseNavbar()">
           Mas
         </a>
 
         <div class="navbar-dropdown">
-          <a class="navbar-item">
+          <a class="navbar-item" (click)="collapseNavbar()">
             Nosotros
           </a>
           
-          <a class="navbar-item">
+          <a class="navbar-item" (click)="collapseNavbar()">
             Contacto
           </a>
           <hr class="navbar-divider">
-          <a class="navbar-item">
+          <a class="navbar-item" (click)="collapseNavbar()">
             Reporta un error
           </a>
         </div>
@@ -108,22 +108,22 @@
       <div class="navbar-item">
 
         <div class="buttons" *ngIf="isloged!=true; else logout">
-          <a id="loginbtn" class="button is-primary " routerLink="/registerRestaurant">
+          <a id="loginbtn" class="button is-primary " routerLink="/registerRestaurant" (click)="collapseNavbar()">
             <strong>Registrate</strong>
           </a>
           
           <div class="navbar-item has-dropdown is-hoverable">
-            <a id="registerbtn" class="navbar-link button is-primary">
+            <a id="registerbtn" class="navbar-link button is-primary" (click)="collapseNavbar()">
               Inicia Sesion
             </a>
             <div class="navbar-dropdown">
-              <a class="navbar-item button log" routerLink="/loginRestaurant">
+              <a class="navbar-item button log" routerLink="/loginRestaurant" (click)="collapseNavbar()">
                 Como Restaurant
               </a>
-              <a class="navbar-item button log">
+              <a class="navbar-item button log " (click)="collapseNavbar()"> 
                 Como Consumidor
               </a>
-              <a class="navbar-item button log" routerLink="/loginAdmin">
+              <a class="navbar-item button log" routerLink="/loginAdmin" (click)="collapseNavbar()">
                   Como Admin
                 </a>
             </div>
@@ -131,7 +131,7 @@
         </div>
         <ng-template #logout>
             <div class="navbar-item has-dropdown is-hoverable">
-                <a id="loginbtn" class=" button" (click)="logOut()">
+                <a id="loginbtn" class=" button" (click)="logOut()" (click)="collapseNavbar()">
                   Cerrar Sesion
                 </a>
               </div>
