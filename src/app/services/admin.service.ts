@@ -61,5 +61,17 @@ export class AdminService {
     return this.http.delete(`${this.api}admin/restaurants/delete/${id}`, httpOptions);
   }
 
+  promotionsRegister(params: any): Observable <any> {
+    return this.http.post(`${this.api}admin/promotions/register`, params , httpOptions);
+  }
+
+  promotionsUpdate(id: any): Observable <any> {
+    return this.http.put(`${this.api}admin/promotions/update/${id}`, httpOptions);
+  }
+
+  promotionsDelete(id: any): Observable <any> {
+    return this.http.put(`${this.api}admin/promotions/delete/${id}`, httpOptions);
+  }
+
 
 }
