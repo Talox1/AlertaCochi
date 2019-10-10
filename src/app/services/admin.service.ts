@@ -25,6 +25,10 @@ export class AdminService {
     return this.http.get(`${this.api}admin/users/show`, httpOptions);
   }
 
+  adminProfile(): Observable<any> {//para que el admin pueda ver sus datos
+    return this.http.get(`${this.api}admin/myProfile/show`, httpOptions);
+  }
+
   usersSearch(name: string): Observable<any> {
     return this.http.get(`${this.api}admin/users/search/${name}`, httpOptions);
   }

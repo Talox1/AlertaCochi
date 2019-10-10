@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 //service 
 import { NavbarService } from '../../services/navbar.service'
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-navbar',
@@ -23,6 +24,7 @@ export class NavbarComponent implements OnInit {
     private router: Router,
     private navbarService: NavbarService,
     private renderer: Renderer2,
+    public loginService: LoginService,
   ) { }
 
   ngOnInit() {
@@ -43,13 +45,23 @@ export class NavbarComponent implements OnInit {
   }
 
   logOut(){
+    this.loginService.logout().subscribe(
+      response => {
+        console.log(response);
+        localStorage.removeItem('token')
+        localStorage.setItem('currentUser','invited')
+        localStorage.setItem('isLoged','false')
+        this.isloged = false;
+        this.ngOnInit();
+        this.router.navigate(['/home']);
+        this.navbarService.isLoged = false;
+      },
+      error => {
+        console.log('status:' + error.status);
+      }
+    );
     
-    localStorage.setItem('currentUser','invited')
-    localStorage.setItem('isLoged','false')
-    this.isloged = false;
-    this.ngOnInit();
-    this.router.navigate(['/home']);
-    this.navbarService.isLoged = false;
+
     // location.reload();
   }
 

@@ -20,6 +20,11 @@ export class OwnerService {
   api: string = API;
   constructor(private http: HttpClient) { }
 
+
+  ownerProfile(): Observable<any> {//para que el owner pueda ver sus datos
+    return this.http.get(`${this.api}owner/myProfile/show`, httpOptions);
+  }
+
   getRestaurants(): Observable <any> {
     return this.http.get(`${this.api}owner/restaurants/show/`, httpOptions);
   }
