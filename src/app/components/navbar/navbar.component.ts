@@ -13,11 +13,11 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class NavbarComponent implements OnInit {
   @ViewChild("navbarCollapse", { static: true }) navbar: ElementRef;//para controlar mostrar y ocultar navbar
-  @ViewChild("closeBtn", { static: true }) btn: ElementRef;//para controlar mostrar y ocultar navbar
+  @ViewChild("closeBtn", { static: true }) btn: ElementRef;//para cambiar el estilo del boton menu
   
   isloged=false;//variable para cambiar los botones de login a logout
-  wichUser='invited'; //variabe para controlar las opciones del navbar
-
+  currentUser='invited'; //variabe para controlar las opciones del navbar
+  status:boolean ;
   
 
   constructor(
@@ -29,39 +29,53 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
 
-    this.wichUser = localStorage.getItem('currentUser');
-    
-    console.log(this.wichUser);
-    if(localStorage.getItem('isLoged') == 'true' && this.wichUser == 'admin'){
-      this.isloged = true;
-    }else if(localStorage.getItem('isLoged') == 'true' && this.wichUser == 'restaurant'){
-      this.isloged = true;
+    console.log(localStorage.getItem('token'))
+    if(localStorage.getItem('token') == null){
+      this.isloged = false
     }else{
-      this.router.navigate(['/home']);
+      this.isloged = true;
     }
-    this.navbarService.change.subscribe(isLoged => {
+    
+    if(this.currentUser != 'invited' && this.currentUser != undefined){
+      this.isloged = true;
+    }else{  
+      this.isloged = false;
+    }
+
+    //para renderizar el navbar
+    this.navbarService.change.subscribe(response => {
+      console.log('renderizando', response);
+      this.currentUser = this.navbarService.getCurrentUser();
+      console.log(this.currentUser);
+      console.log(this.status)
       this.ngOnInit();
     });
+    
   }
 
   logOut(){
-    this.loginService.logout().subscribe(
-      response => {
-        console.log(response);
-        localStorage.removeItem('token')
-        localStorage.setItem('currentUser','invited')
-        localStorage.setItem('isLoged','false')
-        this.isloged = false;
-        this.ngOnInit();
-        this.router.navigate(['/home']);
-        this.navbarService.isLoged = false;
-      },
-      error => {
-        console.log('status:' + error.status);
-      }
-    );
+    // this.loginService.logout().subscribe(
+    //   response => {
+      // console.log(response);
+        
+    //   },
+    //   error => {
+    //     console.log('status:' + error.status);
+    //   }
+    // );
     
-
+    
+    localStorage.removeItem('token')
+    localStorage.removeItem('id_owner')
+    // localStorage.setItem('currentUser','invited')
+    // localStorage.setItem('isLoged','false')
+    
+    this.navbarService.toggle('invited');
+    // this.isloged = this.navbarService.isLoged();
+    // console.log(this.isloged);
+    
+    this.router.navigate(['/home']);
+    this.ngOnInit();
     // location.reload();
   }
 

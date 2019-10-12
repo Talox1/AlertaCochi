@@ -51,7 +51,7 @@ const routes: Routes = [
     component:RegisterPromoComponent
   },
   {
-    path: 'homeRestaurant',
+    path: 'homeRestaurant/:id',
     component: ViewRestaurantComponent,
     // children: [{
     //   path: '',

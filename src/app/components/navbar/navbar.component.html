@@ -22,7 +22,7 @@
       </a>
 
       <!-- Mostrar si el usuario es un propietario/restaurant -->
-      <div *ngIf="wichUser=='restaurant'" class="navbar-item has-dropdown is-hoverable">
+      <div *ngIf="currentUser=='owner'" class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link" (click)="collapseNavbar()">
           Mi cuenta
         </a>
@@ -48,7 +48,7 @@
       </div>
 
       <!-- Mostrar si el usuario es un admin -->
-      <div *ngIf="wichUser=='admin'" class="navbar-item has-dropdown is-hoverable">
+      <div *ngIf="currentUser=='admin'" class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link" (click)="collapseNavbar()">
          Admin
         </a>
@@ -68,7 +68,7 @@
       </div>
 
       <!-- Mostrar si el usuario es un consumidor -->
-      <div *ngIf="wichUser=='user'" class="navbar-item has-dropdown is-hoverable">
+      <div *ngIf="currentUser=='user'" class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link" (click)="collapseNavbar()">
           Mi cuenta
         </a>
@@ -81,7 +81,7 @@
       </div>
       
       <!-- Mostrar si el usuario es un invitado (default)-->
-      <div *ngIf="wichUser=='invited'" class="navbar-item has-dropdown is-hoverable">
+      <div *ngIf="currentUser=='invited'" class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link" (click)="collapseNavbar()">
           Mas
         </a>
@@ -107,7 +107,7 @@
     <div class="navbar-end">
       <div class="navbar-item">
 
-        <div class="buttons" *ngIf="isloged!=true; else logout">
+        <div class="buttons" *ngIf="!isloged; else logout">
           <a id="loginbtn" class="button is-primary " routerLink="/registerRestaurant" (click)="collapseNavbar()">
             <strong>Registrate</strong>
           </a>

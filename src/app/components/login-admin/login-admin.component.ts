@@ -36,27 +36,13 @@ export class LoginAdminComponent implements OnInit {
  
 
   login(){
-   
-    // console.log(this.loginForm.value);
-    //localStorage.setItem('currentUser','admin');
-    // console.log(localStorage.getItem('currentUser'));
-    //localStorage.setItem('isLoged', 'true')
-    
     this.loginService.login(this.loginForm.value).subscribe(
       // tslint:disable-next-line: no-unused-expression
       response => {
         console.log(response);
         localStorage.setItem('token', response.token);
-        // localStorage.setItem('is_consumer',response.is_consumer);
-        // localStorage.setItem('is_casero',response.is_casero);
         this.router.navigate(['/homeAdmin']);
-        localStorage.setItem('currentUser','admin');
-        // console.log(localStorage.getItem('currentUser'));
-        localStorage.setItem('isLoged', 'true')
-        this.navbarService.currentUser = 'admin';
-        this.navbarService.isLoged = true;
-        this.navbarService.toggle();
-        
+        this.navbarService.toggle('admin');
       },
       error => {
         console.log('status:' + error.status);

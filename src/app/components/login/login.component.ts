@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
 
   email:string;
   password:string;
-  
+  id_owner;
   loginForm: FormGroup;
 
   constructor(
@@ -43,15 +43,16 @@ export class LoginComponent implements OnInit {
     console.log(this.loginForm.value);
     this.loginService.login(this.loginForm.value).subscribe(
       // tslint:disable-next-line: no-unused-expression
+
       response => {
-        
+        console.log(response)
         localStorage.setItem('token', response.token);
         localStorage.setItem('id_owner',response.id);
-        localStorage.setItem('currentUser','owner');
+        // localStorage.setItem('currentUser','owner');
         localStorage.setItem('isLoged','true');
 
-        this.navbarService.isLoged = true;
-        this.navbarService.toggle();//cambia el valor booleano para que el navbar se renderize
+        
+        this.navbarService.toggle('owner');//cambia el valor booleano para que el navbar se renderize
         this.router.navigate(['/homeRestaurant']);
       },
       error => {
