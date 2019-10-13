@@ -13,19 +13,27 @@ export class NewPromoComponent implements OnInit {
   estados;
   ciudades;
   days;
-  id_owner;
+  id_restaurant;
   registerForm: FormGroup;
   houseservice = true;
+  restaurants: any [];
 
-  constructor(public fb: FormBuilder, public ownerService: OwnerService, private router: Router,private route: ActivatedRoute) { 
-    this.estados=['CHIAPAS', 'DURANGO', 'CDMX', 'TABASCO', 'OAXACA', 'TAMAULIPAS', 'MONTERREY', 'PUEBLA', 'GUADALAJARA', 'MORELIA'];
-    this.ciudades=["Tuxtla", "DF", "VILLA HERMOSA", "OAXACA", "SALTILLO", "PUEBLA", "MICHOACAN"];
-    this.days =["Lunes","Martes","Miercoles","Juevez","Viernes","Sabado","Domingo"];
+  constructor(private fb: FormBuilder, 
+    private ownerService: OwnerService, 
+    private router: Router, 
+    private route: ActivatedRoute,
+    ) { 
+      this.id_restaurant = this.route.snapshot.paramMap.get('id');  
   }
 
   ngOnInit() {
+    this.estados=['CHIAPAS', 'DURANGO', 'CDMX', 'TABASCO', 'OAXACA', 'TAMAULIPAS', 'MONTERREY', 'PUEBLA', 'GUADALAJARA', 'MORELIA'];
+    this.ciudades=["Tuxtla", "DF", "VILLA HERMOSA", "OAXACA", "SALTILLO", "PUEBLA", "MICHOACAN"];
+    this.days =["Lunes","Martes","Miercoles","Juevez","Viernes","Sabado","Domingo"];
+
+
     this.registerForm = this.fb.group({
-      restaurant_id:[localStorage.getItem('id_restaurant')],
+      restaurant_id:[this.id_restaurant],
       name: ['', [Validators.required]],
       discount: ['', [Validators.required]],
       numberReports: ['0'],
@@ -38,11 +46,11 @@ export class NewPromoComponent implements OnInit {
 
      
     });
-    this.route.params.subscribe(params => {
-      if (params['id'] != null) {
-          this.id_owner = +params['id'];
-      }
-    });
+    // this.route.params.subscribe(params => {
+    //   if (params['id'] != null) {
+    //       this.id_owner = +params['id'];
+    //   }
+    // });
   }
 
   onUploadFinish(event) {

@@ -23,21 +23,21 @@
 
       <!-- Mostrar si el usuario es un propietario/restaurant -->
       <div *ngIf="currentUser=='owner'" class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link" (click)="collapseNavbar()">
+        <a class="navbar-link" (click)="collapseNavbar()" routerLink="/homeRestaurant">
           Mi cuenta
         </a>
 
         <div class="navbar-dropdown">
           <!-- Arreglar bug routerLink() -->
-          <a class="navbar-item  cerrarMenu "routerLink="mypromos" (click)="collapseNavbar()">
+          <a class="navbar-item  cerrarMenu "[routerLink]="['/mypromos', userData.id]" (click)="collapseNavbar()">
             Mis promos
           </a>
-          <!-- Arreglar bug routerLink() -->
-          <a class="navbar-item cerrarMenu" routerLink="newpromo" (click)="collapseNavbar()">
+          <!-- Arreglar bug [routerLink]() -->
+          <a class="navbar-item cerrarMenu" [routerLink]="['/newpromo', userData.id]" (click)="collapseNavbar()">
               Crear nueva promocion
             </a>
-            <!-- Arreglar bug routerLink() -->
-          <a class="navbar-item cerrarMenu" routerLink="profile" (click)="collapseNavbar()">
+            <!-- Arreglar bug [routerLink]() -->
+          <a class="navbar-item cerrarMenu" [routerLink]="['/profile', userData.id]" (click)="collapseNavbar()">
             Mis datos
           </a>
           <hr class="navbar-divider">

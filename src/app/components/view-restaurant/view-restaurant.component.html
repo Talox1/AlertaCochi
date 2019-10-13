@@ -1,30 +1,43 @@
 
-  <div class="container">
-      <div class="notification">
+<div class="container">
+  <div class="columns">
+    <h1 class="title">Mis restaurants</h1>
+  </div>
+  <div class="columns is-mobile">
+    <div class="column is-full-mobile is-half-tablet is-two-fifths
+      is-two-fifths-widescreen is-two-fifths-fullhd" style="background-color:
+      red;">
+      <div class="notification" *ngFor="let restaurant of restaurants">
           <div class="card">
               <header class="card-header">
-                <p class="card-header-title">
-                  Promo
-                </p>
-                <a href="#" class="card-header-icon" aria-label="more options">
-                  <span class="icon">
-                    <i class="fas fa-angle-down" aria-hidden="true"></i>
-                  </span>
-                </a>
+                 <p class="card-header-title">
+                    Nombre del restaurante: {{restaurant.name}}
+                 </p>
+                 
               </header>
               <div class="card-content">
-                <div class="content">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                  <a href="#">@bulmaio</a>. <a href="#">#css</a> <a href="#">#responsive</a>
-                  <br>
-                  <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-                </div>
+                 <div class="content">
+                    <div class="columns is-desktop">
+                       <div class="column">Estado: {{restaurant.state}}</div>
+                       <div class="column">Ciudad: {{restaurant.city}}</div>
+                       <div class="column">Servicio a domicilio: {{restaurant.homeService}} </div>
+                       <div class="column">Email {{restaurant.email}} </div>
+                    </div>
+                    
+                    
+                   
+                 </div>
               </div>
               <footer class="card-footer">
-                <a class="card-footer-item">Save</a>
-                <a class="card-footer-item">Edit</a>
-                <a class="card-footer-item">Delete</a>
+                 
+                 <a class="card-footer-item">Edit</a>
+                 <a class="card-footer-item">Delete</a>
+                 <a class="card-footer-item" [routerLink]="['/restaurantpromo',restaurant.id] ">Promotions</a>
+                 <a class="card-footer-item" [routerLink]="['/newpromo',restaurant.id] ">New Promo</a>
+                 
               </footer>
-            </div>
+           </div>
       </div>
     </div>
+
+  </div>

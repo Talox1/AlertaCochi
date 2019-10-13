@@ -32,6 +32,7 @@ import { ViewRestaurantComponent } from './components/view-restaurant/view-resta
 import { ListPromosComponent } from './components/view-restaurant/list-promos/list-promos.component';
 import { NewPromoComponent } from './components/view-restaurant/new-promo/new-promo.component';
 import { ProfileComponent } from './components/view-restaurant/profile/profile.component';
+import { RestauratPromotionsComponent } from './components/view-restaurant/restaurat-promotions/restaurat-promotions.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { ProfileComponent } from './components/view-restaurant/profile/profile.c
     ViewRestaurantComponent,
     ListPromosComponent,
     NewPromoComponent,
-    ProfileComponent
+    ProfileComponent,
+    RestauratPromotionsComponent
   ],
   imports: [
     BrowserModule,

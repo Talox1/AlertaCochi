@@ -1,0 +1,31 @@
+
+<div class="container">
+      <div class="notification" *ngFor="let promo of promotions">
+         <div class="card">
+            <header class="card-header">
+               <p class="card-header-title">
+                  Nombre de la promocion: {{promo.name}}
+               </p>
+               
+            </header>
+            <div class="card-content">
+               <div class="content">
+                  <div class="columns is-desktop">
+                     <div class="column">Descuento {{promo.discount}} %</div>
+                     <div class="column">Restricciones: {{promo.restriction}} </div>
+                     <div class="column">Servicio a domicilio: {{promo.likes}} </div>
+                     <div class="column"><time datetime="2019-1-1">Dia disponible: <strong>{{promo.availableDay}}</strong> {{promo.date}} {{promo.month}} 2019 </time> </div>
+                  </div>
+                  
+                  
+                 
+               </div>
+            </div>
+            <footer class="card-footer">
+               
+               <a class="card-footer-item">Edit</a>
+               <a class="card-footer-item">Delete</a>
+            </footer>
+         </div>
+      </div>
+   </div>

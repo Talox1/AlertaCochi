@@ -48,25 +48,17 @@ export class LoginComponent implements OnInit {
         console.log(response)
         localStorage.setItem('token', response.token);
         localStorage.setItem('id_owner',response.id);
-        // localStorage.setItem('currentUser','owner');
-        localStorage.setItem('isLoged','true');
-
-        
         this.navbarService.toggle('owner');//cambia el valor booleano para que el navbar se renderize
         this.router.navigate(['/homeRestaurant']);
       },
       error => {
         console.log('status:' + error.status);
         if (error.status == 401){
-          //alert("Correo o contraseña inválidos");
+          
           document.getElementById('error').innerHTML = 'Correo o contraseña inválidos';
           document.getElementById('error').className = 'notification is-danger';
         }
       }
     );
-    
-    // location.reload();
-    //this.router.navigate(['/homeRestaurant']);
-      
   }
 }

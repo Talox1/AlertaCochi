@@ -12,6 +12,7 @@ import { ViewRestaurantComponent } from './components/view-restaurant/view-resta
 import { ListPromosComponent } from './components/view-restaurant/list-promos/list-promos.component';
 import { NewPromoComponent } from './components/view-restaurant/new-promo/new-promo.component';
 import { ProfileComponent } from './components/view-restaurant/profile/profile.component';
+import { RestauratPromotionsComponent } from './components/view-restaurant/restaurat-promotions/restaurat-promotions.component';
 
 const routes: Routes = [
   {
@@ -51,21 +52,24 @@ const routes: Routes = [
     component:RegisterPromoComponent
   },
   {
-    path: 'homeRestaurant/:id',
+    path: 'homeRestaurant',
     component: ViewRestaurantComponent,
     // children: [{
     //   path: '',
     //   loadChildren: './components/view-restaurant/view-restaurant.module#ViewRestaurantModule'
     // }]
   },{
-    path:'mypromos',
+    path:'mypromos/:id',
     component:ListPromosComponent
   },{
-    path:'newpromo',
+    path:'newpromo/:id',
     component:NewPromoComponent
   },{
-    path:'profile',
+    path:'profile/:id',
     component:ProfileComponent
+  },{
+    path:'restaurantpromo/:id',
+    component:RestauratPromotionsComponent
   },
   
   {path:'**',  redirectTo: 'home', pathMatch: 'full'}

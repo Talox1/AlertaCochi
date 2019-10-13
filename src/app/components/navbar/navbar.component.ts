@@ -5,6 +5,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 //service 
 import { NavbarService } from '../../services/navbar.service'
 import { LoginService } from 'src/app/services/login.service';
+import { OwnerService } from 'src/app/services/owner.service';
+import { identifierModuleUrl } from '@angular/compiler';
 
 @Component({
   selector: 'app-navbar',
@@ -17,66 +19,57 @@ export class NavbarComponent implements OnInit {
   
   isloged=false;//variable para cambiar los botones de login a logout
   currentUser='invited'; //variabe para controlar las opciones del navbar
-  status:boolean ;
+  userData; //datos del usuario que esta logueado
   
 
   constructor(
     private router: Router,
     private navbarService: NavbarService,
     private renderer: Renderer2,
-    public loginService: LoginService,
-  ) { }
+    private ownerService: OwnerService
+    
+  ) {
+    
+    this.ownerService.ownerProfile().subscribe(
+      response =>{
+        this.userData = response;
+        if(this.userData.is_owner == true){
+          this.currentUser = 'owner'
+        }else if(this.userData.is_admin == true){
+          this.currentUser = 'admin'
+        }else if(this.userData.is_consumer == true){
+          this.currentUser = 'user'
+        }else{
+          this.currentUser = 'invited'
+        }
+        console.log('response',response);
+      },
+      error => {
+        console.log('no esta logueado')
+      }
+    )
+   }
 
   ngOnInit() {
-
-    console.log(localStorage.getItem('token'))
+    //para renderizar el navbar
+    this.navbarService.change.subscribe(response => {
+      this.currentUser = this.navbarService.getCurrentUser();
+      this.ngOnInit();
+    });
     if(localStorage.getItem('token') == null){
       this.isloged = false
     }else{
       this.isloged = true;
     }
-    
-    if(this.currentUser != 'invited' && this.currentUser != undefined){
-      this.isloged = true;
-    }else{  
-      this.isloged = false;
-    }
-
-    //para renderizar el navbar
-    this.navbarService.change.subscribe(response => {
-      console.log('renderizando', response);
-      this.currentUser = this.navbarService.getCurrentUser();
-      console.log(this.currentUser);
-      console.log(this.status)
-      this.ngOnInit();
-    });
-    
   }
-
   logOut(){
-    // this.loginService.logout().subscribe(
-    //   response => {
-      // console.log(response);
-        
-    //   },
-    //   error => {
-    //     console.log('status:' + error.status);
-    //   }
-    // );
-    
     
     localStorage.removeItem('token')
     localStorage.removeItem('id_owner')
-    // localStorage.setItem('currentUser','invited')
-    // localStorage.setItem('isLoged','false')
-    
     this.navbarService.toggle('invited');
-    // this.isloged = this.navbarService.isLoged();
-    // console.log(this.isloged);
     
     this.router.navigate(['/home']);
     this.ngOnInit();
-    // location.reload();
   }
 
   //metodo para cerrar el navbar
