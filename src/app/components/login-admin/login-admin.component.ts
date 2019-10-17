@@ -42,7 +42,7 @@ export class LoginAdminComponent implements OnInit {
         console.log(response);
         localStorage.setItem('token', response.token);
         this.router.navigate(['/homeAdmin']);
-        this.navbarService.toggle('admin');
+        this.navbarService.toggle();
       },
       error => {
         console.log('status:' + error.status);

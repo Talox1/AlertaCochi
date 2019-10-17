@@ -24,6 +24,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { AppPasswordDirective } from './app-password.directive';
 import { RegisterPromoComponent } from './components/register-promo/register-promo.component';
 
+//Toaster
+import { ToastrModule } from 'ngx-toastr';
+
 //image library
 import { ImageUploadModule } from 'angular2-image-upload';
 
@@ -61,7 +64,7 @@ import { RestauratPromotionsComponent } from './components/view-restaurant/resta
     ReactiveFormsModule,
     HttpClientModule,
     ImageUploadModule.forRoot(),
-    
+    ToastrModule.forRoot(),
     BrowserAnimationsModule
     // NgbModule
   ],

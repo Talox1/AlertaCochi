@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
         console.log(response)
         localStorage.setItem('token', response.token);
         localStorage.setItem('id_owner',response.id);
-        this.navbarService.toggle('owner');//cambia el valor booleano para que el navbar se renderize
+        // this.navbarService.toggle('owner');//cambia el valor booleano para que el navbar se renderize
         this.router.navigate(['/homeRestaurant']);
       },
       error => {

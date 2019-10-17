@@ -1,31 +1,288 @@
 
 <div class="container">
-      <div class="notification" *ngFor="let promo of promotions">
-         <div class="card">
-            <header class="card-header">
-               <p class="card-header-title">
-                  Nombre de la promocion: {{promo.name}}
-               </p>
-               
-            </header>
-            <div class="card-content">
-               <div class="content">
-                  <div class="columns is-desktop">
-                     <div class="column">Descuento {{promo.discount}} %</div>
-                     <div class="column">Restricciones: {{promo.restriction}} </div>
-                     <div class="column">Servicio a domicilio: {{promo.likes}} </div>
-                     <div class="column"><time datetime="2019-1-1">Dia disponible: <strong>{{promo.availableDay}}</strong> {{promo.date}} {{promo.month}} 2019 </time> </div>
+   <div class="notification" *ngFor="let promo of promotions">
+      <div class="card">
+         <header class="card-header">
+            <p class="card-header-title">
+               Nombre de la promocion: {{promo.name}}
+            </p>
+
+         </header>
+         <div class="card-content">
+            <div class="content">
+               <div class="columns is-desktop">
+                  <div class="column">Descuento {{promo.discount}} %</div>
+                  <div class="column">Restricciones: {{promo.restriction}}
                   </div>
-                  
-                  
-                 
+                  <div class="column">Servicio a domicilio: {{promo.likes}}
+                  </div>
+                  <div class="column"><time datetime="2019-1-1">Dia disponible:
+                        <strong>{{promo.availableDay}}</strong> {{promo.date}}
+                        {{promo.month}} 2019 </time> </div>
                </div>
+
+
+
             </div>
-            <footer class="card-footer">
-               
-               <a class="card-footer-item">Edit</a>
-               <a class="card-footer-item">Delete</a>
-            </footer>
          </div>
+         <footer class="card-footer">
+
+            <a class="card-footer-item" (click)="openModalEdit(this.promo)">Edit</a>
+            <a class="card-footer-item" (click)="openModal(promo.id)">Delete</a>
+         </footer>
       </div>
    </div>
+
+   <div #modal class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+         <header class="modal-card-head">
+            <p class="modal-card-title">Confirmar</p>
+            <button class="delete" aria-label="close" (click)="closeModal()"></button>
+         </header>
+         <section class="modal-card-body">
+            <h2>Desea eliminar este elemento, esta accion no se puede regresar</h2>
+         </section>
+         <footer class="modal-card-foot">
+            <button class="button is-success" (click)="delete()">Eliminar</button>
+            <button class="button" (click)="closeModal()">Cancelar</button>
+         </footer>
+      </div>
+   </div>
+
+   <div #editPromoModal class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+         <header class="modal-card-head">
+            <p class="modal-card-title">Editar Promocion</p>
+            <button class="delete" aria-label="close" (click)="closeModal()"></button>
+         </header>
+         <section class="modal-card-body">
+            <div class="container" id="col1">
+               <form [formGroup]="editForm" (ngSubmit)="update()">
+                  <!-- Name -->
+                  <div class="field is-horizontal">
+                     <div class="field-label is-normal">
+                        <label class="label">Nombre de la promocion</label>
+                     </div>
+                     <div class="field-body">
+                        <div class="field">
+                           <p class="control is-expanded has-icons-left">
+                              <input class="input" type="text"
+                                 placeholder="Nombre del negocio"
+                                 formControlName="name" 
+                                >
+                              <span class="icon is-small is-left">
+                                 <i class="fa fa-briefcase"></i>
+                              </span>
+                           </p>
+                        </div>
+                        <!-- <div *ngIf="registerForm.get('name').errors &&
+                           registerForm.get('name').dirty">
+                           <p
+                              *ngIf="registerForm.get('name').hasError('required')">Este
+                              campo debe ser obligatorio</p>
+                        </div> -->
+                     </div>
+                  </div>
+
+                  <!-- Descuento -->
+                  <div class="field is-horizontal">
+                     <div class="field-label is-normal">
+                        <label class="label">Descuento</label>
+                     </div>
+                     <div class="field-body">
+                        <div class="field">
+                           <p class="control is-expanded has-icons-left">
+                              <input class="input" type="text" placeholder="%
+                                 desc." >
+                              <span class="icon is-small is-left">
+                                 <i class="fas fa-dollar-sign"></i>
+                              </span>
+                           </p>
+                        </div>
+                        <!-- <div *ngIf="registerForm.get('name').errors &&
+                           registerForm.get('name').dirty">
+                           <p
+                              *ngIf="registerForm.get('name').hasError('required')">Este
+                              campo debe ser obligatorio</p>
+                        </div> -->
+                     </div>
+                  </div>
+
+                  <!-- Estado -->
+                  <!-- <div class="field is-horizontal">
+                     <div class="field-label is-normal">
+                       <label class="label">Estado</label>
+                     </div>
+                     <div class="field-body">
+                       <div class="field is-narrow">
+                         <div class="control">
+                           <div class="select is-fullwidth">
+                             <select formControlName="estado" >
+                                 <option value="0" >Selecciona una opción</option>
+                                 <option *ngFor="let estado of estados" >
+                                   {{estado}}
+                                 </option>
+                             </select>
+                             
+                           </div>
+                         </div>
+                       </div>
+                     </div>
+                   </div> -->
+                  <!-- Ciudad -->
+                  <!-- <div class="field is-horizontal">
+                     <div class="field-label is-normal">
+                       <label class="label">Ciudad</label>
+                     </div>
+                     <div class="field-body">
+                       <div class="field is-narrow">
+                         <div class="control">
+                           <div class="select is-fullwidth">
+                             <select formControlName="ciudad">
+                                 <option value="0">Selecciona una opción</option>
+                                 <option *ngFor="let ciudad of ciudades">
+                                   {{ciudad}}
+                                 </option>
+                             </select>
+                             
+                           </div>
+                         </div>
+                       </div>
+                     </div>
+                   </div> -->
+                  <!-- Servicio a domcilio -->
+                  <!-- <div class="field is-horizontal">
+                     <div class="field-label">
+                       <label class="label">Servicio a domicilio</label>
+                     </div>
+                     <div class="field-body">
+                       <div class="field is-narrow">
+                           <label class="switch">
+                             <input type="checkbox" name="houseservice" formControlName="houseservice" (click)="setservice()">
+                             <div class="slider round"></div>
+                           </label>
+                       </div>
+                     </div>
+                   </div> -->
+                  <!-- PROMO DAYS -->
+                  <div class="field is-horizontal">
+                     <div class="field-label is-normal">
+                        <label class="label">Caducidad:</label>
+                     </div>
+                     <div class="field-label is-normal">
+                        <label class="label">Inicio</label>
+                     </div>
+                     <div class="field-body">
+                        <div class="field">
+                           <p class="control is-expanded has-icons-left">
+                              <input type="date">
+                           </p>
+                        </div>
+                     </div>
+                     <div class="field-label is-normal">
+                        <label class="label">Fin</label>
+                     </div>
+                     <div class="field-body">
+                        <div class="field">
+                           <p class="control is-expanded has-icons-left">
+                              <input type="date">
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+
+                  <!-- ESPECIFIC PROMO DAY -->
+                  <div class="field is-horizontal">
+                     <div class="field-label is-normal">
+                        <label class="label">Promocion valida para el dia</label>
+                     </div>
+                     <div class="field-body">
+                        <div class="field is-narrow">
+                           <div class="control">
+                              <div class="select is-fullwidth">
+                                 <select >
+                                    <option value="0">Selecciona una opción</option>
+                                    <option *ngFor="let day of days">
+                                       {{day}}
+                                    </option>
+                                 </select>
+
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <!-- Image and restriccions column -->
+                  <div class="columns">
+                     <div id="xddd" class="column is-two-fifths is-desktop">
+                        <div class="round-button">
+
+                           <image-upload
+                              (uploadFinished)="onUploadFinish($event)">
+                           </image-upload>
+
+                        </div>
+                     </div>
+
+                     <!-- Restriccions column -->
+                     <div class="column is-four-fifths- is-four-fifths-
+                        is-four-fifths- is-one-fifth- is-one-third-">
+                        <form (ngSubmit)="test()"
+                           novalidate>
+                           <div class="field is-horizontal">
+                              <div class="field-label is-normal">
+                                 <label class="label">Restricciones</label>
+                              </div>
+                              <div class="field-body">
+                                 <div class="field">
+                                    <div class="control">
+                                       <textarea class="textarea"
+                                          placeholder="Menciona algunas
+                                          restricciones para el consumidor"></textarea>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </form>
+
+                     </div>
+                  </div>
+
+                  <!-- Button done -->
+                  <div class="field is-horizontal">
+                     <div class="field-body">
+                        <div class="field is-grouped is-grouped-centered">
+                           <div class="control">
+                              <!-- <button type="submit"
+                                 [disabled]="registerForm.invalid" class="button
+                                 is-primary btn">
+                                 <span class="icon is-small">
+
+                                 </span>
+
+                              </button>
+                              <button class="button is-danger btn"
+                                 routerLink="/homeRestaurant">
+                                 <span class="icon is-small">
+
+                                 </span>
+
+                              </button> -->
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </form>
+            </div>
+         </section>
+         <footer class="modal-card-foot">
+
+            <button class="button" (click)="closeModal()"> <i class="fas
+                  fa-check"></i>Actualizar</button>
+            <button class="button" (click)="closeModal()"><i class="fas fa-ban"></i>Cancelar</button>
+         </footer>
+      </div>
+   </div>
+</div>

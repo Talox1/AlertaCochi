@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewChild, ElementRef,Renderer2 } from '@angular/core'
+import { ViewChild, ElementRef, Renderer2 } from '@angular/core'
 import { Router, ActivatedRoute } from '@angular/router';
 
 //service 
@@ -7,6 +7,7 @@ import { NavbarService } from '../../services/navbar.service'
 import { LoginService } from 'src/app/services/login.service';
 import { OwnerService } from 'src/app/services/owner.service';
 import { identifierModuleUrl } from '@angular/compiler';
+import { AdminService } from '../../services/admin.service';
 
 @Component({
   selector: 'app-navbar',
@@ -16,64 +17,63 @@ import { identifierModuleUrl } from '@angular/compiler';
 export class NavbarComponent implements OnInit {
   @ViewChild("navbarCollapse", { static: true }) navbar: ElementRef;//para controlar mostrar y ocultar navbar
   @ViewChild("closeBtn", { static: true }) btn: ElementRef;//para cambiar el estilo del boton menu
-  
-  isloged=false;//variable para cambiar los botones de login a logout
-  currentUser='invited'; //variabe para controlar las opciones del navbar
+
+  isloged = false;//variable para cambiar los botones de login a logout
+  currentUser = 'invited'; //variabe para controlar las opciones del navbar
   userData; //datos del usuario que esta logueado
-  
+
 
   constructor(
     private router: Router,
     private navbarService: NavbarService,
     private renderer: Renderer2,
-    private ownerService: OwnerService
-    
+    private ownerService: OwnerService,
+    private adminService: AdminService
+
   ) {
-    
-    this.ownerService.ownerProfile().subscribe(
-      response =>{
-        this.userData = response;
-        if(this.userData.is_owner == true){
-          this.currentUser = 'owner'
-        }else if(this.userData.is_admin == true){
-          this.currentUser = 'admin'
-        }else if(this.userData.is_consumer == true){
-          this.currentUser = 'user'
-        }else{
-          this.currentUser = 'invited'
+    console.log('Construnctor');
+    if(!this.isloged){
+      console.log('intentadno logearse')
+      this.ownerService.ownerProfile().subscribe(
+        response => {
+          this.userData = response.is_owner;
+          this.isloged = true;
+          this.currentUser = 'owner';
         }
-        console.log('response',response);
-      },
-      error => {
-        console.log('no esta logueado')
-      }
-    )
-   }
+      )
+  
+       this.adminService.adminProfile().subscribe(
+        response =>{
+          this.userData = response.is_admin;
+          this.isloged = true;
+          this.currentUser = 'admin';
+          console.log(this,this.isloged, this.currentUser )
+        }
+       )
+    }
+  }
 
   ngOnInit() {
-    //para renderizar el navbar
     this.navbarService.change.subscribe(response => {
+      console.log(response)
       this.currentUser = this.navbarService.getCurrentUser();
       this.ngOnInit();
     });
-    if(localStorage.getItem('token') == null){
-      this.isloged = false
-    }else{
-      this.isloged = true;
-    }
+
   }
-  logOut(){
-    
+  logOut() {
+
     localStorage.removeItem('token')
     localStorage.removeItem('id_owner')
-    this.navbarService.toggle('invited');
-    
+    this.navbarService.toggle();
+    this.isloged = false;
+    this.currentUser = 'invited'
     this.router.navigate(['/home']);
     this.ngOnInit();
   }
 
   //metodo para cerrar el navbar
-  collapseNavbar(){
+  collapseNavbar() {
     this.renderer.removeClass(this.navbar.nativeElement, 'is-active');
     this.renderer.removeClass(this.btn.nativeElement, 'is-active');
   }

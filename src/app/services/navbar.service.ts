@@ -3,18 +3,18 @@ import { Injectable,  Output, EventEmitter  } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
+
 export class NavbarService {
-  
-  private currentUser:string;
-  private isloged = false;
+
+  currentUser:string;
+  isloged = false;
 
   @Output() change: EventEmitter<boolean> = new EventEmitter();
   @Output() change2: EventEmitter<string> = new EventEmitter();
-  
 
-  toggle(currentUser:string) {
+  toggle() {
     this.isloged = !this.isloged;
-    this.currentUser = currentUser;
+    console.log(this.isLoged);
     this.change.emit(this.isloged);
   }
   isLoged(){
@@ -23,5 +23,5 @@ export class NavbarService {
   getCurrentUser(){
     return this.currentUser;
   }
-  constructor() { }
+  constructor(){}
 }

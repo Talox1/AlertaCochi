@@ -59,6 +59,6 @@ export class OwnerService {
   }
 
   promotionsDelete(id: any): Observable <any> {
-    return this.http.put(`${this.api}owner/promotions/delete/${id}`, httpOptions);
+    return this.http.delete(`${this.api}owner/promotions/delete/${id}`, httpOptions);
   }
 }

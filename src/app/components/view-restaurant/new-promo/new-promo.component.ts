@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, } from '@angular/forms';
 import { OwnerService } from 'src/app/services/owner.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Promotion } from 'src/app/models/promotion/promotion';
 
 @Component({
   selector: 'app-new-promo',
@@ -9,7 +10,8 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./new-promo.component.css']
 })
 export class NewPromoComponent implements OnInit {
-
+  promo:Promotion;
+  img:File;
   estados;
   ciudades;
   days;
@@ -42,8 +44,8 @@ export class NewPromoComponent implements OnInit {
       // estado: ['', [Validators.required] ],
       // ciudad: ['', [Validators.required] ],
       availableDay: ['', [Validators.required] ],
-      restriction: ['', [Validators.required] ],
-
+      restriction: ['', [Validators.required] ],  
+      // image:[File, [Validators.required]],
      
     });
     // this.route.params.subscribe(params => {
@@ -53,14 +55,17 @@ export class NewPromoComponent implements OnInit {
     // });
   }
 
-  onUploadFinish(event) {
-    console.log(event);
+  onUploadFinish(file) {
+    this.img = file;
+    // console.log(file);
    }
   setservice(){
   console.log(this.registerForm.value)
   }
   registarPromo(){
-    console.log(this.registerForm.value);
+    this.promo = this.registerForm.value;
+    this.promo.image = this.img[0].file;
+    console.log(this.promo);
     this.ownerService.promotionsRegister(this.registerForm.value).subscribe(
       response =>{
         console.log(response);
