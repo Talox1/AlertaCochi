@@ -9,9 +9,9 @@
                         <div class="select is-info">
                             <select>
                                 <option selected>Estados</option>
-                                <option>Aguascalientes</option>
-                                <option>Chiapas</option>
-                                <option>Puebla</option>
+                                <option *ngFor="let estado of estados">
+                                    {{estado}}
+                                </option>
                             </select>
                         </div>
                         <div class="icon is-small is-left">
@@ -25,18 +25,18 @@
                         <div class="select is-info">
                             <select>
                                 <option selected>Ciudades</option>
-                                <option>San Cristobal de las Casas</option>
-                                <option>Tuxtla Guitierrez</option>
-                                <option>Puebla de Zaragoza</option>
+                                <option *ngFor="let ciudad of ciudades">
+                                    {{ciudad}}
+                                </option>
                             </select>
                         </div>
                         <div class="icon is-small is-left">
-                            <i class="fas fa-globe"></i>
+                            <i class="fas fa-city"></i>
                         </div>
                     </div>
                 </div>
                 &nbsp;
-                <a class="button is-link">Buscar</a>
+                <a class="button is-link" (click)="searchBussiness()">Buscar</a>
             </div>
 
 
@@ -49,7 +49,13 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <th>1</th>
+                        <th *ngFor="let item of negocios">
+                            <p>ID: {{item.id}} </p>
+                            <p>Negocio: {{item.name}} </p>
+                            <p>Email: {{item.email}} </p>
+                            <p>Ciudad: {{item.ciudad}} </p>
+                            <p>Estado: {{item.estado}} </p>
+                        </th>
                         <th><a class="button is-primary" routerLink="/registerPromo">Crear Promo</a></th>
                     </tr>
                 </tbody>

@@ -2,3 +2,7 @@ h2 {
     font-size: 26pt;
     text-align: center;
 }
+
+table {
+    margin: auto;
+}
