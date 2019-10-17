@@ -41,12 +41,12 @@ export class OwnerService {
     return this.http.post(`${this.api}owner/restaurants/register` ,params, httpOptions);
   } 
 
-  restaurantsUpdate(id: any): Observable <any> {
-    return this.http.put(`${this.api}owner/restaurants/update/${id}`, httpOptions);
+  restaurantsUpdate(id: any,params:any): Observable <any> {
+    return this.http.put(`${this.api}owner/restaurants/update/${id}`,params, httpOptions);
   }
 
   restaurantsDelete(id: any): Observable <any> {
-    return this.http.put(`${this.api}owner/restaurants/delete/${id}`, httpOptions);
+    return this.http.delete(`${this.api}owner/restaurants/delete/${id}`, httpOptions);
   }
 
   // tslint:disable-next-line: adjacent-overload-signatures
@@ -54,11 +54,11 @@ export class OwnerService {
     return this.http.post(`${this.api}owner/promotions/register`, params , httpOptions);
   }
 
-  promotionsUpdate(id: any): Observable <any> {
-    return this.http.put(`${this.api}owner/promotions/update/${id}`, httpOptions);
+  promotionsUpdate(id: any, params:any): Observable <any> {
+    return this.http.put(`${this.api}owner/promotions/update/${id}`,params, httpOptions);
   }
 
   promotionsDelete(id: any): Observable <any> {
-    return this.http.put(`${this.api}owner/promotions/delete/${id}`, httpOptions);
+    return this.http.delete(`${this.api}owner/promotions/delete/${id}`, httpOptions);
   }
 }

@@ -1,43 +1,326 @@
 
 <div class="container">
-  <div class="columns">
-    <h1 class="title">Mis restaurants</h1>
-  </div>
-  <div class="columns is-mobile">
-    <div class="column is-full-mobile is-half-tablet is-two-fifths
-      is-two-fifths-widescreen is-two-fifths-fullhd" style="background-color:
-      red;">
-      <div class="notification" *ngFor="let restaurant of restaurants">
-          <div class="card">
-              <header class="card-header">
-                 <p class="card-header-title">
-                    Nombre del restaurante: {{restaurant.name}}
-                 </p>
-                 
-              </header>
-              <div class="card-content">
-                 <div class="content">
-                    <div class="columns is-desktop">
-                       <div class="column">Estado: {{restaurant.state}}</div>
-                       <div class="column">Ciudad: {{restaurant.city}}</div>
-                       <div class="column">Servicio a domicilio: {{restaurant.homeService}} </div>
-                       <div class="column">Email {{restaurant.email}} </div>
-                    </div>
-                    
-                    
-                   
-                 </div>
-              </div>
-              <footer class="card-footer">
-                 
-                 <a class="card-footer-item">Edit</a>
-                 <a class="card-footer-item">Delete</a>
-                 <a class="card-footer-item" [routerLink]="['/restaurantpromo',restaurant.id] ">Promotions</a>
-                 <a class="card-footer-item" [routerLink]="['/newpromo',restaurant.id] ">New Promo</a>
-                 
-              </footer>
-           </div>
-      </div>
-    </div>
+   <div class="columns">
+      <h1 class="title">Mis restaurants</h1>
+   </div>
+   <div class="columns is-mobile">
+      <div class="column is-full-mobile is-half-tablet is-two-fifths
+         is-two-fifths-widescreen is-two-fifths-fullhd" >
+         <div class="notification" *ngFor="let restaurant of restaurants">
+            <div class="card">
+               <header class="card-header">
+                  <p class="card-header-title">
+                     Nombre del restaurante: {{restaurant.name}}
+                  </p>
 
-  </div>
+               </header>
+               <div class="card-content">
+                  <div class="content">
+                     <div class="columns is-desktop">
+                        <div class="column">Estado: {{restaurant.state}}</div>
+                        <div class="column">Ciudad: {{restaurant.city}}</div>
+                        <div class="column">Servicio a domicilio:
+                           {{restaurant.homeService}} </div>
+                        <div class="column">Email {{restaurant.email}} </div>
+                     </div>
+
+
+
+                  </div>
+               </div>
+               <footer class="card-footer">
+
+                  <a class="card-footer-item" (click)="openEditModal(this.restaurant)">Edit</a>
+                  <a class="card-footer-item">Delete</a>
+                  <a class="card-footer-item"
+                     [routerLink]="['/restaurantpromo',restaurant.id]">Promotions</a>
+                  <a class="card-footer-item"
+                     [routerLink]="['/newpromo',restaurant.id]">New Promo</a>
+               </footer>
+            </div>
+         </div>
+      </div>
+
+      <div #editRestaurantModal class="modal">
+         <div class="modal-background"></div>
+         <div class="modal-card">
+            <header class="modal-card-head">
+               <p class="modal-card-title" >Editar
+                  Restaurant</p>
+               <button class="delete" aria-label="close" (click)="closeEditModal()"></button>
+            </header>
+            <section class="modal-card-body">
+               <div class="container" id="col1">
+                  <form [formGroup]="editForm" (ngSubmit)="edit()" novalidate>
+                     <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                           <label class="label">Nombre del negocio</label>
+                        </div>
+                        <div class="field-body">
+                           <div class="field">
+                              <p class="control is-expanded has-icons-left">
+                                 <input class="input" type="text"
+                                    placeholder="Nombre del negocio"
+                                    formControlName="name">
+                                 <span class="icon is-small is-left">
+                                    <i class="fas fa-briefcase"></i>
+                                 </span>
+                              </p>
+                           </div>
+                           <div *ngIf="editForm.get('name').errors &&
+                              editForm.get('name').dirty">
+                              <p
+                                 *ngIf="editForm.get('name').hasError('required')">Este
+                                 campo debe ser obligatorio</p>
+                           </div>
+                        </div>
+                     </div>
+
+
+                     <!-- email -->
+                     <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                           <label class="label">Email</label>
+                        </div>
+                        <div class="field-body">
+                           <div class="field">
+                              <p class="control is-expanded has-icons-left">
+                                 <input class="input" type="text"
+                                    placeholder="email" formControlName="email">
+                                 <span class="icon is-small is-left">
+                                    <i class="fas fa-envelope"></i>
+                                 </span>
+                              </p>
+                           </div>
+                           <div *ngIf="editForm.get('name').errors &&
+                              editForm.get('name').dirty">
+                              <p
+                                 *ngIf="editForm.get('name').hasError('required')">Este
+                                 campo debe ser obligatorio</p>
+                           </div>
+                        </div>
+                     </div>
+                     <!-- facebook -->
+                     <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                           <label class="label">Facebook</label>
+                        </div>
+                        <div class="field-body">
+                           <div class="field">
+                              <p class="control is-expanded has-icons-left">
+                                 <input class="input" type="text"
+                                    placeholder="facebook"
+                                    formControlName="facebook">
+                                 <span class="icon is-small is-left">
+                                    <i class="fab fa-facebook-square"></i>
+                                 </span>
+                              </p>
+                           </div>
+                           <div *ngIf="editForm.get('name').errors &&
+                              editForm.get('name').dirty">
+                              <p
+                                 *ngIf="editForm.get('name').hasError('required')">Este
+                                 campo debe ser obligatorio</p>
+                           </div>
+                        </div>
+                     </div>
+
+                     <!-- instagram -->
+                     <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                           <label class="label">Instagram</label>
+                        </div>
+                        <div class="field-body">
+                           <div class="field">
+                              <p class="control is-expanded has-icons-left">
+                                 <input class="input" type="text"
+                                    placeholder="instagram"
+                                    formControlName="instagram">
+                                 <span class="icon is-small is-left">
+                                    <i class="fab fa-instagram"></i>
+                                 </span>
+                              </p>
+                           </div>
+                           <div *ngIf="editForm.get('name').errors &&
+                              editForm.get('name').dirty">
+                              <p
+                                 *ngIf="editForm.get('name').hasError('required')">Este
+                                 campo debe ser obligatorio</p>
+                           </div>
+                        </div>
+                     </div>
+
+                     <!-- WhatsApp -->
+                     <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                           <label class="label">WhatsApp</label>
+                        </div>
+                        <div class="field-body">
+                           <div class="field">
+                              <p class="control is-expanded has-icons-left">
+                                 <input class="input" type="number"
+                                    placeholder="whatsapp"
+                                    formControlName="whatsapp">
+                                 <span class="icon is-small is-left">
+                                    <i class="fab fa-whatsapp"></i>
+                                 </span>
+                              </p>
+                           </div>
+                           <div *ngIf="editForm.get('name').errors &&
+                              editForm.get('name').dirty">
+                              <p
+                                 *ngIf="editForm.get('name').hasError('required')">Este
+                                 campo debe ser obligatorio</p>
+                           </div>
+                        </div>
+                     </div>
+                     <!-- Numero telefonico -->
+                     <!-- <div class="field is-horizontal">
+                    <div class="field-label"></div>
+                    <div class="field-body">
+                      <div class="field is-expanded">
+                        <div class="field has-addons">
+                          <p class="control">
+                            <a class="button is-static">
+                              +52
+                            </a>
+                          </p>
+                          <p class="control is-expanded">
+                            <input class="input" type="number" placeholder="Numero telefonico" formControlName="phone">
+                          </p>
+                        </div>
+                        <p class="help">Do not enter the first zero</p>
+                        <div *ngIf="editForm.get('phone').errors && editForm.get('phone').dirty">
+                          <p *ngIf="editForm.get('phone').hasError('required')">Este campo debe ser obligatorio</p>
+                          <p *ngIf="editForm.get('phone').hasError('minlength')">Ingrese un numero valido, minimo 6 numeros
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div> -->
+                     <!-- State -->
+                     <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                           <label class="label">Estado</label>
+                        </div>
+                        <div class="field-body">
+                           <div class="field is-narrow">
+                              <div class="control">
+                                 <div class="select is-fullwidth">
+                                    <!-- <select>
+                                      <option>Comida rapida</option>
+                                      <option>Comida china</option>
+                                      <option>Comida gourmet</option>
+                                    </select> -->
+                                    <select formControlName="state">
+                                       <option value="0">Selecciona una opción</option>
+                                       <option *ngFor="let state of estados">
+                                          {{state}}
+                                       </option>
+                                    </select>
+                                    <!-- <p [hidden]="selectState == '0'">Haz seleccionado la opción # {{ state }}</p> -->
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+
+                     <!-- City -->
+                     <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                           <label class="label">Ciudad</label>
+                        </div>
+                        <div class="field-body">
+                           <div class="field is-narrow">
+                              <div class="control">
+                                 <div class="select is-fullwidth">
+                                    <select formControlName="city">
+                                       <option value="0">Selecciona una opción</option>
+                                       <option *ngFor="let ciudad of ciudades">
+                                          {{ciudad}}
+                                       </option>
+                                    </select>
+                                    <!-- <p [hidden]="selectCity == '0'">Haz seleccionado la opción # {{ city }}</p> -->
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <!-- homeService -->
+                     <div class="field is-horizontal">
+                        <div class="field-label">
+                           <label class="label">Servicio a domicilio</label>
+                        </div>
+                        <div class="field-body">
+                           <div class="field is-narrow">
+                              <label class="switch">
+                                 <input type="checkbox" name="houseservice"
+                                    formControlName="homeService"
+                                    (click)="setservice()" value="false">
+                                 <div class="slider round"></div>
+                              </label>
+                           </div>
+                        </div>
+                     </div>
+
+
+                     <!-- Ubicacion -->
+                     <!-- <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                      <label class="label">Ubicacion</label>
+                    </div>
+                    <div class="field-body">
+                      <div class="field">
+                        <div class="control">
+                          <p class="control is-expanded has-icons-left">
+                            <input class="input" type="text" placeholder="Direccion" formControlName="address">
+                            <span class="icon is-small is-left">
+                              <i class="fa fa-building"></i>
+                            </span>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div> -->
+                     <div class="field is-horizontal">
+
+                        <div class="field-body">
+                           <div class="field">
+                              <div class="control">
+                                 <button type="submit"
+                                    [disabled]="editForm.invalid" class="button
+                                    is-primary">
+                                    <span class="icon is-small">
+                                       <i class="fas fa-check"></i>
+                                    </span>
+                                    <span>Actualizar negocio</span>
+                                 </button>
+
+                              </div>
+                              
+                           </div>
+
+                           <div class="field-body">
+                              <div class="field">
+                                 <div class="control">
+                                    <button class="button
+                                       is-danger" (click)="closeEditModal()">
+                                       <span class="icon is-small">
+                                          <i class="deletes"></i>
+                                       </span>
+                                       <span>Cancelar</span>
+                                    </button>
+   
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </form>
+               </div>
+            </section>
+
+         </div>
+      </div>
+
+   </div>

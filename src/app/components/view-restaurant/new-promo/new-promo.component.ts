@@ -36,11 +36,6 @@ export class NewPromoComponent implements OnInit {
       restaurant_id:[this.id_restaurant],
       name: ['', [Validators.required]],
       discount: ['', [Validators.required]],
-      numberReports: ['0'],
-      likes: ['0'],
-      // houseservice: [Boolean , [Validators.required] ],
-      // estado: ['', [Validators.required] ],
-      // ciudad: ['', [Validators.required] ],
       availableDay: ['', [Validators.required] ],
       restriction: ['', [Validators.required] ],
 

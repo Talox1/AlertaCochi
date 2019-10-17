@@ -7,6 +7,7 @@ import { NavbarService } from '../../services/navbar.service'
 import { LoginService } from 'src/app/services/login.service';
 import { OwnerService } from 'src/app/services/owner.service';
 import { identifierModuleUrl } from '@angular/compiler';
+import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
   selector: 'app-navbar',
@@ -26,26 +27,25 @@ export class NavbarComponent implements OnInit {
     private router: Router,
     private navbarService: NavbarService,
     private renderer: Renderer2,
-    private ownerService: OwnerService
+    private ownerService: OwnerService,
+    private adminService: AdminService
     
   ) {
     
     this.ownerService.ownerProfile().subscribe(
       response =>{
         this.userData = response;
-        if(this.userData.is_owner == true){
-          this.currentUser = 'owner'
-        }else if(this.userData.is_admin == true){
-          this.currentUser = 'admin'
-        }else if(this.userData.is_consumer == true){
-          this.currentUser = 'user'
-        }else{
-          this.currentUser = 'invited'
-        }
-        console.log('response',response);
+        this.currentUser = 'owner'
       },
       error => {
-        console.log('no esta logueado')
+      }
+    )
+    this.adminService.adminProfile().subscribe(
+      response =>{
+        this.userData = response;
+        this.currentUser = 'admin'
+      },
+      error => {
       }
     )
    }
