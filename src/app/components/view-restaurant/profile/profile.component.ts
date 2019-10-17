@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { OwnerService } from 'src/app/services/owner.service';
 
 @Component({
   selector: 'app-profile',
@@ -7,7 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  id?: number;
+  name: string;
+  usename: string;
+  email: string;
+
+  profile = {
+    name: null,
+    usename: null,
+    email: null,
+  }
+
+  constructor(public ownerService: OwnerService) { }
 
   ngOnInit() {
   }

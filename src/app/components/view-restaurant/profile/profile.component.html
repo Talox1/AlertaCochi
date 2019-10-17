@@ -1,1 +1,70 @@
-<p>profile works!</p>
+<div class="">
+  <div class="container">
+    <div>
+      <h1 class="title is-2">Mi Perfil</h1>
+      <div class="tabs is-centered is-boxed">
+        <ul>
+          <li class="is-active">
+            <a>
+              <span class="icon is-small"><i class="fas fa-user " aria-hidden="true"></i></span>
+              <span>Perfil</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="container card-container">
+        <div class="card">
+          <div class="columns">
+            <div class="column">
+              <div class="card-image">
+                <figure class="image">
+                  <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSuauNvOH2iyggukQbeYOpTEAyBUwKQQ2WoWxZPW0ZP9vQprVkE"
+                    alt="Placeholder image">
+                </figure>
+              </div>
+            </div>
+            <div class="column is-two-thirds">
+              <div class="card-content">
+                <div class="media">
+                  <div class="media-content is-center">
+                    <div class="field">
+                      <label class="label">Nombre</label>
+                      <div class="control has-icons-left">
+                        <input class="input" type="text" placeholder="Name Placeholder" value="{{profile.name}}" disabled>
+                        <span class="icon is-small is-left">
+                          <i class="fas fa-user"></i>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="field">
+                      <label class="label">Username</label>
+                      <div class="control has-icons-left">
+                        <input class="input" type="text" placeholder="Username Placeholder" value="{{profile.username}}" disabled>
+                        <span class="icon is-small is-left">
+                          <i class="fas fa-user"></i>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="field">
+                      <label class="label">Email</label>
+                      <div class="control has-icons-left">
+                        <input class="input" type="text" placeholder="Email Placeholder" value="{{profile.email}}" disabled>
+                        <span class="icon is-small is-left">
+                          <i class="fas fa-envelope"></i>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="field">
+                      <label class="label">- Dueño de Restaurant -</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

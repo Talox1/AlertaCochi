@@ -33,6 +33,7 @@ import { ListPromosComponent } from './components/view-restaurant/list-promos/li
 import { NewPromoComponent } from './components/view-restaurant/new-promo/new-promo.component';
 import { ProfileComponent } from './components/view-restaurant/profile/profile.component';
 import { RestauratPromotionsComponent } from './components/view-restaurant/restaurat-promotions/restaurat-promotions.component';
+import { ListRestaurantsComponent } from './components/list-restaurants/list-restaurants.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { RestauratPromotionsComponent } from './components/view-restaurant/resta
     ListPromosComponent,
     NewPromoComponent,
     ProfileComponent,
-    RestauratPromotionsComponent
+    RestauratPromotionsComponent,
+    ListRestaurantsComponent
   ],
   imports: [
     BrowserModule,

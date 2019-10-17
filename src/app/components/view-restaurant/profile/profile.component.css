@@ -1,0 +1,15 @@
+.card {
+    background-color: rgb(253, 163, 205);
+    padding: 10px;
+}
+
+.card-container {
+    margin-top: 4%;
+    width: 70%;
+    align-content: center;
+    justify-content: center;    
+}
+
+h1 {
+    text-align: center;
+}
