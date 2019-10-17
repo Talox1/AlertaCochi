@@ -34,6 +34,7 @@ import { NewPromoComponent } from './components/view-restaurant/new-promo/new-pr
 import { ProfileComponent } from './components/view-restaurant/profile/profile.component';
 import { RestauratPromotionsComponent } from './components/view-restaurant/restaurat-promotions/restaurat-promotions.component';
 import { ListRestaurantsComponent } from './components/list-restaurants/list-restaurants.component';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -64,7 +65,8 @@ import { ListRestaurantsComponent } from './components/list-restaurants/list-res
     HttpClientModule,
     ImageUploadModule.forRoot(),
     
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     // NgbModule
   ],
   exports: [],

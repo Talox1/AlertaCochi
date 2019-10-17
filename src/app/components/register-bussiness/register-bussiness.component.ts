@@ -46,14 +46,31 @@ export class RegisterBussinessComponent implements OnInit {
       user_id:[localStorage.getItem('id_owner')],
     });
 
+    
+
     this.estados=['CHIAPAS', 'DURANGO', 'CDMX', 'TABASCO', 'OAXACA', 'TAMAULIPAS', 'MONTERREY', 'PUEBLA', 'GUADALAJARA', 'MORELIA'];
     this.ciudades=["Tuxtla", "DF", "VILLA HERMOSA", "OAXACA", "SALTILLO", "PUEBLA", "MICHOACAN"]
+
+   
    }
 
   ngOnInit() {
     console.log(this.registerForm.value)
-    this.currentUser = localStorage.getItem('currentUser');
-    console.log(this.currentUser);
+    this.ownerService.ownerProfile().subscribe(
+      response =>{
+        this.currentUser = 'owner'
+        console.log(this.currentUser)
+      },
+      error => {
+      }
+    )
+    this.adminservice.adminProfile().subscribe(
+      response =>{
+        this.currentUser = 'admin'
+      },
+      error => {
+      }
+    )
 
 
     if(localStorage.getItem('firstime') == 'true'){
@@ -76,6 +93,7 @@ export class RegisterBussinessComponent implements OnInit {
 
   registrar(){
     console.log("hellodah");
+    console.log(this.currentUser)
     if(this.currentUser =='admin'){
       this.adminservice.restaurantRegister(this.registerForm.value).subscribe(
         response =>{
@@ -83,11 +101,11 @@ export class RegisterBussinessComponent implements OnInit {
           this.renderer.addClass(this.modal.nativeElement, "is-active");
         }
       )
-    }else if(this.currentUser =='restaurant'){
+    }else if(this.currentUser =='owner'){
       this.ownerService.restaurantsRegister(this.registerForm.value).subscribe(
         response =>{
           console.log(response);
-          localStorage.setItem('firstime', 'false')
+          localStorage.setItem('firstime', 'true')
           localStorage.setItem('id_restaurant', response.id);
           this.router.navigate(['/homeRestaurant']);
         }

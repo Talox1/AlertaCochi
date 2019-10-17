@@ -36,4 +36,8 @@ export class LoginService {
     console.log(httpOptions2);
     return this.http.post(`${this.api}users/login/`, httpOptions2);
   }
+
+  ownerProfile(): Observable<any> {//para que el owner pueda ver sus datos
+    return this.http.get(`${this.api}/myProfile/show`, httpOptions);
+  }
 }
