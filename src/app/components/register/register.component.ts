@@ -35,14 +35,15 @@ export class RegisterComponent implements OnInit {
       is_consumer:[],
       is_owner:[]
     });
-
+    this.currentUser = localStorage.getItem('usuario');
     
 
     
    }
 
   ngOnInit() {
-    this.currentUser = localStorage.getItem('currentUser');
+    this.currentUser = localStorage.getItem('usuario');
+
     if(this.currentUser == 'invited'){
       this.registerForm = this.fb.group({
         name: ['', [Validators.required]],
@@ -55,12 +56,13 @@ export class RegisterComponent implements OnInit {
   }
 
   register(){
-
+    console.log(this.currentUser);
     if(this.currentUser == 'admin'){//si es admin ejecuta este servicio
       this.adminService.usersRegister(this.registerForm.value).subscribe(
         response =>{
           console.log(response)
-          this.renderer.addClass(this.modal.nativeElement, "is-active");
+          // this.renderer.addClass(this.modal.nativeElement, "is-active");
+          this.router.navigate['/homeAdmin'];
         }
       )
 
@@ -68,9 +70,9 @@ export class RegisterComponent implements OnInit {
         this.registerService.register(JSON.stringify(this.registerForm.value)).subscribe(
           response =>{
             console.log(response);
-            localStorage.setItem('id_owner', response.id);
-            localStorage.setItem('currentUser','invited');
-            localStorage.setItem('firstime','true');
+            // localStorage.setItem('id_owner', response.id);
+            // localStorage.setItem('currentUser','invited');
+            // localStorage.setItem('firstime','true');
             this.router.navigate(['/loginRestaurant']);
           }
         )

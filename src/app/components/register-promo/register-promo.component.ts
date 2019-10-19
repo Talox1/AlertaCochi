@@ -43,7 +43,8 @@ export class RegisterPromoComponent implements OnInit {
     console.log(event);
    }
   setservice(){
-  console.log(this.registerForm.value)
+
+    console.log(this.registerForm.value)
   }
   registarPromo(){
     console.log(this.registerForm.value);
@@ -53,5 +54,6 @@ export class RegisterPromoComponent implements OnInit {
 
       }
     )
-  }  
+  }
+
 }

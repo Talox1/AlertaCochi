@@ -35,6 +35,7 @@ import { ProfileComponent } from './components/view-restaurant/profile/profile.c
 import { RestauratPromotionsComponent } from './components/view-restaurant/restaurat-promotions/restaurat-promotions.component';
 import { ListRestaurantsComponent } from './components/list-restaurants/list-restaurants.component';
 import { ToastrModule } from 'ngx-toastr';
+import { NewRestaurantComponent } from './components/view-admin/new-restaurant/new-restaurant.component';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { ToastrModule } from 'ngx-toastr';
     NewPromoComponent,
     ProfileComponent,
     RestauratPromotionsComponent,
-    ListRestaurantsComponent
+    ListRestaurantsComponent,
+    NewRestaurantComponent
   ],
   imports: [
     BrowserModule,

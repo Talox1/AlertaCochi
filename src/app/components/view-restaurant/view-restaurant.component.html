@@ -5,7 +5,7 @@
    </div>
    <div class="columns is-mobile">
       <div class="column is-full-mobile is-half-tablet is-two-fifths
-         is-two-fifths-widescreen is-two-fifths-fullhd" >
+         is-two-fifths-widescreen is-two-fifths-fullhd">
          <div class="notification" *ngFor="let restaurant of restaurants">
             <div class="card">
                <header class="card-header">
@@ -30,7 +30,8 @@
                </div>
                <footer class="card-footer">
 
-                  <a class="card-footer-item" (click)="openEditModal(this.restaurant)">Edit</a>
+                  <a class="card-footer-item"
+                     (click)="openEditModal(this.restaurant)">Edit</a>
                   <a class="card-footer-item">Delete</a>
                   <a class="card-footer-item"
                      [routerLink]="['/restaurantpromo',restaurant.id]">Promotions</a>
@@ -39,15 +40,25 @@
                </footer>
             </div>
          </div>
+
+         <div class="columns is-mobile">
+            <div class="column is-full-mobile is-half-tablet is-two-fifths
+               is-two-fifths-widescreen is-two-fifths-fullhd">
+               <button *ngIf="num_restaurants == 0" class="btn btn-success"
+               [routerLink]="['/registerBussiness',id_user]">Crear nuevo restaurant</button>
+            </div>
+         </div>
+
       </div>
 
       <div #editRestaurantModal class="modal">
          <div class="modal-background"></div>
          <div class="modal-card">
             <header class="modal-card-head">
-               <p class="modal-card-title" >Editar
+               <p class="modal-card-title">Editar
                   Restaurant</p>
-               <button class="delete" aria-label="close" (click)="closeEditModal()"></button>
+               <button class="delete" aria-label="close"
+                  (click)="closeEditModal()"></button>
             </header>
             <section class="modal-card-body">
                <div class="container" id="col1">
@@ -297,7 +308,7 @@
                                  </button>
 
                               </div>
-                              
+
                            </div>
 
                            <div class="field-body">
@@ -310,7 +321,7 @@
                                        </span>
                                        <span>Cancelar</span>
                                     </button>
-   
+
                                  </div>
                               </div>
                            </div>

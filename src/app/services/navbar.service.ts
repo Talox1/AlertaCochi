@@ -1,15 +1,34 @@
 import { Injectable,  Output, EventEmitter  } from '@angular/core';
 
+
+import { API } from '../app-config';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+const httpOptions = {
+  headers : new HttpHeaders({
+    'Content-Type': 'application/json',
+  })
+};
+
+
 @Injectable({
   providedIn: 'root'
 })
+
 export class NavbarService {
+  api: string = API;
+  constructor(
+    // public wsService: WebsocketService,
+     private http: HttpClient
+    ) { }
+   
   
-  private currentUser:string;
+  public currentUser:string;
   private isloged = false;
 
   @Output() change: EventEmitter<boolean> = new EventEmitter();
-  @Output() change2: EventEmitter<string> = new EventEmitter();
+  
   
 
   toggle(currentUser:string) {
@@ -20,8 +39,8 @@ export class NavbarService {
   isLoged(){
     return this.isloged;
   }
-  getCurrentUser(){
-    return this.currentUser;
+  getCurrentUser(): Observable<any> {//para los datos del usuario logueado
+    return this.http.get(`${this.api}myProfile/show`, httpOptions);
   }
-  constructor() { }
+  
 }

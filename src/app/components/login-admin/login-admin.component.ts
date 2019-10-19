@@ -39,10 +39,12 @@ export class LoginAdminComponent implements OnInit {
     this.loginService.login(this.loginForm.value).subscribe(
       // tslint:disable-next-line: no-unused-expression
       response => {
-        console.log(response);
+        
         localStorage.setItem('token', response.token);
         this.router.navigate(['/homeAdmin']);
+        localStorage.setItem('usuario','admin');
         this.navbarService.toggle('admin');
+        
       },
       error => {
         console.log('status:' + error.status);

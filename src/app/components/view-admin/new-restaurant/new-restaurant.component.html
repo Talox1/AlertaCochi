@@ -147,49 +147,6 @@
             </div>
           </div>
 
-          <!-- State -->
-          <div class="field is-horizontal">
-            <div class="field-label is-normal">
-              <label class="label">Estado</label>
-            </div>
-            <div class="field-body">
-              <div class="field is-narrow">
-                <div class="control">
-                  <div class="select is-fullwidth">
-                    <select formControlName="state">
-                      <option value="0">Selecciona una opción</option>
-                      <option *ngFor="let state of estados">
-                        {{state}}
-                      </option>
-                    </select>
-                    <!-- <p [hidden]="selectState == '0'">Haz seleccionado la opción # {{ state }}</p> -->
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- City -->
-          <div class="field is-horizontal">
-            <div class="field-label is-normal">
-              <label class="label">Ciudad</label>
-            </div>
-            <div class="field-body">
-              <div class="field is-narrow">
-                <div class="control">
-                  <div class="select is-fullwidth">
-                    <select formControlName="city">
-                      <option value="0">Selecciona una opción</option>
-                      <option *ngFor="let ciudad of ciudades">
-                        {{ciudad}}
-                      </option>
-                    </select>
-                    <!-- <p [hidden]="selectCity == '0'">Haz seleccionado la opción # {{ city }}</p> -->
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
           <!-- homeService -->
           <div class="field is-horizontal">
             <div class="field-label">
@@ -206,7 +163,7 @@
             </div>
           </div>
 
-         
+
           <!-- Ubicacion -->
           <div class="field is-horizontal">
             <div class="field-label is-normal">
@@ -228,8 +185,7 @@
           </div>
           <div class="field is-horizontal">
 
-            <div class="field-body" *ngIf="currentUser=='restaurant'; else
-              isAdmin">
+            <div class="field-body">
               <div class="field">
                 <div class="control">
                   <button type="submit" [disabled]="registerForm.invalid"
@@ -237,44 +193,14 @@
                     <span class="icon is-small">
                       <i class="fas fa-check"></i>
                     </span>
-                    <span>Crear negocio para invited</span>
+                    <span>Crear negocio</span>
                   </button>
-                </div>
-              </div>
-            </div>
-            <ng-template #isAdmin>
-              <div class="field">
-                <div class="control">
-                  <button type="submit" [disabled]="registerForm.invalid"
-                    class="button is-primary">
+                  <button routerLink="/homeAdmin" class="button is-danger">
                     <span class="icon is-small">
-                      <i class="fas fa-check"></i>
+                      <i class="fas fa-delete"></i>
                     </span>
-                    <span>Crear negocio Boton para admin</span>
+                    <span >Cancelar </span>
                   </button>
-                </div>
-              </div>
-            </ng-template>
-          </div>
-          <div class="field is-grouped">
-            <div class="control">
-              <div #modalcito class="modal">
-                <div class="modal-background"></div>
-                <div class="modal-card">
-                  <header class="modal-card-head">
-                    <p class="modal-card-title">Cuenta Restaurante Creada Con
-                      Exito</p>
-                    <button class="delete" aria-label="close"></button>
-                  </header>
-                  <section class="modal-card-body">
-                    <h1>Ya puedes empezar a usar tu cuenta!</h1>
-                  </section>
-                  <footer class="modal-card-foot">
-                    <button type="submit" routerLink="/homeAdmin" class="button
-                      is-success">Continuar</button>
-
-                  </footer>
-
                 </div>
               </div>
             </div>

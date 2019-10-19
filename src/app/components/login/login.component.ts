@@ -39,8 +39,6 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    console.log("Logeando0");
-    console.log(this.loginForm.value);
     this.loginService.login(this.loginForm.value).subscribe(
       // tslint:disable-next-line: no-unused-expression
 
@@ -48,8 +46,10 @@ export class LoginComponent implements OnInit {
         console.log(response)
         localStorage.setItem('token', response.token);
         localStorage.setItem('id_owner',response.id);
+        localStorage.setItem('usuario','owner');
         this.navbarService.toggle('owner');//cambia el valor booleano para que el navbar se renderize
         this.router.navigate(['/homeRestaurant']);
+        
       },
       error => {
         console.log('status:' + error.status);

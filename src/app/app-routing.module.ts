@@ -14,6 +14,7 @@ import { NewPromoComponent } from './components/view-restaurant/new-promo/new-pr
 import { ProfileComponent } from './components/view-restaurant/profile/profile.component';
 import { RestauratPromotionsComponent } from './components/view-restaurant/restaurat-promotions/restaurat-promotions.component';
 import { ListRestaurantsComponent } from './components/list-restaurants/list-restaurants.component';
+import { NewRestaurantComponent } from './components/view-admin/new-restaurant/new-restaurant.component';
 
 const routes: Routes = [
   {
@@ -29,7 +30,7 @@ const routes: Routes = [
     component:RegisterComponent
   },
   {
-    path:'registerBussiness',
+    path:'registerBussiness/:id',
     component:RegisterBussinessComponent
   },
   {
@@ -43,6 +44,9 @@ const routes: Routes = [
   {
     path: 'homeAdmin',
     component: ViewAdminComponent
+  },{
+    path:'new-restaurant-for-admin',
+    component:NewRestaurantComponent
   },
   {
     path: 'assignmentBussinessRestaurant',
