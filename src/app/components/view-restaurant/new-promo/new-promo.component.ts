@@ -68,6 +68,7 @@ export class NewPromoComponent implements OnInit {
 
 
   selectImage(event) {
+    //opcion1
     let elem = event.target;
     if (elem.files.length > 0) {
       let formData = new FormData();
@@ -77,12 +78,13 @@ export class NewPromoComponent implements OnInit {
       })
     }
 
-
+    //opcion 2
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       console.log(file);
       this.images = file.name;
       console.log(this.images)
+      //metodo del servicio
       // this.subirImagenes();
     }
 
