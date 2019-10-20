@@ -17,7 +17,7 @@ import { AssignmentBRComponent } from './components/assignment-br/assignment-br.
 import { environment } from 'src/environments/environment';
 import { from } from 'rxjs';
 import {HttpClient, HTTP_INTERCEPTORS} from '@angular/common/http';
-// import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './components/navbar/navbar.component';
 
@@ -36,6 +36,7 @@ import { RestauratPromotionsComponent } from './components/view-restaurant/resta
 import { ListRestaurantsComponent } from './components/list-restaurants/list-restaurants.component';
 import { ToastrModule } from 'ngx-toastr';
 import { NewRestaurantComponent } from './components/view-admin/new-restaurant/new-restaurant.component';
+import { FilterPipe } from './pipes/filter.pipe';
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import { NewRestaurantComponent } from './components/view-admin/new-restaurant/n
     ProfileComponent,
     RestauratPromotionsComponent,
     ListRestaurantsComponent,
-    NewRestaurantComponent
+    NewRestaurantComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

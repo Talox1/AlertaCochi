@@ -43,7 +43,7 @@ export class RestauratPromotionsComponent implements OnInit {
       name: ['', [Validators.required]],
       discount: ['', [Validators.required]],
       availableDay: ['', [Validators.required] ],
-      restriction: ['', [Validators.required] ],
+      restrictions: ['', [Validators.required] ],
 
      
     }); 
@@ -86,7 +86,9 @@ export class RestauratPromotionsComponent implements OnInit {
     this.ownerService.promotionsUpdate(this.promo_id,this.editForm.value ).subscribe(
       response =>{
         console.log('Dato actualizado, Response',response )
+        this.renderer.removeClass(this.editPromoModal.nativeElement, "is-active");
         this.toastr.success('Dato actualizado','con exito');
+        this.ngOnInit();
       }
     )
   }

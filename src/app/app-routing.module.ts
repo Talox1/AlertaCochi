@@ -53,7 +53,7 @@ const routes: Routes = [
     component: AssignmentBRComponent
   },
   {
-    path:'registerPromo',
+    path:'registerPromo/:id',
     component:RegisterPromoComponent
   },
   {

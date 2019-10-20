@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, } from '@angular/forms';
 import { AdminService } from 'src/app/services/admin.service';
+import { Route, Router } from '@angular/router';
 @Component({
   selector: 'app-new-restaurant',
   templateUrl: './new-restaurant.component.html',
@@ -16,7 +17,8 @@ export class NewRestaurantComponent implements OnInit {
   registerForm: FormGroup;
   constructor(
     private fb: FormBuilder,
-    private adminService:AdminService,) { 
+    private adminService:AdminService,
+    private router:Router) { 
     this.registerForm = this.fb.group({
       name: ['', [Validators.required]],
       phone: ['', [Validators.required, Validators.minLength(6)]],
@@ -41,6 +43,7 @@ export class NewRestaurantComponent implements OnInit {
     this.adminService.restaurantRegister(this.registerForm.value).subscribe(
       response => {
         console.log(response);
+        this.router.navigate(['/homeAdmin']);
         // this.renderer.addClass(this.modal.nativeElement, "is-active");
       }
     )

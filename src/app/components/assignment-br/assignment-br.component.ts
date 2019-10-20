@@ -87,7 +87,7 @@ export class AssignmentBRComponent implements OnInit {
           name: [response[0].name, [Validators.required]],
           email: [response[0].email, [Validators.required, Validators.minLength(6)]],
           homeService: [response[0].homeService , [Validators.required] ],
-          restrictions: [response[0].restrictions, [Validators.required] ],
+          // restrictions: [response[0].restrictions, [Validators.required] ],
           state: [response[0].state, [Validators.required] ],
           city: [response[0].city, [Validators.required] ],
           whatsapp: [response[0].whatsapp, [Validators.required] ],

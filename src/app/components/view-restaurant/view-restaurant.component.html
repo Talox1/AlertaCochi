@@ -4,8 +4,8 @@
       <h1 class="title">Mis restaurants</h1>
    </div>
    <div class="columns is-mobile">
-      <div class="column is-full-mobile is-half-tablet is-two-fifths
-         is-two-fifths-widescreen is-two-fifths-fullhd">
+      <div class="column is-full-mobile is-half-tablet is-full
+         is-full-widescreen is-full-fullhd">
          <div class="notification" *ngFor="let restaurant of restaurants">
             <div class="card">
                <header class="card-header">
@@ -17,13 +17,21 @@
                <div class="card-content">
                   <div class="content">
                      <div class="columns is-desktop">
-                        <div class="column">Estado: {{restaurant.state}}</div>
-                        <div class="column">Ciudad: {{restaurant.city}}</div>
-                        <div class="column">Servicio a domicilio:
+                        <div class="column"><Strong>Estado</Strong>: {{restaurant.state}}</div>
+                        <div class="column"><Strong>Ciudad</Strong>: {{restaurant.city}}</div>
+                        <div class="column"><Strong>Servicio a domicilio</Strong>:
                            {{restaurant.homeService}} </div>
-                        <div class="column">Email {{restaurant.email}} </div>
+                        <div class="column"><Strong>Email</Strong>: {{restaurant.email}} </div>
+                        
                      </div>
-
+                     <div class="content">
+                        <div class="columns is-desktop" style="border-color: black; border: 10px;">
+                           <div class="column"><Strong>Facebook</Strong>: {{restaurant.facebook}} </div>
+                           <div class="column"><Strong>Instagram</Strong>: {{restaurant.instagram}} </div>
+                           <div class="column"><Strong>Phone</Strong>: {{restaurant.phone}} </div>
+                           <div class="column"><Strong>Direccion:</Strong>: {{restaurant.address}} </div>
+                           <div class="column"><Strong>WhatsApp</Strong>: {{restaurant.whatsapp}} </div>
+                        </div>
 
 
                   </div>

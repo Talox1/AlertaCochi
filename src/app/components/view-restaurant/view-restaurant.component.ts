@@ -61,6 +61,14 @@ export class ViewRestaurantComponent implements OnInit {
       user_id: [this.id_user],
     });
 
+//servicio que obtiene todos los restaurantes
+    this.ownerService.getRestaurants().subscribe(
+      response => {
+        
+        this.restaurants = response;
+        this.num_restaurants = this.restaurants.length;
+      }
+    )
 
 
 

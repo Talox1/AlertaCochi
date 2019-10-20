@@ -37,7 +37,7 @@ export class NewPromoComponent implements OnInit {
       name: ['', [Validators.required]],
       discount: ['', [Validators.required]],
       availableDay: ['', [Validators.required] ],
-      restriction: ['', [Validators.required] ],
+      restrictions: ['', [Validators.required] ],
 
      
     });
@@ -59,7 +59,7 @@ export class NewPromoComponent implements OnInit {
     this.ownerService.promotionsRegister(this.registerForm.value).subscribe(
       response =>{
         console.log(response);
-
+        this.router.navigate(['/homeRestaurant'])
       }
     )
   }  

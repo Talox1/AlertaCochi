@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, } from '@angular/forms';
-import { OwnerService } from 'src/app/services/owner.service';
+
+import { ActivatedRoute, Router } from '@angular/router';
+
+import { AdminService } from 'src/app/services/admin.service';
 @Component({
   selector: 'app-register-promo',
   templateUrl: './register-promo.component.html',
@@ -12,13 +15,17 @@ export class RegisterPromoComponent implements OnInit {
   ciudades;
   days;
 
+  id_restaurant;
+
   registerForm: FormGroup;
   houseservice = true;
   constructor(
     public fb: FormBuilder,
-    public ownerservice:OwnerService,
+    public adminService:AdminService,
+    private route: ActivatedRoute,
+    private router:Router,
   ) {
-    
+    this.id_restaurant = this.route.snapshot.paramMap.get('id');  
 
     this.estados=['CHIAPAS', 'DURANGO', 'CDMX', 'TABASCO', 'OAXACA', 'TAMAULIPAS', 'MONTERREY', 'PUEBLA', 'GUADALAJARA', 'MORELIA'];
     this.ciudades=["Tuxtla", "DF", "VILLA HERMOSA", "OAXACA", "SALTILLO", "PUEBLA", "MICHOACAN"];
@@ -27,16 +34,13 @@ export class RegisterPromoComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.fb.group({
-      restaurant_id:[localStorage.getItem('id_restaurant')],
+      restaurant_id:[this.id_restaurant],
       name: ['', [Validators.required]],
       discount: ['', [Validators.required]],
       numberReports: ['0'],
       likes: ['0'],
-      // houseservice: [Boolean , [Validators.required] ],
-      // estado: ['', [Validators.required] ],
-      // ciudad: ['', [Validators.required] ],
       availableDay: ['', [Validators.required] ],
-      restriction: ['', [Validators.required] ],
+      restrictions: ['', [Validators.required] ],
     });
   }
     onUploadFinish(event) {
@@ -48,12 +52,16 @@ export class RegisterPromoComponent implements OnInit {
   }
   registarPromo(){
     console.log(this.registerForm.value);
-    this.ownerservice.promotionsRegister(this.registerForm.value).subscribe(
+    this.adminService.promotionsRegister(this.registerForm.value).subscribe(
       response =>{
         console.log(response);
-
+        this.router.navigate(['/homeAdmin'])
       }
     )
+  }
+
+  cancelar(){
+    this.router.navigate(['/listRestaurants'])
   }
 
 }

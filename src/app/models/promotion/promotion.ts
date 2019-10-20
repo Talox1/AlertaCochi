@@ -8,5 +8,5 @@ export class Promotion {
    numberReports:number;
    discount: '';
    image:File[];
-   restriction:'';
+   restrictions:'';
  }

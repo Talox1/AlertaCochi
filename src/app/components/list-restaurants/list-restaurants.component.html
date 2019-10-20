@@ -36,6 +36,14 @@
                     </div>
                 </div>
                 &nbsp;
+                <div class="field">
+                    <div class="control has-icons-left">
+                        <input type="text" class="input is-info" maxlength=26
+                            placeholder="Filtrar por nombre" name="filterRestaurants" [(ngModel)] ="filterRestaurants">
+
+                    </div>
+                </div>
+                &nbsp;
                 <a class="button is-link" (click)="searchBussiness()">Buscar</a>
             </div>
 
@@ -49,14 +57,17 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <th *ngFor="let item of negocios">
+                        <th *ngFor="let item of negocios | filter:filterRestaurants "> <a class="button
+                                is-primary"
+                                [routerLink]="['/registerPromo',this.item.id]">Crear
+                                Promo</a>
                             <p>ID: {{item.id}} </p>
                             <p>Negocio: {{item.name}} </p>
                             <p>Email: {{item.email}} </p>
                             <p>Ciudad: {{item.city}} </p>
                             <p>Estado: {{item.state}} </p>
                         </th>
-                        <th><a class="button is-primary" routerLink="/registerPromo">Crear Promo</a></th>
+                        <th></th>
                     </tr>
                 </tbody>
             </table>

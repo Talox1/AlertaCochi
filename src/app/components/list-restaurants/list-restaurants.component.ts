@@ -20,10 +20,12 @@ export class ListRestaurantsComponent implements OnInit {
   estados;
   ciudades;
 
+  filterRestaurants = '';
   constructor(
     public adminService: AdminService
   ) { }
 
+  
   ngOnInit() {
     this.estados = ['CHIAPAS', 'DURANGO', 'CDMX', 'TABASCO', 'OAXACA', 'TAMAULIPAS', 'MONTERREY', 'PUEBLA', 'GUADALAJARA', 'MORELIA'];
     this.ciudades = ["Tuxtla", "DF", "VILLA HERMOSA", "OAXACA", "SALTILLO", "PUEBLA", "MICHOACAN"];

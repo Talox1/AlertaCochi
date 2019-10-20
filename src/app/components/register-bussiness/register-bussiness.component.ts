@@ -22,10 +22,11 @@ export class RegisterBussinessComponent implements OnInit {
   currentUser;
   constructor(
     private fb: FormBuilder,
-    private navbarService:NavbarService,
+    private router:Router,
     private adminService:AdminService,
     private ownerService:OwnerService,
     private route: ActivatedRoute,
+    
 
   ) {
     this.id_owner = this.route.snapshot.paramMap.get('id');  
@@ -86,26 +87,6 @@ export class RegisterBussinessComponent implements OnInit {
       )
 
     }
-    
-    
-
-
-    // if (localStorage.getItem('firstime') == 'true') {
-    //   this.registerForm = this.fb.group({
-    //     name: ['', [Validators.required]],
-    //     // phone: ['', [Validators.required, Validators.minLength(6)]],
-    //     email: ['', [Validators.required, Validators.email]],
-    //     facebook: [''],
-    //     instagram: [''],
-    //     whatsapp: [''],
-    //     homeService: [false, [Validators.required]],
-    //     // address: ['', [Validators.required] ],
-    //     restrictions: [''],
-    //     state: ['', [Validators.required]],
-    //     city: ['', [Validators.required]],
-    //     user_id: [localStorage.getItem('id_owner')],
-    //   });
-    // }
   }
 
   registrar() {
@@ -126,7 +107,7 @@ export class RegisterBussinessComponent implements OnInit {
           console.log(response);
           localStorage.setItem('firstime', 'true')
           localStorage.setItem('id_restaurant', response.id);
-          // this.router.navigate(['/homeRestaurant']);
+          this.router.navigate(['/homeRestaurant']);
         }
       )
     }

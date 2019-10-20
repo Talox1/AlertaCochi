@@ -33,7 +33,7 @@ export class RegisterComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(8)]],
       is_admin:[],
       is_consumer:[],
-      is_owner:[]
+      is_owner:[true]
     });
     this.currentUser = localStorage.getItem('usuario');
     
@@ -62,7 +62,7 @@ export class RegisterComponent implements OnInit {
         response =>{
           console.log(response)
           // this.renderer.addClass(this.modal.nativeElement, "is-active");
-          this.router.navigate['/homeAdmin'];
+          this.router.navigate(['/homeAdmin']);
         }
       )
 

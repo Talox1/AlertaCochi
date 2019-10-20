@@ -11,9 +11,11 @@
             <div class="content">
                <div class="columns is-desktop">
                   <div class="column">Descuento {{promo.discount}} %</div>
-                  <div class="column">Restricciones: {{promo.restriction}}
+                  <div class="column">Restricciones: {{promo.restrictions}}
                   </div>
-                  <div class="column">Servicio a domicilio: {{promo.likes}}
+                  <div class="column">likes: {{promo.likes}}
+                  </div>
+                  <div class="column">reports: {{promo.numberReports}}
                   </div>
                   <div class="column"><time datetime="2019-1-1">Dia disponible:
                         <strong>{{promo.availableDay}}</strong> {{promo.date}}
@@ -58,7 +60,7 @@
          </header>
          <section class="modal-card-body">
             <div class="container" id="col1">
-               <form [formGroup]="editForm" (ngSubmit)="update()"  novalidate>
+               <form [formGroup]="editForm" (ngSubmit)="update()" novalidate>
                   <!-- Name -->
                   <div class="field is-horizontal">
                      <div class="field-label is-normal">
@@ -68,7 +70,8 @@
                         <div class="field">
                            <p class="control is-expanded has-icons-left">
                               <input class="input" type="text"
-                                 placeholder="Nombre de la promocion" formControlName="name" >
+                                 placeholder="Nombre de la promocion"
+                                 formControlName="name">
                               <span class="icon is-small is-left">
                                  <i class="fa fa-briefcase"></i>
                               </span>
@@ -106,8 +109,8 @@
                         </div>
                      </div>
                   </div>
-                 
-                   <div class="field is-horizontal">
+
+                  <div class="field is-horizontal">
                      <div class="field-label is-normal">
                         <label class="label">Caducidad:</label>
                      </div>
@@ -177,7 +180,8 @@
                                  <div class="control">
                                     <textarea class="textarea"
                                        placeholder="Menciona algunas
-                                       restricciones para el consumidor" formControlName="restriction"></textarea>
+                                       restricciones para el consumidor"
+                                       formControlName="restrictions"></textarea>
                                  </div>
                               </div>
                            </div>
@@ -188,15 +192,17 @@
 
                   <footer class="modal-card-foot">
 
-                     <button [disabled]="editForm.invalid" type="submit" class="button" (click)="closeModal()"> <i class="fas
+                     <button [disabled]="editForm.invalid" type="submit"
+                        class="button" (click)="closeModal()"> <i class="fas
                            fa-check"></i>Actualizar</button>
-                     <button class="button" (click)="closeModal()"><i class="fas fa-ban"></i>Cancelar</button>
+                     <button class="button" (click)="closeModal()"><i class="fas
+                           fa-ban"></i>Cancelar</button>
                   </footer>
 
                </form>
             </div>
          </section>
-         
+
       </div>
    </div>
 </div>
