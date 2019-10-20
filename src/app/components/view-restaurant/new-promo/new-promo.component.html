@@ -156,8 +156,8 @@
             <div id="xddd" class="column is-two-fifths is-desktop">
               <div class="round-button">
                 
-                <image-upload (uploadFinished)="onUploadFinish($event)">
-                </image-upload>
+                <input name="image" type="file" (change)="selectImage($event)">
+                
     
               </div>
             </div>

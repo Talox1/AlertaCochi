@@ -61,4 +61,13 @@ export class OwnerService {
   promotionsDelete(id: any): Observable <any> {
     return this.http.delete(`${this.api}owner/promotions/delete/${id}`, httpOptions);
   }
+
+  
+  getImage(imageUrl: string): Observable<Blob> {
+    return this.http.get(imageUrl, { responseType: 'blob' });
+  }
+
+  sendImage(file:any):Observable<any> {
+    return this.http.post(`${this.api}owner/images/register`,file, httpOptions)
+  }
 }

@@ -34,4 +34,5 @@ export class ListPromosComponent implements OnInit {
   eliminar(){
 
   }
+
 }
