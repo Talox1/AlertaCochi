@@ -14,6 +14,7 @@ export class NewPromoComponent implements OnInit {
   images;
   multipleImages = [];
 
+  fileData: File = null;
 
   estados;
   ciudades;
@@ -88,7 +89,32 @@ export class NewPromoComponent implements OnInit {
       // this.subirImagenes();
     }
 
+    //opcion 3
+    const formData = new FormData();
+    formData.append('file', this.fileData);
+    this.ownerService.sendImage(formData)
+      .subscribe(response => {
+        console.log(response);
+      })
+
   }
+
+  // Probar a ver si si, o no xc pero al final 
+  fileInput(files: FileList) {
+    this.fileData = files.item(0);
+  }
+
+  uploadFile() {
+    this.ownerService.sendImage(this.fileInput).subscribe(
+      response => {
+        console.log('Subiendo...');
+        console.log(response);
+      },
+      error => {
+        console.log(error);
+      }); 
+  }
+/////////////////////  esos dos nuevos de arriba  //////////////////////////////
 
   subirImagenes() {
     console.log('subiendo imagenes')
