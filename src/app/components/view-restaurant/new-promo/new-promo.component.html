@@ -1,51 +1,57 @@
 <div class="backg">
-    <div class="container">
-        <h2>Nueva Promoción</h2>
-        <br>
-        <div class="container" id="col1">
-            <form [formGroup] ="registerForm" (ngSubmit)="registarPromo()" novalidate>
-                <!-- Name -->
-                <div class="field is-horizontal">
-                  <div class="field-label is-normal">
-                    <label class="label">Nombre de la promocion</label>
-                  </div>
-                  <div class="field-body">
-                    <div class="field">
-                      <p class="control is-expanded has-icons-left">
-                        <input class="input" type="text" placeholder="Nombre del negocio"  formControlName="name">
-                        <span class="icon is-small is-left">
-                          <i class="fa fa-briefcase"></i>
-                        </span>
-                      </p>
-                    </div>
-                    <div *ngIf="registerForm.get('name').errors && registerForm.get('name').dirty">
-                        <p *ngIf="registerForm.get('name').hasError('required')">Este campo debe ser obligatorio</p>
-                      </div>
-                  </div>
-                </div>
-    
-                <!-- Descuento -->
-                <div class="field is-horizontal">
-                    <div class="field-label is-normal">
-                      <label class="label">Descuento</label>
-                    </div>
-                    <div class="field-body">
-                      <div class="field">
-                        <p class="control is-expanded has-icons-left">
-                          <input class="input" type="text" placeholder="% desc."  formControlName="discount">
-                          <span class="icon is-small is-left">
-                              <i class="fas fa-dollar-sign"></i>
-                          </span>
-                        </p>
-                      </div>
-                      <div *ngIf="registerForm.get('name').errors && registerForm.get('name').dirty">
-                          <p *ngIf="registerForm.get('name').hasError('required')">Este campo debe ser obligatorio</p>
-                        </div>
-                    </div>
-                  </div>
-    
-                  <!-- Estado -->
-                <!-- <div class="field is-horizontal">
+  <div class="container">
+    <h2>Nueva Promoción</h2>
+    <br>
+    <div class="container" id="col1">
+      <form [formGroup]="registerForm" (ngSubmit)="registarPromo()" novalidate>
+        <!-- Name -->
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Nombre de la promocion</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <p class="control is-expanded has-icons-left">
+                <input class="input" type="text" placeholder="Nombre del
+                  negocio" formControlName="name">
+                <span class="icon is-small is-left">
+                  <i class="fa fa-briefcase"></i>
+                </span>
+              </p>
+            </div>
+            <div *ngIf="registerForm.get('name').errors &&
+              registerForm.get('name').dirty">
+              <p *ngIf="registerForm.get('name').hasError('required')">Este
+                campo debe ser obligatorio</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Descuento -->
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Descuento</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <p class="control is-expanded has-icons-left">
+                <input class="input" type="text" placeholder="% desc."
+                  formControlName="discount">
+                <span class="icon is-small is-left">
+                  <i class="fas fa-dollar-sign"></i>
+                </span>
+              </p>
+            </div>
+            <div *ngIf="registerForm.get('name').errors &&
+              registerForm.get('name').dirty">
+              <p *ngIf="registerForm.get('name').hasError('required')">Este
+                campo debe ser obligatorio</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Estado -->
+        <!-- <div class="field is-horizontal">
                   <div class="field-label is-normal">
                     <label class="label">Estado</label>
                   </div>
@@ -65,9 +71,8 @@
                     </div>
                   </div>
                 </div> -->
-    
-                <!-- Ciudad -->
-                <!-- <div class="field is-horizontal">
+        <!-- Ciudad -->
+        <!-- <div class="field is-horizontal">
                   <div class="field-label is-normal">
                     <label class="label">Ciudad</label>
                   </div>
@@ -87,9 +92,8 @@
                     </div>
                   </div>
                 </div> -->
-    
-                <!-- Servicio a domcilio -->
-                <!-- <div class="field is-horizontal">
+        <!-- Servicio a domcilio -->
+        <!-- <div class="field is-horizontal">
                   <div class="field-label">
                     <label class="label">Servicio a domicilio</label>
                   </div>
@@ -102,98 +106,103 @@
                     </div>
                   </div>
                 </div> -->
-    
-                <!-- PROMO DAYS -->
-                <div class="field is-horizontal">
-                    <div class="field-label is-normal">
-                        <label class="label">Caducidad:</label>
-                    </div>
-                    <div class="field-label is-normal">
-                        <label class="label">Inicio</label>
-                    </div>
-                    <div class="field-body">
-                        <div class="field">
-                            <p class="control is-expanded has-icons-left">
-                                <input type="date">
-                            </p>
-                        </div>
-                    </div>
-                  <div class="field-label is-normal">
-                    <label class="label">Fin</label>
-                  </div>
-                  <div class="field-body">
-                    <div class="field">
-                      <p class="control is-expanded has-icons-left">
-                        <input type="date">
-                      </p>
+        <!-- PROMO DAYS -->
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Caducidad:</label>
+          </div>
+          <div class="field-label is-normal">
+            <label class="label">Inicio</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <p class="control is-expanded has-icons-left">
+                <input type="date">
+              </p>
+            </div>
+          </div>
+          <div class="field-label is-normal">
+            <label class="label">Fin</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <p class="control is-expanded has-icons-left">
+                <input type="date">
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ESPECIFIC PROMO DAY -->
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Promocion valida para el dia</label>
+          </div>
+          <div class="field-body">
+            <div class="field is-narrow">
+              <div class="control">
+                <div class="select is-fullwidth">
+                  <select formControlName="availableDay">
+                    <option value="0">Selecciona una opción</option>
+                    <option *ngFor="let day of days">
+                      {{day}}
+                    </option>
+                  </select>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Image and restriccions column -->
+        <div class="columns">
+          <div id="xddd" class="column is-two-fifths is-desktop">
+            <div class="round-button">
+
+              <image-upload (uploadFinished)="onUploadFinish($event)">
+              </image-upload>
+              <!-- <input type="file" name="image" (change)="onUploadImage($event)"> -->
+              <!-- si no funciona con la 3, cambiar por (change)="fileInput($event.target.files") -->
+            </div>
+          </div>
+
+          <!-- Restriccions column -->
+          <div class="column is-four-fifths- is-four-fifths- is-four-fifths-
+            is-one-fifth- is-one-third-">
+            <form [formGroup]="registerForm" (ngSubmit)="test()" novalidate>
+              <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                  <label class="label">Restricciones</label>
+                </div>
+                <div class="field-body">
+                  <div class="field">
+                    <div class="control">
+                      <textarea class="textarea" placeholder="Menciona algunas
+                        restricciones para el consumidor"
+                        formControlName="restrictions"></textarea>
                     </div>
                   </div>
                 </div>
-                
-                <!-- ESPECIFIC PROMO DAY -->
-                <div class="field is-horizontal">
-                    <div class="field-label is-normal">
-                      <label class="label">Promocion valida para el dia</label>
-                    </div>
-                    <div class="field-body">
-                      <div class="field is-narrow">
-                        <div class="control">
-                          <div class="select is-fullwidth">
-                            <select formControlName="availableDay" >
-                                <option value="0" >Selecciona una opción</option>
-                                <option *ngFor="let day of days" >
-                                  {{day}}
-                                </option>
-                            </select>
-                            
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                <!-- Image and restriccions column -->
-        <div  class="columns">
-            <div id="xddd" class="column is-two-fifths is-desktop">
-              <div class="round-button">
-                
-                <input name="image" type="file" (change)="selectImage($event)">
-                <!-- si no funciona con la 3, cambiar por (change)="fileInput($event.target.files") -->
-    
               </div>
-            </div>
-            
-            <!-- Restriccions column -->
-            <div class="column is-four-fifths- is-four-fifths- is-four-fifths- is-one-fifth- is-one-third-">
-                <form [formGroup] ="registerForm" (ngSubmit)="test()" novalidate>
-                    <div class="field is-horizontal">
-                        <div class="field-label is-normal">
-                          <label class="label">Restricciones</label>
-                        </div>
-                        <div class="field-body">
-                          <div class="field">
-                            <div class="control">
-                              <textarea class="textarea" placeholder="Menciona algunas restricciones para el consumidor" formControlName="restrictions"></textarea>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                </form>
-                
-            </div>
+            </form>
+
+          </div>
         </div>
-    
-          <!-- Button done -->
+
+        <!-- Button done -->
         <div class="field is-horizontal">
           <div class="field-body">
             <div class="field is-grouped is-grouped-centered">
               <div class="control">
-                <button type="submit" [disabled]="registerForm.invalid" class="button is-primary btn">
+                <button type="submit" [disabled]="registerForm.invalid"
+                  class="button is-primary btn">
                   <span class="icon is-small">
                     <i class="fas fa-check"></i>
                   </span>
                   <span>Crear promo</span>
                 </button>
-                <button class="button is-danger btn" routerLink="/homeRestaurant" >
+                <button class="button is-danger btn"
+                  routerLink="/homeRestaurant">
                   <span class="icon is-small">
                     <i class="fas fa-ban"></i>
                   </span>
@@ -201,9 +210,9 @@
                 </button>
               </div>
             </div>
-          </div>  
+          </div>
         </div>
-              </form>
-        </div>
+      </form>
     </div>
+  </div>
 </div>

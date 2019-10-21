@@ -108,21 +108,21 @@ export class RestauratPromotionsComponent implements OnInit {
     )
   }
 
-  onUploadFinish(event) {
-    if (event.target.files.length > 0) {
-      this.images = event.target.files[0];
-       this.subirImagenes();
-    }
-  }
+  // onUploadFinish(event) {
+  //   if (event.target.files.length > 0) {
+  //     this.images = event.target.files[0];
+  //      this.subirImagenes();
+  //   }
+  // }
 
-  subirImagenes(){
-    console.log('subiendo imagenes')
-    const formData = new FormData();
-    formData.append('file', this.images.files[0], this.images.files[0])
-    this.ownerService.sendImage(formData).subscribe(response =>{
-      console.log(response);
-    })
-  }
+  // subirImagenes(){
+  //   console.log('subiendo imagenes')
+  //   const formData = new FormData();
+  //   formData.append('file', this.images.files[0], this.images.files[0])
+  //   this.ownerService.sendImage(formData).subscribe(response =>{
+  //     console.log(response);
+  //   })
+  // }
 
   imageToShow: any;
 

@@ -60,6 +60,8 @@ export class NavbarComponent implements OnInit {
     this.navbarService.change.subscribe(
       response => {
         this.currentUser = this.navbarService.currentUser;
+        this.currentUser = this.navbarService.currentUser;
+        console.log('cambio')
         this.ngOnInit();
       });
 

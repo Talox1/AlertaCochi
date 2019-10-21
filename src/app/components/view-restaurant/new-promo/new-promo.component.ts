@@ -3,6 +3,11 @@ import { FormBuilder, FormGroup, Validators, } from '@angular/forms';
 import { OwnerService } from 'src/app/services/owner.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
+import { fromEvent, Observable } from 'rxjs';
+import { pluck } from 'rxjs/operators';
+
+
+
 @Component({
   selector: 'app-new-promo',
   templateUrl: './new-promo.component.html',
@@ -23,6 +28,7 @@ export class NewPromoComponent implements OnInit {
   registerForm: FormGroup;
   houseservice = true;
   restaurants: any[];
+  image: string | ArrayBuffer;
 
   constructor(private fb: FormBuilder,
     private ownerService: OwnerService,
@@ -68,61 +74,51 @@ export class NewPromoComponent implements OnInit {
   }
 
 
-  selectImage(event) {
-    //opcion1
-    let elem = event.target;
-    if (elem.files.length > 0) {
-      let formData = new FormData();
-      formData.append('file', elem.files[0], elem.files[0].name)
-      this.ownerService.sendImage(JSON.stringify(formData)).subscribe(response => {
-        console.log(response);
-      })
-    }
+  //=================APARTADOS PARA IMAGENES//=================
 
-    //opcion 2
-    if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      console.log(file);
-      this.images = file.name;
-      console.log(this.images)
-      //metodo del servicio
-      // this.subirImagenes();
-    }
+  private imagen:ImageSelected =  null;
 
-    //opcion 3
-    const formData = new FormData();
-    formData.append('file', this.fileData);
-    this.ownerService.sendImage(formData)
-      .subscribe(response => {
-        console.log(response);
-      })
+  onUploadFinish(event) {
+    console.log(event);
+    this.imagen = new ImageSelected;
+    this.imagen.image = <File>event.file;
+    this.imagen.name = event.file.name;
 
-  }
-
-  // Probar a ver si si, o no xc pero al final 
-  fileInput(files: FileList) {
-    this.fileData = files.item(0);
-  }
-
-  uploadFile() {
-    this.ownerService.sendImage(this.fileInput).subscribe(
-      response => {
-        console.log('Subiendo...');
-        console.log(response);
-      },
-      error => {
-        console.log(error);
-      }); 
-  }
-/////////////////////  esos dos nuevos de arriba  //////////////////////////////
-
-  subirImagenes() {
-    console.log('subiendo imagenes')
-    const formData = new FormData();
-    formData.append('image', this.images);
-    this.ownerService.sendImage(JSON.stringify(this.images)).subscribe(response => {
+    
+    this.ownerService.sendImage(this.imagen.image).subscribe(response =>{
       console.log(response);
     })
-  }
+   }
 
+  //  sendImage(){    
+  //     if(this.imagen != null){
+  //       console.log('send image');
+  //       this.http.post('http://localhost:3000/upload', {
+  //         file: this.imagen.image,
+  //         name: this.imagen.name
+  //       }).subscribe((d) => {
+  //         console.log(d);
+  //       })
+  //     }
+  //   }
+
+  // selectImage(event) {
+    
+  //   let elem = event.target;
+  //   if (elem.files.length > 0) {
+  //     let formData = new FormData();
+  //     formData.append('file', elem.files[0], elem.files[0].name)
+  //     this.ownerService.sendImage((formData).subscribe(response => {
+  //       console.log(response);
+  //     })
+  //   }
+  
+
+
+
+  
+}
+class ImageSelected {
+  public name: String;
+  public image: File;
 }

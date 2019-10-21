@@ -4,6 +4,13 @@
       <h1 class="title">Mis restaurants</h1>
    </div>
    <div class="columns is-mobile">
+      <div class="column is-full-mobile is-half-tablet is-two-fifths
+         is-two-fifths-widescreen is-two-fifths-fullhd">
+         <button *ngIf="num_restaurants == '0'" class="btn btn-success"
+         [routerLink]="['/registerBussiness',id_user]">Crear nuevo restaurant</button>
+      </div>
+   </div>
+   <div class="columns is-mobile">
       <div class="column is-full-mobile is-half-tablet is-full
          is-full-widescreen is-full-fullhd">
          <div class="notification" *ngFor="let restaurant of restaurants">
@@ -49,13 +56,7 @@
             </div>
          </div>
 
-         <div class="columns is-mobile">
-            <div class="column is-full-mobile is-half-tablet is-two-fifths
-               is-two-fifths-widescreen is-two-fifths-fullhd">
-               <button *ngIf="num_restaurants == 0" class="btn btn-success"
-               [routerLink]="['/registerBussiness',id_user]">Crear nuevo restaurant</button>
-            </div>
-         </div>
+         
 
       </div>
 

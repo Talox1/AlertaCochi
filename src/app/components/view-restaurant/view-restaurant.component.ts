@@ -64,9 +64,11 @@ export class ViewRestaurantComponent implements OnInit {
 //servicio que obtiene todos los restaurantes
     this.ownerService.getRestaurants().subscribe(
       response => {
-        
+        // console.log('ngoninut')
         this.restaurants = response;
         this.num_restaurants = this.restaurants.length;
+        console.log(this.num_restaurants)
+        
       }
     )
 

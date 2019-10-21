@@ -67,7 +67,16 @@ export class OwnerService {
     return this.http.get(imageUrl, { responseType: 'blob' });
   }
 
-  sendImage(file:any):Observable<any> {
-    return this.http.post(`${this.api}owner/images/register`,file, httpOptions)
+  sendImage(file:File):Observable<any> {
+    const httpOptions = {
+      headers : new HttpHeaders({
+        'Authorization' : 'Bearer ' + localStorage.getItem('token'),
+      })
+    }; 
+
+    // form type
+    let formData = new FormData();
+    formData.append('image', file)
+    return this.http.post(`${this.api}owner/images/register`,formData, httpOptions)
   }
 }
