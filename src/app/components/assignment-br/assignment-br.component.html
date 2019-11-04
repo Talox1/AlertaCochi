@@ -5,7 +5,15 @@
       <div class="column borde">
         <h3> LISTA DE PROPIETARIOS </h3>
         <br>
-        <div class="card" *ngFor="let item of propietarios">
+        <div class="field">
+          <div class="control has-icons-left">
+              <input type="text" class="input is-info" maxlength=26
+                  placeholder="Filtrar por nombre" name="filtro2" [(ngModel)] ="filtro2">
+                  <!-- <a class="button is-link" (click)="searchBussiness()">Buscar</a> -->
+          </div>
+      </div>
+
+        <div class="card" *ngFor="let item of propietarios | filter: filtro2">
           <div class="card-content">
             <div class="media">
               <div class="media-left">
@@ -37,10 +45,19 @@
         </div>
       </div>
 
+      <!-- 2nd column -->
       <div class="column borde">
         <h3> LISTA DE RESTAURANTES </h3>
         <br>
-        <div class="card" *ngFor="let item of negocios">
+        <div class="field">
+          <div class="control has-icons-left">
+              <input type="text" class="input is-info" maxlength=26
+                  placeholder="Filtrar por nombre" name="filtro" [(ngModel)] ="filtro">
+                  <!-- <a class="button is-link" (click)="searchBussiness()">Buscar</a> -->
+          </div>
+      </div>
+     
+        <div class="card" *ngFor="let item of negocios | filter: filtro">
           <div class="card-content">
             <div class="media">
               <div class="media-left">
@@ -71,6 +88,8 @@
           </div>
         </div>
       </div>
+
+      <!-- 3thr column -->
       <div class="column borde">
         <h3> ASIGNACION </h3>
         <br>

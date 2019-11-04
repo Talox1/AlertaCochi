@@ -30,6 +30,10 @@ export class AssignmentBRComponent implements OnInit {
 
   registerForm: FormGroup;
 
+  filtro = '';
+  filtro2 = '';
+  
+
   constructor(
     public adminservice:AdminService,
     public fb: FormBuilder,
@@ -43,12 +47,12 @@ export class AssignmentBRComponent implements OnInit {
     this.getAllBussiness();
     this.getAllOwners();
   }
-  //obtiene todos los negocios
+  //obtiene todos los Restaurantes
   getAllBussiness(){
     // console.log("all bussiness");
     this.adminservice.getRestaurants().subscribe(
       response=>{
-        // console.log(response);
+        console.log('Lista de restaurantes:',response);
         this.negocios = response;
       }
     )
@@ -59,7 +63,7 @@ export class AssignmentBRComponent implements OnInit {
     // console.log("all restaurants");
     this.adminservice.getUsers().subscribe(
       response=>{
-        // console.log(response.length)
+        console.log('Lista de propietarios',response)
         for(let i = 0; i<response.length; i++){
           if(response[i].is_owner == true){
             // console.log(response[i]);

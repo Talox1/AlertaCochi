@@ -13,10 +13,11 @@
 
   <div #navbarCollapse id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
+        
       <a class="navbar-item" routerLink="/home" (click)="collapseNavbar()">
         Home
       </a>
-
+      
       <a class="navbar-item" routerLink="home" (click)="collapseNavbar()">
         Acerca de
       </a>
@@ -106,9 +107,10 @@
 
     <div class="navbar-end">
       <div class="navbar-item">
-
+          <h1>Is logged?: {{isloged}} </h1>
         <div class="buttons" *ngIf="!isloged; else logout">
           <a id="loginbtn" class="button is-primary " routerLink="/registerRestaurant" (click)="collapseNavbar()">
+            
             <strong>Registrate</strong>
           </a>
           

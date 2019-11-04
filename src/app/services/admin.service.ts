@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import {API} from '../app-config';
 
 
-const httpOptions = {
+  let httpOptions = {
   headers : new HttpHeaders({
     'Content-Type': 'application/json',
     // tslint:disable-next-line: object-literal-key-quotes
@@ -19,6 +19,16 @@ const httpOptions = {
 export class AdminService {
   api: string = API;
   constructor(private http: HttpClient) { }
+
+  actualizarHeaders(){
+    httpOptions = {
+      headers : new HttpHeaders({
+        'Content-Type': 'application/json',
+        // tslint:disable-next-line: object-literal-key-quotes
+        'Authorization' : 'Bearer ' + localStorage.getItem('token'),
+      })
+    }; 
+  }
 
   getUsers(): Observable<any> {//obtiene todo los restaurants
     console.log(localStorage.getItem('token'))
@@ -38,6 +48,7 @@ export class AdminService {
   }
 
   getRestaurants(): Observable <any> {//obtiene todo los negocios
+    this.actualizarHeaders();
     return this.http.get(`${this.api}admin/restaurants/show`, httpOptions);
   }
 

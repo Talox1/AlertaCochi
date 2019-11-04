@@ -23,7 +23,6 @@ export class NavbarComponent implements OnInit {
   currentUser = 'invited'; //variabe para controlar las opciones del navbar
   userData; //datos del usuario que esta logueado
 
-
   constructor(
     private router: Router,
     private navbarService: NavbarService,
@@ -56,22 +55,16 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
-    //para renderizar el navbar
     this.navbarService.change.subscribe(
       response => {
+        console.log('entrando en el ngOnInit')
+        this.isloged = this.navbarService.isLoged();
         this.currentUser = this.navbarService.currentUser;
-        this.currentUser = this.navbarService.currentUser;
-        console.log('cambio')
-        this.ngOnInit();
+        console.log(this.currentUser, this.isloged)
+        
       });
-
-    // if (localStorage.getItem('token') == null) {
-    //   this.isloged = false
-    // } else {
-    //   this.isloged = true;
-    // }
+      
   }
-
 
 
 
