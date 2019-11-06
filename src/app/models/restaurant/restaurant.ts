@@ -1,14 +1,15 @@
 export class Restaurant {
    id:number;
    name: String
-   phone: number;
    email: String;
-   facebook: String;
-   instagram: String;
-   whatsapp: number;
    homeService: boolean;
-   restrictions: String;
    state: String;
    city: String;
+   whatsapp: number;
+   facebook: String;
+   instagram: String;
+   phone: number;
+   restrictions: String;
    user_id: number;
+   is_activate:boolean;
 }

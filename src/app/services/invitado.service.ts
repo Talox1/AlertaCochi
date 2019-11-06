@@ -30,7 +30,7 @@ export class InvitadoService {
   
   //////states
   getStates(): Observable <any> {
-    return this.http.get(`${this.api}/state/show`, httpOptions);
+    return this.http.get(`${this.api}state/show`, httpOptions);
   }
 
   getStateId(id:any): Observable <any> {

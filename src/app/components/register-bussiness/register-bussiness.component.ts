@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, } from '@angular/forms';
 import { ViewChild, ElementRef, Renderer2 } from '@angular/core'
 import { Router, ActivatedRoute } from '@angular/router';
-import { NavbarService } from 'src/app/services/navbar.service';
+
 import { AdminService } from 'src/app/services/admin.service';
 import { OwnerService } from 'src/app/services/owner.service';
+import { InvitadoService } from 'src/app/services/invitado.service';
 @Component({
   selector: 'app-register-bussiness',
   templateUrl: './register-bussiness.component.html',
@@ -12,8 +13,11 @@ import { OwnerService } from 'src/app/services/owner.service';
 })
 export class RegisterBussinessComponent implements OnInit {
   @ViewChild("modalcito", { static: true }) modal: ElementRef;
-  estados;
-  ciudades;
+  estados=[];
+  ciudades=[];
+  estadoseleccionado:String;
+  ciudadseleccionadad:String;
+
   id_owner;
 
   registerForm: FormGroup;
@@ -26,6 +30,7 @@ export class RegisterBussinessComponent implements OnInit {
     private adminService:AdminService,
     private ownerService:OwnerService,
     private route: ActivatedRoute,
+    private invitedService:InvitadoService,
     
 
   ) {
@@ -47,14 +52,10 @@ export class RegisterBussinessComponent implements OnInit {
       is_active:[true],
     });
 
-
-
-    this.estados = ['CHIAPAS', 'DURANGO', 'CDMX', 'TABASCO', 'OAXACA', 'TAMAULIPAS', 'MONTERREY', 'PUEBLA', 'GUADALAJARA', 'MORELIA'];
-    this.ciudades = ["Tuxtla", "DF", "VILLA HERMOSA", "OAXACA", "SALTILLO", "PUEBLA", "MICHOACAN"]
-
     if(localStorage.getItem('usuario') == 'admin'){
       this.adminService.adminProfile().subscribe(
         response =>{
+          this.estados = response;
           console.log(response)
         }
       )
@@ -69,29 +70,35 @@ export class RegisterBussinessComponent implements OnInit {
 
   ngOnInit() {
     if(localStorage.getItem('usuario') == 'owner'){
-      this.ownerService.ownerProfile().subscribe(
-        response => {
+      this.ownerService.ownerProfile().subscribe(response => {
           this.currentUser = 'owner'
           console.log(this.currentUser)
-        },
-        error => {
-        }
-      )
+        })
     }else{
-      this.adminService.adminProfile().subscribe(
-        response => {
+      this.adminService.adminProfile().subscribe( response => {
           this.currentUser = 'admin'
-        },
-        error => {
-        }
-      )
-
+        })
     }
+
+
+    //Cargar lista de estados
+    this.invitedService.getStates().subscribe( response =>{
+      
+      for (let index = 0; index < response.length; index++) {
+        const element = response[index];  
+        this.estados[index] = element.name
+      }
+    })
+    
   }
 
   registrar() {
     console.log("hellodah");
     console.log(this.currentUser)
+
+    
+    this.registerForm.controls['city'].setValue(this.ciudadseleccionadad);
+    console.log(this.registerForm);
     if (this.currentUser == 'admin') {
 
       this.adminService.restaurantRegister(this.registerForm.value).subscribe(
@@ -111,6 +118,25 @@ export class RegisterBussinessComponent implements OnInit {
         }
       )
     }
+  }
+
+  getCities(){
+    console.log(this.estadoseleccionado)
+    this.registerForm.controls['state'].setValue(this.estadoseleccionado);
+    this.invitedService.getStates().subscribe( response =>{
+      for (let index = 0; index < response.length; index++) {
+        const element = response[index];  
+        if(this.estadoseleccionado===element.name ){
+
+          this.ciudades = element.citys;
+
+          for (let j = 0; j < this.ciudades.length; j++) {
+            const element2 = this.ciudades[j];
+            this.ciudades[j] = element2.name;
+          }
+        }
+      }
+    })
   }
 
   setservice() {

@@ -104,7 +104,7 @@
             <div class="field-body">
               <div class="field">
                 <p class="control is-expanded has-icons-left">
-                  <input class="input" type="text" placeholder="whatsapp"
+                  <input class="input" type="number" placeholder="whatsapp"
                     formControlName="whatsapp">
                   <span class="icon is-small is-left">
                     <i class="fab fa-whatsapp"></i>
@@ -147,6 +147,49 @@
             </div>
           </div>
 
+          <!-- State -->
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Estado</label>
+            </div>
+            <div class="field-body">
+              <div class="field is-narrow">
+                <div class="control">
+                  <div class="select is-fullwidth">
+                    <select  [(ngModel)]="estadoseleccionado" (change)="getCities()" [ngModelOptions]="{standalone: true}">
+                      <option value="0">Selecciona una opción</option>
+                      <option *ngFor="let state of estados" >
+                        {{state}}
+                      </option>
+                    </select>
+                    <!-- <p [hidden]="selectState == '0'">Haz seleccionado la opción # {{ state }}</p> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- City -->
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Ciudad</label>
+            </div>
+            <div class="field-body">
+              <div class="field is-narrow">
+                <div class="control">
+                  <div class="select is-fullwidth">
+                    <select formControlName="city">
+                      <option value="0">Selecciona una opción</option>
+                      <option *ngFor="let ciudad of ciudades">
+                        {{ciudad}}
+                      </option>
+                    </select>
+                    <!-- <p [hidden]="selectCity == '0'">Haz seleccionado la opción # {{ city }}</p> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           <!-- homeService -->
           <div class="field is-horizontal">
             <div class="field-label">
@@ -163,7 +206,7 @@
             </div>
           </div>
 
-
+         
           <!-- Ubicacion -->
           <div class="field is-horizontal">
             <div class="field-label is-normal">
@@ -185,7 +228,8 @@
           </div>
           <div class="field is-horizontal">
 
-            <div class="field-body">
+            <div class="field-body" *ngIf="currentUser=='owner'; else
+              isAdmin">
               <div class="field">
                 <div class="control">
                   <button type="submit" [disabled]="registerForm.invalid"
@@ -195,15 +239,22 @@
                     </span>
                     <span>Crear negocio</span>
                   </button>
-                  <button routerLink="/homeAdmin" class="button is-danger">
-                    <span class="icon is-small">
-                      <i class="fas fa-delete"></i>
-                    </span>
-                    <span >Cancelar </span>
-                  </button>
                 </div>
               </div>
             </div>
+            <ng-template #isAdmin>
+              <div class="field">
+                <div class="control">
+                  <button type="submit" [disabled]="registerForm.invalid"
+                    class="button is-primary">
+                    <span class="icon is-small">
+                      <i class="fas fa-check"></i>
+                    </span>
+                    <span>Crear negocio Boton para admin</span>
+                  </button>
+                </div>
+              </div>
+            </ng-template>
           </div>
         </form>
       </div>

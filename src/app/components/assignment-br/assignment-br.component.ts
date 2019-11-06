@@ -54,6 +54,7 @@ export class AssignmentBRComponent implements OnInit {
       response=>{
         console.log('Lista de restaurantes:',response);
         this.negocios = response;
+        console.log(this.negocios[0].address);
       }
     )
   }
@@ -80,10 +81,7 @@ export class AssignmentBRComponent implements OnInit {
     this.adminservice.restaurantsSearch(name).subscribe(
       response =>{
         console.log("restaurant "); 
-        this.restaurantName = response[0].name;
-        this.restaurantCity = response[0].city;
-        this.restaurantHomeService = response[0].homeService;
-        this.restaurantId = response[0].id;
+        
         this.restaurantSelect = true;
         console.log(this.restaurantId);
         //precarga los datos->
@@ -107,10 +105,8 @@ export class AssignmentBRComponent implements OnInit {
   selectBussiness(nameUser:string){
     this.adminservice.usersSearch(nameUser).subscribe(
       response=>{
-        console.log(response[0].name);
-        this.bussinessName = response[0].name;
-        this.bussinessEmail = response[0].email;
-        this.bussinessUsername = response[0].username;
+        
+        
         this.bussinessId = response[0].id;
         this.bussinessSelect = true;
       }

@@ -156,9 +156,9 @@
               <div class="field is-narrow">
                 <div class="control">
                   <div class="select is-fullwidth">
-                    <select formControlName="state">
+                    <select  [(ngModel)]="estadoseleccionado" (change)="getCities()" [ngModelOptions]="{standalone: true}">
                       <option value="0">Selecciona una opción</option>
-                      <option *ngFor="let state of estados">
+                      <option *ngFor="let state of estados" >
                         {{state}}
                       </option>
                     </select>

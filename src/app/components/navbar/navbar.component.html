@@ -50,7 +50,7 @@
 
       <!-- Mostrar si el usuario es un admin -->
       <div *ngIf="currentUser=='admin'" class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link" (click)="collapseNavbar()">
+        <a class="navbar-link" routerLink="/homeAdmin" (click)="collapseNavbar()">
          Admin
         </a>
 

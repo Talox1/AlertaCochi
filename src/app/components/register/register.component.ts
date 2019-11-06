@@ -61,7 +61,6 @@ export class RegisterComponent implements OnInit {
       this.adminService.usersRegister(this.registerForm.value).subscribe(
         response =>{
           console.log(response)
-          // this.renderer.addClass(this.modal.nativeElement, "is-active");
           this.router.navigate(['/homeAdmin']);
         }
       )
@@ -70,9 +69,6 @@ export class RegisterComponent implements OnInit {
         this.registerService.register(JSON.stringify(this.registerForm.value)).subscribe(
           response =>{
             console.log(response);
-            // localStorage.setItem('id_owner', response.id);
-            // localStorage.setItem('currentUser','invited');
-            // localStorage.setItem('firstime','true');
             this.router.navigate(['/loginRestaurant']);
           }
         )
