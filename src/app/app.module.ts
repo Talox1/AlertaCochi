@@ -37,6 +37,8 @@ import { ListRestaurantsComponent } from './components/list-restaurants/list-res
 import { ToastrModule } from 'ngx-toastr';
 import { NewRestaurantComponent } from './components/view-admin/new-restaurant/new-restaurant.component';
 import { FilterPipe } from './pipes/filter.pipe';
+import { HomeConsumerComponent } from './components/home-consumer/home-consumer.component';
+import { ViewpromoConsumerComponent } from './components/viewpromo-consumer/viewpromo-consumer.component';
 
 
 @NgModule({
@@ -59,7 +61,9 @@ import { FilterPipe } from './pipes/filter.pipe';
     RestauratPromotionsComponent,
     ListRestaurantsComponent,
     NewRestaurantComponent,
-    FilterPipe
+    FilterPipe,
+    HomeConsumerComponent,
+    ViewpromoConsumerComponent
   ],
   imports: [
     BrowserModule,

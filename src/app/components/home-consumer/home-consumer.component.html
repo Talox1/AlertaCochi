@@ -1,0 +1,108 @@
+<div class="backg">
+    <div class="container">
+        <h1>LAS DE HOY </h1>
+        <br>
+
+        <div class="container">
+            <div class="field is-horizontal">
+                <div class="field">
+                    <div class="control has-icons-left">
+                        <div class="select is-info">
+                            <select>
+                                <option selected>Estados</option>
+                                <option *ngFor="let estado of estados">
+                                    {{estado}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="icon is-small is-left">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                    </div>
+                </div>
+                &nbsp;
+                <div class="field">
+                    <div class="control has-icons-left">
+                        <div class="select is-info">
+                            <select>
+                                <option selected>Ciudades</option>
+                                <option *ngFor="let ciudad of ciudades">
+                                    {{ciudad}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="icon is-small is-left">
+                            <i class="fas fa-city"></i>
+                        </div>
+                    </div>
+                </div>
+                &nbsp;
+                <div class="field">
+                    <div class="control has-icons-left">
+                        <div class="select is-info">
+                            <select>
+                                <option selected>Ordenar por</option>
+                                <option *ngFor="let ciudad of ciudades">
+                                    {{ciudad}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="icon is-small is-left">
+                            <i class="fas fa-city"></i>
+                        </div>
+                    </div>
+                </div>
+                &nbsp;
+                <div class="field">
+                    <div class="input is-info">
+                        <input type="date">
+                    </div>
+
+                </div>
+                &nbsp;
+                <!-- <div class="field">
+                    <div class="control has-icons-left">
+                        <input type="text" class="input is-info" maxlength=26 placeholder="Filtrar por nombre"
+                            name="filterRestaurants" [(ngModel)]="filterRestaurants">
+
+                    </div>
+                </div>
+                &nbsp; 
+                <a class="button is-link" (click)="searchBussiness()">Buscar</a> -->
+            </div>
+
+            <br>
+            <div class="columns is-multiline">
+                <div class="colum column is-one-quarter" *ngFor="let promo of promos">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image">
+                                <img src="../../../assets/img/login/f2.jpg" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <header class="card-header">
+                            <p class="card-header-title">
+                                Promocion: {{promo.name}}
+                            </p>
+                        </header>
+                        <div class="card-content">
+                            <div class="content">
+                                <p> Restricciones: {{promo.restrictions}} </p>
+                                <p> Servicio a domicilio: {{promo.service}} </p>
+                                <p><time datetime="2019-1-1">Dia disponible: <strong>{{promo.day}}</strong>
+                                        {{promo.date}}
+                                        {{promo.month}} 2019 </time> </p>
+                            </div>
+                        </div>
+                        <footer class="card-footer">
+                            <a routerLink="/viewPromo" class="card-footer-item button"><i
+                                    class="fas fa-book-open"></i></a>
+                            <a class="card-footer-item button"><i class="fas fa-heart"></i></a>
+                            <a class="card-footer-item button"><i class="fas fa-exclamation-circle"></i></a>
+                        </footer>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
