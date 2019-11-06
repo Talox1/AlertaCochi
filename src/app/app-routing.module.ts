@@ -15,6 +15,8 @@ import { ProfileComponent } from './components/view-restaurant/profile/profile.c
 import { RestauratPromotionsComponent } from './components/view-restaurant/restaurat-promotions/restaurat-promotions.component';
 import { ListRestaurantsComponent } from './components/list-restaurants/list-restaurants.component';
 import { NewRestaurantComponent } from './components/view-admin/new-restaurant/new-restaurant.component';
+import { HomeConsumerComponent } from './components/home-consumer/home-consumer.component';
+import { ViewpromoConsumerComponent } from './components/viewpromo-consumer/viewpromo-consumer.component';
 
 const routes: Routes = [
   {
@@ -79,6 +81,14 @@ const routes: Routes = [
   {
     path: 'listRestaurants',
     component: ListRestaurantsComponent
+  },
+  {
+    path: 'homeConsumer',
+    component: HomeConsumerComponent
+  },
+  {
+    path: 'viewPromo',
+    component: ViewpromoConsumerComponent
   },
   
   {path:'**',  redirectTo: 'home', pathMatch: 'full'}
