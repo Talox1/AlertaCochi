@@ -44,7 +44,7 @@ export class AdminService {
   }
 
   usersRegister(params: any): Observable<any> {
-    return this.http.post(`${this.api}admin/user/register`, params, httpOptions);
+    return this.http.post(`${this.api}admin/users/register`, params, httpOptions);
   }
 
   getRestaurants(): Observable <any> {//obtiene todo los negocios
