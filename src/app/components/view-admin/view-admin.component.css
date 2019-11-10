@@ -21,6 +21,7 @@ img {
 
 a {
     padding: 0;
+    white-space: pre-wrap;
 }
 
 .opcionesDiv {
