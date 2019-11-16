@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import {API} from '../app-config';
 
 
-const httpOptions = {
+let httpOptions = {
   headers : new HttpHeaders({
     'Content-Type': 'application/json',
     // tslint:disable-next-line: object-literal-key-quotes
@@ -67,7 +67,7 @@ export class OwnerService {
     return this.http.get(imageUrl, { responseType: 'blob' });
   }
 
-  sendImage(file:File):Observable<any> {
+  sendImage(file:File,id:string):Observable<any> {
     const httpOptions = {
       headers : new HttpHeaders({
         'Authorization' : 'Bearer ' + localStorage.getItem('token'),
@@ -77,6 +77,7 @@ export class OwnerService {
     // form type
     let formData = new FormData();
     formData.append('image', file)
+    formData.append('promotion_id',id)
     return this.http.post(`${this.api}owner/images/register`,formData, httpOptions)
   }
 }

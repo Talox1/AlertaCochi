@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, } from '@angular/forms';
 import { OwnerService } from 'src/app/services/owner.service';
 import { Router, ActivatedRoute } from '@angular/router';
-
+import { ImagenCloud } from '../../../models/promotion/promotion'
 import { fromEvent, Observable } from 'rxjs';
 import { pluck } from 'rxjs/operators';
 
@@ -20,6 +20,9 @@ export class NewPromoComponent implements OnInit {
   multipleImages = [];
 
   fileData: File = null;
+  
+  imagn2:ImagenCloud;
+
 
   estados;
   ciudades;
@@ -29,6 +32,8 @@ export class NewPromoComponent implements OnInit {
   houseservice = true;
   restaurants: any[];
   image: string | ArrayBuffer;
+
+  promtion_id;
 
   constructor(private fb: FormBuilder,
     private ownerService: OwnerService,
@@ -67,10 +72,15 @@ export class NewPromoComponent implements OnInit {
     console.log(this.registerForm.value);
     this.ownerService.promotionsRegister(this.registerForm.value).subscribe(
       response => {
-        console.log(response);
+        
+        this.ownerService.sendImage(this.imagen.image,response.id).subscribe(response =>{
+          console.log(response);
+        })
         this.router.navigate(['/homeRestaurant'])
       }
     )
+    
+    
   }
 
 
@@ -83,38 +93,14 @@ export class NewPromoComponent implements OnInit {
     this.imagen = new ImageSelected;
     this.imagen.image = <File>event.file;
     this.imagen.name = event.file.name;
-
     
-    this.ownerService.sendImage(this.imagen.image).subscribe(response =>{
-      console.log(response);
-    })
+    console.log(this.imagen.image);
+    
+    // this.ownerService.sendImage(this.imagen.image).subscribe(response =>{
+    //   console.log(response);
+    // })
+    
    }
-
-  //  sendImage(){    
-  //     if(this.imagen != null){
-  //       console.log('send image');
-  //       this.http.post('http://localhost:3000/upload', {
-  //         file: this.imagen.image,
-  //         name: this.imagen.name
-  //       }).subscribe((d) => {
-  //         console.log(d);
-  //       })
-  //     }
-  //   }
-
-  // selectImage(event) {
-    
-  //   let elem = event.target;
-  //   if (elem.files.length > 0) {
-  //     let formData = new FormData();
-  //     formData.append('file', elem.files[0], elem.files[0].name)
-  //     this.ownerService.sendImage((formData).subscribe(response => {
-  //       console.log(response);
-  //     })
-  //   }
-  
-
-
 
   
 }

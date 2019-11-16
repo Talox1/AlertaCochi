@@ -25,7 +25,7 @@ export class InvitadoService {
   }
 
   getPromotions(): Observable <any> {
-    return this.http.get(`${this.api}/promotions/show/`, httpOptions);
+    return this.http.get(`${this.api}promotions/show/`, httpOptions);
   }
   
   //////states

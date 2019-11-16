@@ -39,10 +39,6 @@ export class RestauratPromotionsComponent implements OnInit {
       response => {
         this.promotions = response;
         console.log(this.promotions)
-        // for (let promo = 0; promo < this.promotions.length; promo++) {
-        //   const url = Array[promo];
-        //     console.log('las promos',url);
-        // }
         this.getImageFromService('a');
       }
     );
@@ -107,22 +103,6 @@ export class RestauratPromotionsComponent implements OnInit {
       }
     )
   }
-
-  // onUploadFinish(event) {
-  //   if (event.target.files.length > 0) {
-  //     this.images = event.target.files[0];
-  //      this.subirImagenes();
-  //   }
-  // }
-
-  // subirImagenes(){
-  //   console.log('subiendo imagenes')
-  //   const formData = new FormData();
-  //   formData.append('file', this.images.files[0], this.images.files[0])
-  //   this.ownerService.sendImage(formData).subscribe(response =>{
-  //     console.log(response);
-  //   })
-  // }
 
   imageToShow: any;
 

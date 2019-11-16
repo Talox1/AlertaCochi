@@ -21,11 +21,11 @@ import { ViewpromoConsumerComponent } from './components/viewpromo-consumer/view
 const routes: Routes = [
   {
     path:'',
-    component:HomeComponent
+    component:HomeConsumerComponent
   },
   {
     path:'home',
-    component:HomeComponent
+    component:HomeConsumerComponent
   },
   {
     path:'registerRestaurant',

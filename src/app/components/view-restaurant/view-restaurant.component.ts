@@ -20,26 +20,18 @@ export class ViewRestaurantComponent implements OnInit {
   editForm: FormGroup;
   @ViewChild("modal", { static: true }) modal: ElementRef;
   @ViewChild("editRestaurantModal", { static: true }) editRestaurantModal: ElementRef;
-  constructor(private router: Router,
-    private ownerService: OwnerService,
-    private renderer: Renderer2,
-    public fb: FormBuilder, ) {
+  
+  constructor(private router: Router,private ownerService: OwnerService,private renderer: Renderer2,public fb: FormBuilder, ) {
 
     this.estados = ['CHIAPAS', 'DURANGO', 'CDMX', 'TABASCO', 'OAXACA', 'TAMAULIPAS', 'MONTERREY', 'PUEBLA', 'GUADALAJARA', 'MORELIA'];
     this.ciudades = ["Tuxtla", "DF", "VILLA HERMOSA", "OAXACA", "SALTILLO", "PUEBLA", "MICHOACAN"]
     
     //servicio que obtiene todos los restaurantes
-    this.ownerService.getRestaurants().subscribe(
-      response => {
+    this.ownerService.getRestaurants().subscribe(response => {
         console.log(response);
         this.restaurants = response;
         this.num_restaurants = this.restaurants.length;
-      }
-    )
-
-    this.ownerService.ownerProfile().subscribe(response =>{
-      this.id_user = response.id;
-    })
+      })
   }
 
   ngOnInit() {
@@ -62,18 +54,12 @@ export class ViewRestaurantComponent implements OnInit {
     });
 
 //servicio que obtiene todos los restaurantes
-    this.ownerService.getRestaurants().subscribe(
-      response => {
+    this.ownerService.getRestaurants().subscribe(response => {
         // console.log('ngoninut')
         this.restaurants = response;
         this.num_restaurants = this.restaurants.length;
         console.log(this.num_restaurants)
-        
-      }
-    )
-
-
-
+      })
   }
 
   nuevoRestaurant(){
@@ -93,8 +79,7 @@ export class ViewRestaurantComponent implements OnInit {
       response => {
         console.log(response);
         this.router.navigate['/homeRestaurant'];
-      }
-    )
+      })
   }
 
 

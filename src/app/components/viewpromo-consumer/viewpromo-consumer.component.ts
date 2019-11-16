@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { InvitadoService } from 'src/app/services/invitado.service';
 
 @Component({
   selector: 'app-viewpromo-consumer',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewpromoConsumerComponent implements OnInit {
 
-  constructor() { }
+  constructor(private invitedService:InvitadoService) { }
 
   ngOnInit() {
+    
   }
 
 }
