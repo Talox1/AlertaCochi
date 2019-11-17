@@ -1,16 +1,24 @@
+.backg {
+  height: auto;
+  margin: 0;
+  background: linear-gradient(rgba(255, 152, 238, 0.781),rgba(201, 42, 55, 0.815)), url(../../../assets/img/others/registerBussines.jpg);
+  background-size: cover;
+}
+
 #formRegisterBussines{
    margin-top: 100px;
 
 }
 #col1{
-   padding-top: 100px;
-   background-color: red;
+   background-color: rgba(255, 247, 247, 0.733);
+   border-radius: 5px;
 }
 
 #col2{
-   background-color: rebeccapurple;
+   background-color: rgb(231, 80, 80);
    margin-left: 10px;
    margin-right: 10px;
+   border-radius: 5px;
 }
 #xddd{
   background-color: tomato;
@@ -117,3 +125,18 @@
  .slider.round:before {
    border-radius: 50%;
  }
+
+h2 {
+  font-size: 26pt;
+  text-align: center;
+  color: black;
+}
+
+.btn-acom {
+  margin: 0;
+  justify-content: center;
+}
+
+.label {
+   margin: 0 !important;
+} 

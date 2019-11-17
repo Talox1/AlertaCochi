@@ -1,21 +1,22 @@
-.divbody{
+.divbody {
    /*background-color: rgb(185, 177, 177);*/
-   background: linear-gradient(rgba(136, 33, 33, 0.719),rgba(253, 152, 70, 0.712)), url(../../../assets/img/login/f2.jpg)no-repeat fixed center;
+   background: linear-gradient(rgba(136, 33, 33, 0.719), rgba(253, 152, 70, 0.712)), url(../../../assets/img/login/f2.jpg)no-repeat fixed center;
    -webkit-background-size: cover;
    -moz-background-size: cover;
    -o-background-size: cover;
    background-size: cover;
    height: 100%;
-   width: 100% ;
+   width: 100%;
    /* text-align: center; */
 }
+
 #contenedor-formulario-flex {
    justify-content: center;
    max-width: 1580px;
    width: 100%;
 }
 
-#formlogin{
+#formlogin {
    /* margin-top: 100px; */
    /* justify-content: center; */
    background-color: #F7D708;
@@ -35,7 +36,7 @@ div .general {
    display: flex;
    width: 80%;
    justify-content: center;
-   margin: auto;  
+   margin: auto;
 }
 
 .centrado {
@@ -43,7 +44,12 @@ div .general {
 }
 
 h3 {
-   text-align: center;  
+   text-align: center;
    font-size: 20pt;
    color: white;
+}
+
+.btn-acom {
+   margin: 0;
+   justify-content: center;
 }

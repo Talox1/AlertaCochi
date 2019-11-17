@@ -38,15 +38,15 @@
                 &nbsp;
                 <div class="field">
                     <div class="control has-icons-left">
-                        <input type="text" class="input is-info" maxlength=26
-                            placeholder="Filtrar por nombre" name="filterRestaurants" [(ngModel)] ="filterRestaurants">
-
+                        <input type="text" class="input is-info" maxlength=26 placeholder="Filtrar por nombre"
+                            name="filterRestaurants" [(ngModel)]="filterRestaurants">
                     </div>
                 </div>
                 &nbsp;
                 <a class="button is-link" (click)="searchBussiness()">Buscar</a>
+                &nbsp;
+                <a class="button is-danger" routerLink="/homeAdmin">Cancelar</a>
             </div>
-
 
             <table class="table">
                 <thead>
@@ -57,10 +57,8 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <th *ngFor="let item of negocios | filter:filterRestaurants "> <a class="button
-                                is-primary"
-                                [routerLink]="['/registerPromo',this.item.id]">Crear
-                                Promo</a>
+                        <th *ngFor="let item of negocios | filter:filterRestaurants ">
+                            <a class="button is-primary" [routerLink]="['/registerPromo',this.item.id]">Crear Promo</a>
                             <p>ID: {{item.id}} </p>
                             <p>Negocio: {{item.name}} </p>
                             <p>Email: {{item.email}} </p>

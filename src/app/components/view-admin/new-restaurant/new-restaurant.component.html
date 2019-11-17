@@ -1,28 +1,25 @@
-<div class="columns is-mobile is-centered">
-  <div id="col1" class="column is-half is-four-fifths">
-
+<div class="backg">
+  <div class="container">
+    <h2>Registro de Negocios</h2>
+    <br>
     <div class="columns">
-      <div id="col2" class="column is-four-fifths">
-        <!-- //metodo para logearse -->
+      <div id="col1" class="column is-four-fifths">
         <form [formGroup]="registerForm" (ngSubmit)="registrar()" novalidate>
           <div class="field is-horizontal">
             <div class="field-label is-normal">
-              <label class="label">Nombre del negocio</label>
+              <label class="label">Negocio</label>
             </div>
             <div class="field-body">
               <div class="field">
                 <p class="control is-expanded has-icons-left">
-                  <input class="input" type="text" placeholder="Nombre del
-                    negocio" formControlName="name">
+                  <input class="input" type="text" placeholder="Nombre del negocio" formControlName="name">
                   <span class="icon is-small is-left">
                     <i class="fas fa-briefcase"></i>
                   </span>
                 </p>
               </div>
-              <div *ngIf="registerForm.get('name').errors &&
-                registerForm.get('name').dirty">
-                <p *ngIf="registerForm.get('name').hasError('required')">Este
-                  campo debe ser obligatorio</p>
+              <div *ngIf="registerForm.get('name').errors && registerForm.get('name').dirty">
+                <p *ngIf="registerForm.get('name').hasError('required')">Este campo debe ser obligatorio</p>
               </div>
             </div>
           </div>
@@ -36,17 +33,14 @@
             <div class="field-body">
               <div class="field">
                 <p class="control is-expanded has-icons-left">
-                  <input class="input" type="text" placeholder="email"
-                    formControlName="email">
+                  <input class="input" type="email" placeholder="Email" formControlName="email">
                   <span class="icon is-small is-left">
                     <i class="fas fa-envelope"></i>
                   </span>
                 </p>
               </div>
-              <div *ngIf="registerForm.get('name').errors &&
-                registerForm.get('name').dirty">
-                <p *ngIf="registerForm.get('name').hasError('required')">Este
-                  campo debe ser obligatorio</p>
+              <div *ngIf="registerForm.get('email').errors && registerForm.get('email').dirty">
+                <p *ngIf="registerForm.get('email').hasError('required')">Este campo debe ser obligatorio</p>
               </div>
             </div>
           </div>
@@ -58,21 +52,17 @@
             <div class="field-body">
               <div class="field">
                 <p class="control is-expanded has-icons-left">
-                  <input class="input" type="text" placeholder="facebook"
-                    formControlName="facebook">
+                  <input class="input" type="text" placeholder="Facebook" formControlName="facebook">
                   <span class="icon is-small is-left">
                     <i class="fab fa-facebook-square"></i>
                   </span>
                 </p>
               </div>
-              <div *ngIf="registerForm.get('name').errors &&
-                registerForm.get('name').dirty">
-                <p *ngIf="registerForm.get('name').hasError('required')">Este
-                  campo debe ser obligatorio</p>
+              <div *ngIf="registerForm.get('facebook').errors && registerForm.get('facebook').dirty">
+                <p *ngIf="registerForm.get('facebook').hasError('required')">Este campo debe ser obligatorio</p>
               </div>
             </div>
           </div>
-
           <!-- instagram -->
           <div class="field is-horizontal">
             <div class="field-label is-normal">
@@ -81,21 +71,17 @@
             <div class="field-body">
               <div class="field">
                 <p class="control is-expanded has-icons-left">
-                  <input class="input" type="text" placeholder="instagram"
-                    formControlName="instagram">
+                  <input class="input" type="text" placeholder="Instagram" formControlName="instagram">
                   <span class="icon is-small is-left">
                     <i class="fab fa-instagram"></i>
                   </span>
                 </p>
               </div>
-              <div *ngIf="registerForm.get('name').errors &&
-                registerForm.get('name').dirty">
-                <p *ngIf="registerForm.get('name').hasError('required')">Este
-                  campo debe ser obligatorio</p>
+              <div *ngIf="registerForm.get('instagram').errors && registerForm.get('instagram').dirty">
+                <p *ngIf="registerForm.get('instagram').hasError('required')">Este campo debe ser obligatorio</p>
               </div>
             </div>
           </div>
-
           <!-- WhatsApp -->
           <div class="field is-horizontal">
             <div class="field-label is-normal">
@@ -104,23 +90,22 @@
             <div class="field-body">
               <div class="field">
                 <p class="control is-expanded has-icons-left">
-                  <input class="input" type="number" placeholder="whatsapp"
-                    formControlName="whatsapp">
+                  <input class="input" type="number" placeholder="Whatsapp" formControlName="whatsapp">
                   <span class="icon is-small is-left">
                     <i class="fab fa-whatsapp"></i>
                   </span>
                 </p>
               </div>
-              <div *ngIf="registerForm.get('name').errors &&
-                registerForm.get('name').dirty">
-                <p *ngIf="registerForm.get('name').hasError('required')">Este
-                  campo debe ser obligatorio</p>
+              <div *ngIf="registerForm.get('whatsapp').errors && registerForm.get('whatsapp').dirty">
+                <p *ngIf="registerForm.get('whatsapp').hasError('required')">Este campo debe ser obligatorio</p>
               </div>
             </div>
           </div>
           <!-- Numero telefonico -->
           <div class="field is-horizontal">
-            <div class="field-label"></div>
+            <div class="field-label is-normal">
+                <label class="label">Teléfono</label>
+            </div>
             <div class="field-body">
               <div class="field is-expanded">
                 <div class="field has-addons">
@@ -130,23 +115,17 @@
                     </a>
                   </p>
                   <p class="control is-expanded">
-                    <input class="input" type="number" placeholder="Numero
-                      telefonico" formControlName="phone">
+                    <input class="input" type="number" placeholder="Número telefónico" formControlName="phone">
                   </p>
                 </div>
                 <p class="help">Do not enter the first zero</p>
-                <div *ngIf="registerForm.get('phone').errors &&
-                  registerForm.get('phone').dirty">
-                  <p *ngIf="registerForm.get('phone').hasError('required')">Este
-                    campo debe ser obligatorio</p>
-                  <p *ngIf="registerForm.get('phone').hasError('minlength')">Ingrese
-                    un numero valido, minimo 6 numeros
-                  </p>
+                <div *ngIf="registerForm.get('phone').errors && registerForm.get('phone').dirty">
+                  <p *ngIf="registerForm.get('phone').hasError('required')">Este campo debe ser obligatorio</p>
+                  <p *ngIf="registerForm.get('phone').hasError('minlength')">Ingrese un numero valido, minimo 6 numeros </p>
                 </div>
               </div>
             </div>
           </div>
-
           <!-- State -->
           <div class="field is-horizontal">
             <div class="field-label is-normal">
@@ -156,9 +135,10 @@
               <div class="field is-narrow">
                 <div class="control">
                   <div class="select is-fullwidth">
-                    <select  [(ngModel)]="estadoseleccionado" (change)="getCities()" [ngModelOptions]="{standalone: true}">
+                    <select [(ngModel)]="estadoseleccionado" (change)="getCities()"
+                      [ngModelOptions]="{standalone: true}">
                       <option value="0">Selecciona una opción</option>
-                      <option *ngFor="let state of estados" >
+                      <option *ngFor="let state of estados">
                         {{state}}
                       </option>
                     </select>
@@ -168,7 +148,6 @@
               </div>
             </div>
           </div>
-
           <!-- City -->
           <div class="field is-horizontal">
             <div class="field-label is-normal">
@@ -198,15 +177,12 @@
             <div class="field-body">
               <div class="field is-narrow">
                 <label class="switch">
-                  <input type="checkbox" name="houseservice"
-                    formControlName="homeService" (click)="setservice()">
+                  <input type="checkbox" name="houseservice" formControlName="homeService" (click)="setservice()">
                   <div class="slider round"></div>
                 </label>
               </div>
             </div>
           </div>
-
-         
           <!-- Ubicacion -->
           <div class="field is-horizontal">
             <div class="field-label is-normal">
@@ -216,8 +192,7 @@
               <div class="field">
                 <div class="control">
                   <p class="control is-expanded has-icons-left">
-                    <input class="input" type="text" placeholder="Direccion"
-                      formControlName="address">
+                    <input class="input" type="text" placeholder="Dirección" formControlName="address">
                     <span class="icon is-small is-left">
                       <i class="fa fa-building"></i>
                     </span>
@@ -226,40 +201,63 @@
               </div>
             </div>
           </div>
-          <div class="field is-horizontal">
-
+          <div class="field is-horizontal btn-acom">
             <div class="field-body" *ngIf="currentUser=='owner'; else
-              isAdmin">
-              <div class="field">
-                <div class="control">
-                  <button type="submit" [disabled]="registerForm.invalid"
-                    class="button is-primary">
-                    <span class="icon is-small">
-                      <i class="fas fa-check"></i>
-                    </span>
-                    <span>Crear negocio</span>
-                  </button>
+                  isAdmin">
+              <div class="field is-horizontal is-centered">
+                <div class="field-body">
+                  <div class="field is-grouped is-centered">
+                    <div class="control">
+                      <button type="submit" [disabled]="registerForm.invalid" class="button is-primary">
+                        <span class="icon is-small">
+                          <i class="fas fa-check"></i>
+                        </span>
+                        <span>Crear negocio</span>
+                      </button>
+                    </div>
+                    <div class="control">
+                      <button class="button is-danger is-light" routerLink="/homeAdmin">
+                        <span class="icon is-small">
+                          <i class="fas fa-times"></i>
+                        </span>
+                        <span>Cancelar</span> <!-- Boton para admin -->
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
             <ng-template #isAdmin>
-              <div class="field">
-                <div class="control">
-                  <button type="submit" [disabled]="registerForm.invalid"
-                    class="button is-primary">
-                    <span class="icon is-small">
-                      <i class="fas fa-check"></i>
-                    </span>
-                    <span>Crear negocio Boton para admin</span>
-                  </button>
+              <div class="field is-horizontal is-centered">
+                <div class="field-body">
+                  <div class="field is-grouped is-centered">
+                    <div class="control">
+                      <button type="submit" [disabled]="registerForm.invalid" class="button is-primary">
+                        <span class="icon is-small">
+                          <i class="fas fa-check"></i>
+                        </span>
+                        <span>Crear negocio</span> <!-- Boton para admin -->
+                      </button>
+                    </div>
+                    <div class="control">
+                      <button class="button is-danger is-light" routerLink="/homeAdmin">
+                        <span class="icon is-small">
+                          <i class="fas fa-times"></i>
+                        </span>
+                        <span>Cancelar</span> <!-- Boton para admin -->
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </ng-template>
           </div>
         </form>
       </div>
-
+      <div class="column" id="col2">
+        <button class="button is-success">Segunda</button>
+      </div>
     </div>
-
   </div>
+  <br>
 </div>
