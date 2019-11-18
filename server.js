@@ -1,17 +1,16 @@
-
-// Instalar el servidor express
-const express = require ('express');
-const path = require ('ruta');
-
-const app = express ();
-
-// Servir solo los archivos estáticos del directorio dist
-app.use (express.static (__dirname + '/ dist / AlertaCochi'));
-
-app.get ('*', function (req, res) {
-    
-res.sendFile (path.join (__dirname + '/ dist / AlertaCochi /index.html'));
+//Install express server
+const express = require('express');
+const path = require('path');
+ 
+const app = express();
+ 
+// Serve only the static files form the dist directory
+// Replace the '/dist/<to_your_project_name>'
+app.use(express.static(__dirname + '/dist/AlertaCochi'));
+ 
+app.get('*', function(req,res) {
+  // Replace the '/dist/<to_your_project_name>/index.html'
+  res.sendFile(path.join(__dirname + '/dist/AlertaCochi/index.html'));
 });
-
-// Inicie la aplicación escuchando en el puerto predeterminado de Heroku
-app.listen (process.env.PORT || 8080);
+// Start the app by listening on the default Heroku port
+app.listen(process.env.PORT || 8080);
