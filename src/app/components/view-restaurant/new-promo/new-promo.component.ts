@@ -96,10 +96,6 @@ export class NewPromoComponent implements OnInit {
     
     console.log(this.imagen.image);
     
-    // this.ownerService.sendImage(this.imagen.image).subscribe(response =>{
-    //   console.log(response);
-    // })
-    
    }
 
   

@@ -15,7 +15,7 @@ export class ProfileComponent implements OnInit {
 
   profile = {
     name: null,
-    usename: null,
+    username: null,
     email: null,
   }
 

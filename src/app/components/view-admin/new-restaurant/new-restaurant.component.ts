@@ -14,7 +14,7 @@ export class NewRestaurantComponent implements OnInit {
   estadoseleccionado:String;
   ciudadseleccionadad:String;
   houseservice = false;
-
+  currentUser='';
   registerForm: FormGroup;
   constructor(
     private fb: FormBuilder,
