@@ -22,7 +22,7 @@ export class OwnerService {
 
 
   ownerProfile(): Observable<any> {//para que el owner pueda ver sus datos
-    return this.http.get(`${this.api}owner/myProfile/show`, httpOptions);
+    return this.http.get(`${this.api}myProfile/show`, httpOptions);
   }
 
   getRestaurants(): Observable <any> {

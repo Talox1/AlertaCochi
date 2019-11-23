@@ -57,11 +57,10 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     this.navbarService.change.subscribe(
       response => {
-        console.log('entrando en el ngOnInit')
+        console.log('Cambios en en navbar')
         this.isloged = this.navbarService.isLoged();
         this.currentUser = this.navbarService.currentUser;
         console.log(this.currentUser, this.isloged)
-        
       });
       
   }
@@ -76,9 +75,8 @@ export class NavbarComponent implements OnInit {
 
     this.isloged = false;
     this.navbarService.toggle('invited');
-
     this.router.navigate(['/home']);
-    this.ngOnInit();
+    
   }
 
   //metodo para cerrar el navbar

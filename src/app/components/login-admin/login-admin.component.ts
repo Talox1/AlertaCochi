@@ -6,8 +6,6 @@ import { CanActivate, Router } from '@angular/router';//can activate para valida
 //login service
 import { LoginService } from 'src/app/services/login.service';
 import { NavbarService } from '../../services/navbar.service';
-//navbar component
-import { NavbarComponent } from '../navbar/navbar.component'
 
 @Component({
   selector: 'app-login-admin',
@@ -22,8 +20,8 @@ export class LoginAdminComponent implements OnInit {
 
   constructor(
     public fb: FormBuilder,
-    private router: Router,
     public loginService: LoginService,
+    private router: Router,
     public navbarService: NavbarService) { }
 
   ngOnInit() {
@@ -37,7 +35,6 @@ export class LoginAdminComponent implements OnInit {
 
   login() {
     this.loginService.login(this.loginForm.value).subscribe(
-      // tslint:disable-next-line: no-unused-expression
       response => {
         if (response.is_admin) {
           localStorage.setItem('token', response.token);
@@ -58,6 +55,5 @@ export class LoginAdminComponent implements OnInit {
         }
       }
     );
-    // location.reload();
   }
 }
